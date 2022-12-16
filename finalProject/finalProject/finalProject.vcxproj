@@ -138,6 +138,7 @@
   <ItemGroup>
     <MASM Include="lab1_01.asm" />
     <MASM Include="main.asm" />
+    <MASM Include="printBackGround.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

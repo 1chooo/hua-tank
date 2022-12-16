@@ -21,5 +21,8 @@
     <MASM Include="lab1_01.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="printBackGround.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 include Irvine32.inc
 
-EXTERN lab1_01@0:PROC
+EXTERN printBackGround@0:PROC
+
 
 .data
 
@@ -8,7 +9,8 @@ EXTERN lab1_01@0:PROC
 
 main PROC
 
-	call lab1_01@0
+	call printBackGround@0
+	
 	exit
 
 main ENDP

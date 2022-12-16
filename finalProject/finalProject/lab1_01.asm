@@ -1,15 +1,16 @@
 include Irvine32.inc
 BoxWidth = 1
 .data
-dot BYTE 0b3h
+dot BYTE 00AEh
+space BYTE 0008
 
 outputHandle DWORD 0
 bytesWritten DWORD 0
 count DWORD 0
-xyPosition COORD <100,5>
-xyPosition2 COORD <120,10>
-xyPosition3 COORD <90,7>
-xyPosition4 COORD <70,7>
+xyPosition COORD <100,25>
+xyPosition2 COORD <120,30>
+xyPosition3 COORD <90,27>
+xyPosition4 COORD <70,27>
 
 cellsWritten DWORD ?
 
@@ -18,8 +19,6 @@ lab1_01 PROC
 
 	INVOKE GetStdHandle, STD_OUTPUT_HANDLE ; Get the console ouput handle
     mov outputHandle, eax ; save console handle
-	call Clrscr
-
 
     mov ecx, 200
 L1: push ecx
@@ -86,10 +85,17 @@ R4: push ecx
     pop ecx
 
 L3: 
-    mov eax, 500
+    mov eax, 100
     call Delay
 
-    call Clrscr
+    push ecx
+    INVOKE WriteConsoleOutputCharacter, outputHandle, ADDR space,
+       BoxWidth,   ; size of box line
+       xyPosition,   ; coordinates of first char
+       ADDR count    ; output count
+    pop ecx
+
+    ;call Clrscr
 
 
     dec cx

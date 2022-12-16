@@ -1,8 +1,8 @@
-Microsoft (R) Macro Assembler Version 14.33.31630.0	    12/13/22 01:26:57
-lab1_01.asm						     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    12/16/22 15:34:37
+printBackGround.asm					     Page 1 - 1
 
 
-				include Irvine32.inc
+				INCLUDE Irvine32.inc
 			      C ; Include file for Irvine32.lib             (Irvine32.inc)
 			      C 
 			      C ;OPTION CASEMAP:NONE		; optional: make identifiers case-sensitive
@@ -20,118 +20,252 @@ lab1_01.asm						     Page 1 - 1
 			      C .NOLIST
 			      C .LIST
 			      C 
- = 00000001			BoxWidth = 1
+				EXTERN lab1_01@0:PROC
+
+ = 000000B4			BoxWidth = 180
+ = 00000028			BoxHeight = 40
+				 
  00000000			.data
- 00000000 B3			dot BYTE 0b3h
-
- 00000001 00000000		outputHandle DWORD 0
- 00000005 00000000		bytesWritten DWORD 0
- 00000009 00000000		count DWORD 0
- 0000000D 0064 0005		xyPosition COORD <100,5>
- 00000011 0078 000A		xyPosition2 COORD <120,10>
- 00000015 005A 0007		xyPosition3 COORD <90,7>
- 00000019 0046 0007		xyPosition4 COORD <70,7>
-
- 0000001D 00000000		cellsWritten DWORD ?
-
+ 00000000 DA			boxTop     BYTE 0dah, (BoxWidth - 2) DUP(0c4h), 0Bfh
+	   000000B2 [
+	    C4
+	   ] BF
+ 000000B4 B3			boxTop2    BYTE 0b3h, 2 DUP(' '), 0dah, (BoxWidth - 8) DUP(0c4h), 0Bfh, 2 DUP(' '), 0b3h
+	   00000002 [
+	    20
+	   ] DA
+	   000000AC [
+	    C4
+	   ] BF
+	   00000002 [
+	    20
+	   ] B3
+ 00000168 B3			boxBody    BYTE 0b3h, 2 DUP(' '), 0b3h, (BoxWidth - 8) DUP(' '), 0b3h, 2 DUP(' '), 0b3h
+	   00000002 [
+	    20
+	   ] B3
+	   000000AC [
+	    20
+	   ] B3
+	   00000002 [
+	    20
+	   ] B3
+ 0000021C B3			boxBody2   BYTE 0b3h, 2 DUP(' '), 0b3h, 71 DUP(' '), '_ _ press any key to start _ _' , 71 DUP(' '), 0b3h, 2 DUP(' '), 0b3h
+	   00000002 [
+	    20
+	   ] B3
+	   00000047 [
+	    20
+	   ] 5F 20 5F 20
+	   70 72 65 73 73
+	   20 61 6E 79 20
+	   6B 65 79 20 74
+	   6F 20 73 74 61
+	   72 74 20 5F 20
+	   5F
+	   00000047 [
+	    20
+	   ] B3
+	   00000002 [
+	    20
+	   ] B3
+ 000002D0 B3			boxBottom2 BYTE 0b3h, 2 DUP(' '), 0c0h, (BoxWidth - 8) DUP(0c4h), 0d9h, 2 DUP(' '), 0b3h
+	   00000002 [
+	    20
+	   ] C0
+	   000000AC [
+	    C4
+	   ] D9
+	   00000002 [
+	    20
+	   ] B3
+ 00000384 C0			boxBottom  BYTE 0c0h, (BoxWidth - 2) DUP(0c4h), 0d9h
+	   000000B2 [
+	    C4
+	   ] D9
+				 
+ 00000438 00000000		outputHandle DWORD 0
+ 0000043C 00000000		bytesWritten DWORD 0
+ 00000440 00000000		count DWORD 0
+ 00000444 0005 0005		xyPosition COORD <5,5>
+				 
+ 00000448 00000000		cellsWritten DWORD ?
+ 0000044C  000000B4 [		attributes0 WORD BoxWidth DUP(0ah)
+	    000A
+	   ]
+ 000005B4  000000B3 [		attributes1 WORD (BoxWidth-1) DUP(0ch),0bh
+	    000C
+	   ] 000B
+ 0000071C  000000B4 [		attributes2 WORD BoxWidth DUP(0eh)
+	    000E
+	   ]
+				          
+				 
  00000000			.code
- 00000000			lab1_01 PROC
-
-					INVOKE GetStdHandle, STD_OUTPUT_HANDLE ; Get the console ouput handle
- 00000007  A3 00000001 R	    mov outputHandle, eax ; save console handle
- 0000000C  E8 00000000 E		call Clrscr
-
-
- 00000011  B9 000000C8		    mov ecx, 200
- 00000016  51			L1: push ecx
-				    INVOKE WriteConsoleOutputCharacter, outputHandle, ADDR dot,
-				       BoxWidth,   ; size of box line
-				       xyPosition3,   ; coordinates of first char
-				       ADDR count    ; output count
- 00000034  59			    pop ecx
-
- 00000035  51			    push ecx
-				    INVOKE WriteConsoleOutputCharacter, outputHandle, ADDR dot,
-				       BoxWidth,   ; size of box line
-				       xyPosition4,   ; coordinates of first char
-				       ADDR count    ; output count
- 00000053  59			    pop ecx
-
- 00000054  66| A1		    mov ax, xyPosition.x
-	   0000000D R
- 0000005A  66| 83 E8 01		    sub ax,1
- 0000005E  66| A3		    mov xyPosition.x, ax
-	   0000000D R
-
-
- 00000064  66| 83 F8 5A		    cmp ax, 90
- 00000068  77 33		    ja L2
-				    
- 0000006A  66| 83 F8 46		    cmp ax, 70
- 0000006E  73 0E		    jnb R2
- 00000070  72 00		    jb R1
-
- 00000072  66| B8 0064		R1: mov ax, 100
- 00000076  66| A3		    mov xyPosition.x, ax
-	   0000000D R
- 0000007C  EB 1F		    jmp L2
-
- 0000007E  51			R2: push ecx
-					INVOKE WriteConsoleOutputCharacter,
+ 00000000			printBackGround PROC
+				 
+				    INVOKE GetStdHandle, STD_OUTPUT_HANDLE ; Get the console ouput handle
+ 00000007  A3 00000438 R	    mov outputHandle, eax ; save console handle
+ 0000000C  E8 00000000 E	    call Clrscr
+				    ; 畫出box的第一行
+				 
+				    INVOKE WriteConsoleOutputAttribute,
+				      outputHandle,
+				      ADDR attributes0,
+				      BoxWidth,
+				      xyPosition,
+				      ADDR count
+				 
+				    INVOKE WriteConsoleOutputCharacter,
 				       outputHandle,   ; console output handle
-				       ADDR dot,   ; pointer to the top box line
+				       ADDR boxTop,   ; pointer to the top box line
 				       BoxWidth,   ; size of box line
 				       xyPosition,   ; coordinates of first char
 				       ADDR count    ; output count
- 0000009C  59			    pop ecx
+				 
+ 00000051  66| FF 05		    inc xyPosition.y   ; 座標換到下一行位置
+	   00000446 R
 
- 0000009D			L2: 
- 0000009D  66| A1		    mov ax, xyPosition2.x
-	   00000011 R
- 000000A3  66| 83 E8 01		    sub ax,1
- 000000A7  66| A3		    mov xyPosition2.x, ax
-	   00000011 R
- 000000AD  66| 83 F8 5A		    cmp ax, 90
- 000000B1  77 33		    ja L3
+				    INVOKE WriteConsoleOutputAttribute,
+				      outputHandle,
+				      ADDR attributes0,
+				      BoxWidth,
+				      xyPosition,
+				      ADDR count
 
- 000000B3  66| 83 F8 46		    cmp ax, 70
- 000000B7  73 0E		    jnb R4
- 000000B9  72 00		    jb R3
-
- 000000BB  66| B8 0078		R3: mov ax, 120
- 000000BF  66| A3		    mov xyPosition2.x, ax
-	   00000011 R
- 000000C5  EB 1F		    jmp L3
-
- 000000C7  51			R4: push ecx
-					INVOKE WriteConsoleOutputCharacter,
+				    INVOKE WriteConsoleOutputCharacter,
 				       outputHandle,   ; console output handle
-				       ADDR dot,   ; pointer to the top box line
+				       ADDR boxTop2,   ; pointer to the top box line
 				       BoxWidth,   ; size of box line
-				       xyPosition2,   ; coordinates of first char
+				       xyPosition,   ; coordinates of first char
 				       ADDR count    ; output count
- 000000E5  59			    pop ecx
 
- 000000E6			L3: 
- 000000E6  B8 000001F4		    mov eax, 500
- 000000EB  E8 00000000 E	    call Delay
+ 00000098  66| FF 05		    inc xyPosition.y   ; 座標換到下一行位置
+	   00000446 R
+				 
+ 0000009F  B9 00000014		    mov ecx, (BoxHeight-20)    ; number of lines in body
+				    
+ 000000A4  51			    L1: push ecx  ; save counter 避免invoke 有使用到這個暫存器
 
- 000000F0  E8 00000000 E	    call Clrscr
+				    INVOKE WriteConsoleOutputAttribute,
+				      outputHandle,
+				      ADDR attributes1,
+				      BoxWidth,
+				      xyPosition,
+				      ADDR count
+				   
+				   INVOKE WriteConsoleOutputCharacter,
+				       outputHandle,
+				       ADDR boxBody,   ; pointer to the box body
+				       BoxWidth,
+				       xyPosition,
+				       ADDR count 
+				 
+ 000000E5  66| FF 05		    inc xyPosition.y   ; next line
+	   00000446 R
+ 000000EC  59			    pop ecx   ; restore counter
+ 000000ED  E2 B5		    loop L1
 
+				    INVOKE WriteConsoleOutputAttribute,
+				      outputHandle,
+				      ADDR attributes1,
+				      BoxWidth,
+				      xyPosition,
+				      ADDR count
+				   
+				   INVOKE WriteConsoleOutputCharacter,
+				       outputHandle,
+				       ADDR boxBody2,   ; pointer to the box body
+				       BoxWidth,
+				       xyPosition,
+				       ADDR count
 
- 000000F5  66| 49		    dec cx
- 000000F7  66| 83 F9 00		    cmp cx, 0
- 000000FB  0F 85 FFFFFF15	    jne l1
+ 0000012F  66| FF 05		    inc xyPosition.y
+	   00000446 R
 
- 00000101  E8 00000000 E	    call WaitMsg
- 00000106  E8 00000000 E	    call Clrscr
+ 00000136  B9 0000000F		    mov ecx, 15    ; number of lines in body
+				    
+ 0000013B  51			    L2: push ecx  ; save counter 避免invoke 有使用到這個暫存器
 
- 0000010B  C3				ret
+				    INVOKE WriteConsoleOutputAttribute,
+				      outputHandle,
+				      ADDR attributes1,
+				      BoxWidth,
+				      xyPosition,
+				      ADDR count
+				   
+				   INVOKE WriteConsoleOutputCharacter,
+				       outputHandle,
+				       ADDR boxBody,   ; pointer to the box body
+				       BoxWidth,
+				       xyPosition,
+				       ADDR count 
+				 
+ 0000017C  66| FF 05		    inc xyPosition.y   ; next line
+	   00000446 R
+ 00000183  59			    pop ecx   ; restore counter
+ 00000184  E2 B5		    loop L2
 
- 0000010C			lab1_01 ENDP
-				END lab1_01
-Microsoft (R) Macro Assembler Version 14.33.31630.0	    12/13/22 01:26:57
-lab1_01.asm						     Symbols 2 - 1
+				    INVOKE WriteConsoleOutputAttribute,
+				      outputHandle,
+				      ADDR attributes0,
+				      BoxWidth,
+				      xyPosition,
+				      ADDR count
+
+				    INVOKE WriteConsoleOutputCharacter,
+				       outputHandle,   ; console output handle
+				       ADDR boxBottom2,   ; pointer to the top box line
+				       BoxWidth,   ; size of box line
+				       xyPosition,   ; coordinates of first char
+				       ADDR count    ; output count
+
+ 000001C6  66| FF 05		    inc xyPosition.y   ; 座標換到下一行位置
+	   00000446 R
+
+				    INVOKE WriteConsoleOutputAttribute,
+				      outputHandle,
+				      ADDR attributes2,
+				      BoxWidth,
+				      xyPosition,
+				      ADDR count
+				   
+				    INVOKE WriteConsoleOutputCharacter,
+				       outputHandle,
+				       ADDR boxBottom,   ; pointer to the bottom of the box
+				       BoxWidth,
+				       xyPosition,
+				       ADDR count 
+				    
+				 
+ 0000020D  E8 00000000 E	    call WaitMsg
+
+ 00000212  66| A1		    mov ax,xyPosition.y   ; 座標換到下一行位置
+	   00000446 R
+ 00000218  66| 83 E8 11		    sub ax,17
+ 0000021C  66| A3		    mov xyPosition.y, ax
+	   00000446 R
+
+				    INVOKE WriteConsoleOutputAttribute,
+				      outputHandle,
+				      ADDR attributes2,
+				      BoxWidth,
+				      xyPosition,
+				      ADDR count
+				   
+				    INVOKE WriteConsoleOutputCharacter,
+				       outputHandle,
+				       ADDR boxBody,
+				       BoxWidth,
+				       xyPosition,
+				       ADDR count 
+
+ 00000262  E8 00000000 E	    call lab1_01@0
+				    exit
+ 0000026E			printBackGround ENDP
+				END printBackGround
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    12/16/22 15:34:37
+printBackGround.asm					     Symbols 2 - 1
 
 
 
@@ -224,8 +358,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000021 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 0000010C Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000884 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000026E Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -332,14 +466,9 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-lab1_01  . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000010C Public STDCALL
-  L1 . . . . . . . . . . . . . .	L Near	 00000016 _TEXT	
-  R1 . . . . . . . . . . . . . .	L Near	 00000072 _TEXT	
-  R2 . . . . . . . . . . . . . .	L Near	 0000007E _TEXT	
-  L2 . . . . . . . . . . . . . .	L Near	 0000009D _TEXT	
-  R3 . . . . . . . . . . . . . .	L Near	 000000BB _TEXT	
-  R4 . . . . . . . . . . . . . .	L Near	 000000C7 _TEXT	
-  L3 . . . . . . . . . . . . . .	L Near	 000000E6 _TEXT	
+printBackGround  . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000026E Public STDCALL
+  L1 . . . . . . . . . . . . . .	L Near	 000000A4 _TEXT	
+  L2 . . . . . . . . . . . . . .	L Near	 0000013B _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -359,7 +488,8 @@ Symbols:
 @fardata . . . . . . . . . . . .	Text   	 FLAT
 @stack . . . . . . . . . . . . .	Text   	 FLAT
 ALT_MASK . . . . . . . . . . . .	Number	 00000003h   
-BoxWidth . . . . . . . . . . . .	Number	 00000001h   
+BoxHeight  . . . . . . . . . . .	Number	 00000028h   
+BoxWidth . . . . . . . . . . . .	Number	 000000B4h   
 CAPSLOCK_ON  . . . . . . . . . .	Number	 00000080h   
 CREATE_ALWAYS  . . . . . . . . .	Number	 00000002h   
 CREATE_NEW . . . . . . . . . . .	Number	 00000001h   
@@ -559,17 +689,26 @@ VK_UP  . . . . . . . . . . . . .	Number	 00000026h
 WINDOW_BUFFER_SIZE_EVENT . . . .	Number	 00000004h   
 WriteConsoleOutputCharacter  . .	Text   	 WriteConsoleOutputCharacterA
 WriteConsole . . . . . . . . . .	Text   	 WriteConsoleA
+attributes0  . . . . . . . . . .	Word	 0000044C _DATA	
+attributes1  . . . . . . . . . .	Word	 000005B4 _DATA	
+attributes2  . . . . . . . . . .	Word	 0000071C _DATA	
 black  . . . . . . . . . . . . .	Number	 00000000h   
 blue . . . . . . . . . . . . . .	Number	 00000001h   
+boxBody2 . . . . . . . . . . . .	Byte	 0000021C _DATA	
+boxBody  . . . . . . . . . . . .	Byte	 00000168 _DATA	
+boxBottom2 . . . . . . . . . . .	Byte	 000002D0 _DATA	
+boxBottom  . . . . . . . . . . .	Byte	 00000384 _DATA	
+boxTop2  . . . . . . . . . . . .	Byte	 000000B4 _DATA	
+boxTop . . . . . . . . . . . . .	Byte	 00000000 _DATA	
 brown  . . . . . . . . . . . . .	Number	 00000006h   
-bytesWritten . . . . . . . . . .	DWord	 00000005 _DATA	
-cellsWritten . . . . . . . . . .	DWord	 0000001D _DATA	
-count  . . . . . . . . . . . . .	DWord	 00000009 _DATA	
+bytesWritten . . . . . . . . . .	DWord	 0000043C _DATA	
+cellsWritten . . . . . . . . . .	DWord	 00000448 _DATA	
+count  . . . . . . . . . . . . .	DWord	 00000440 _DATA	
 cyan . . . . . . . . . . . . . .	Number	 00000003h   
-dot  . . . . . . . . . . . . . .	Byte	 00000000 _DATA	
 exit . . . . . . . . . . . . . .	Text   	 INVOKE ExitProcess,0
 gray . . . . . . . . . . . . . .	Number	 00000008h   
 green  . . . . . . . . . . . . .	Number	 00000002h   
+lab1_01@0  . . . . . . . . . . .	L Near	 00000000 FLAT	External STDCALL
 lightBlue  . . . . . . . . . . .	Number	 00000009h   
 lightCyan  . . . . . . . . . . .	Number	 0000000Bh   
 lightGray  . . . . . . . . . . .	Number	 00000007h   
@@ -577,14 +716,11 @@ lightGreen . . . . . . . . . . .	Number	 0000000Ah
 lightMagenta . . . . . . . . . .	Number	 0000000Dh   
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
-outputHandle . . . . . . . . . .	DWord	 00000001 _DATA	
+outputHandle . . . . . . . . . .	DWord	 00000438 _DATA	
 red  . . . . . . . . . . . . . .	Number	 00000004h   
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
-xyPosition2  . . . . . . . . . .	COORD	 00000011 _DATA	
-xyPosition3  . . . . . . . . . .	COORD	 00000015 _DATA	
-xyPosition4  . . . . . . . . . .	COORD	 00000019 _DATA	
-xyPosition . . . . . . . . . . .	COORD	 0000000D _DATA	
+xyPosition . . . . . . . . . . .	COORD	 00000444 _DATA	
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   
 
 	   0 Warnings

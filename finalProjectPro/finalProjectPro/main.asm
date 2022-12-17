@@ -16,11 +16,16 @@ printGreenLine PROTO, xyPosInLine:COORD
 
 tankWalking PROTO, xyPosInit:COORD
 tankClear   PROTO, xyPosInit:COORD
+;controlTank PROTO
 
-; 	玩遊戲   eax = 1
-; 	暫停		eax = 2
-; 	結束畫面	eax = 3
-; 	離開程式	eax = 4
+; bullet move
+noWorkWalking PROTO, xyPosInit:COORD
+noWorkClear   PROTO, xyPosInit:COORD
+
+; 	玩遊戲   ebx = 1
+; 	暫停		ebx = 2
+; 	結束畫面	ebx = 3
+; 	離開程式	ebx = 4
 
 .data
 	; 視窗的變數們
@@ -29,7 +34,33 @@ tankClear   PROTO, xyPosInit:COORD
 	consoleHandle  DWORD ?
 
 	xyPos COORD   <6,5>
-	xyPosTank COORD   <7,15>
+	xyPosTank COORD    <7,15>
+
+	xyPosNoWork0 COORD <15,6>
+	xyPosNoWork1 COORD <15,7>
+	xyPosNoWork2 COORD <15,8>
+	xyPosNoWork3 COORD <15,9>
+	xyPosNoWork4 COORD <15,10>
+	xyPosNoWork5 COORD <15,11>
+	xyPosNoWork6 COORD <15,12>
+	xyPosNoWork7 COORD <15,13>
+	xyPosNoWork8 COORD <15,14>
+	xyPosNoWork9 COORD <15,15>
+	xyPosNoWork10 COORD <15,16>
+	xyPosNoWork11 COORD <15,17>
+	xyPosNoWork12 COORD <15,18>
+	xyPosNoWork13 COORD <15,19>
+	xyPosNoWork14 COORD <15,20>
+	xyPosNoWork15 COORD <15,21>
+	xyPosNoWork16 COORD <15,22>
+	xyPosNoWork17 COORD <15,23>
+	xyPosNoWork18 COORD <15,24>
+	xyPosNoWork19 COORD <15,25>
+	xyPosNoWork20 COORD <15,26>
+
+	;noWorkArr WORD 20 DUP(0)
+	N10 WORD 0
+
 	xyPosBogy0 COORD   <120,5>
 	xyPosBogy1 COORD   <110,9>
 	xyPosBogy2 COORD   <145,13>
@@ -122,7 +153,7 @@ tankClear   PROTO, xyPosInit:COORD
 	scoreNum WORD 0
 	scoreStr BYTE 4 DUP(?)
 
-	livesNum WORD 100
+	livesNum WORD 10
 	livesStr BYTE 4 DUP(?)
 	
 	bogysNum WORD 5
@@ -146,14 +177,41 @@ main PROC
 	
 	INVOKE printStartScene
 
-Ex:	.IF eax == 4        ;直接離開
+Ex:	.IF ebx == 4        ;直接離開
 		call Clrscr
 		jmp ExitProgram
 	.ENDIF
 
 	;print test Bogy
+
+	mov ebx, 1 ; 進入遊戲
+
 GameLoop:
-	Invoke tankWalking, xyPosTank
+	INVOKE tankWalking, xyPosTank
+	call ReadKey
+
+	.IF ax == 4800h
+		INVOKE tankClear, xyPosTank
+		sub xyPosTank.y, 1
+		INVOKE tankWalking, xyPosTank
+	.ENDIF
+
+	.IF ax == 5000h
+		INVOKE tankClear, xyPosTank
+		add xyPosTank.y, 1
+		INVOKE tankWalking, xyPosTank
+	.ENDIF
+
+	.IF ax == 4D00h
+		.IF xyPosTank.y == 15
+			mov N10, 1
+		.ENDIF
+	.ENDIF
+
+	.IF N10 == 1
+		INVOKE noWorkWalking, xyPosNoWork10 
+	.ENDIF
+
 	.IF xyPosBogy0.x < 107
 		INVOKE bogyWalking, xyPosBogy0
 	.ENDIF
@@ -197,6 +255,10 @@ GameLoop:
 		INVOKE bogyClear, xyPosBogy5
 	.ENDIF
 
+	.IF N10 == 1
+		INVOKE noWorkClear, xyPosNoWork10 
+	.ENDIF
+
 	
 	INVOKE printGreenLine, xyPos
 	sub xyPosBogy0.x, 10
@@ -206,12 +268,20 @@ GameLoop:
 	sub xyPosBogy4.x, 5
 	sub xyPosBogy5.x, 6
 
+	.IF N10 == 1
+		add xyPosNoWork10.x, 1
+		.IF xyPosNoWork10.x > 106
+			mov N10, 0
+			mov xyPosNoWork10.x, 15
+		.ENDIF
+	.ENDIF
+	
 	.IF xyPosBogy0.x < 16
 		mov xyPosBogy0.x, 107
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov eax, 4 ;之後要改3
+			mov ebx, 4 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -220,7 +290,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov eax, 4 ;之後要改3
+			mov ebx, 4 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -229,7 +299,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov eax, 4 ;之後要改3
+			mov ebx, 4 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -238,7 +308,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov eax, 4 ;之後要改3
+			mov ebx, 4 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -247,7 +317,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov eax, 4 ;之後要改3
+			mov ebx, 4 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -256,7 +326,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov eax, 4 ;之後要改3
+			mov ebx, 4 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -372,8 +442,7 @@ StartOrNot:
 		jmp PrintIntro
     .ENDIF
     .IF ax == 266ch     ;press l to leave
-		mov eax, 4
-		call Clrscr
+		mov ebx, 4
         ret
     .ENDIF
 	jmp StartOrNot
@@ -635,6 +704,34 @@ removeTank:
 	loop removeTank
 	ret
 tankClear ENDP
+
+noWorkWalking PROC,
+	xyPosInit:COORD
+printNoWork:
+	push ecx
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR bullet,
+		SIZEOF bullet,
+		xyPosInit,
+		ADDR cells_Written
+	pop ecx
+	ret
+noWorkWalking ENDP
+
+noWorkClear PROC,
+	xyPosInit:COORD
+removeNoWork:
+	push ecx
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR clearBullet,
+		SIZEOF clearBullet,
+		xyPosInit,
+		ADDR cells_Written
+	pop ecx
+	ret
+noWorkClear ENDP
 
 printGreenLine PROC,
 	xyPosInLine:COORD

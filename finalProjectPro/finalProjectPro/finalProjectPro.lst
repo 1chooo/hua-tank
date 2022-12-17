@@ -1,4 +1,4 @@
-Microsoft (R) Macro Assembler Version 14.33.31630.0	    12/18/22 06:32:14
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    12/18/22 07:06:21
 main.asm						     Page 1 - 1
 
 
@@ -83,19 +83,38 @@ main.asm						     Page 1 - 1
  00000072 000F 0019			xyPosNoWork19 COORD <15,25>
  00000076 000F 001A			xyPosNoWork20 COORD <15,26>
 
- 0000007A 0000				N10 WORD 0
- 0000007C 0000				N11 WORD 0
+ 0000007A 0000				N0  WORD 0
+ 0000007C 0000				N1  WORD 0
+ 0000007E 0000				N2  WORD 0
+ 00000080 0000				N3  WORD 0
+ 00000082 0000				N4  WORD 0
+ 00000084 0000				N5  WORD 0
+ 00000086 0000				N6  WORD 0
+ 00000088 0000				N7  WORD 0
+ 0000008A 0000				N8  WORD 0
+ 0000008C 0000				N9  WORD 0
+ 0000008E 0000				N10 WORD 0
+ 00000090 0000				N11 WORD 0
+ 00000092 0000				N12 WORD 0
+ 00000094 0000				N13 WORD 0
+ 00000096 0000				N14 WORD 0
+ 00000098 0000				N15 WORD 0
+ 0000009A 0000				N16 WORD 0
+ 0000009C 0000				N17 WORD 0
+ 0000009E 0000				N18 WORD 0
+ 000000A0 0000				N19 WORD 0
+ 000000A2 0000				N20 WORD 0
 
- 0000007E 006B 0005			xyPosBogy0 COORD   <107,5>
- 00000082 006C 0009			xyPosBogy1 COORD   <108,9>
- 00000086 006D 000D			xyPosBogy2 COORD   <109,13>
- 0000008A 006E 0011			xyPosBogy3 COORD   <110,17>
- 0000008E 006F 0015			xyPosBogy4 COORD   <111,21>
- 00000092 0070 0019			xyPosBogy5 COORD   <112,25>
- 00000096 00000000			cells_Written DWORD ?
+ 000000A4 006B 0005			xyPosBogy0 COORD   <107,5>
+ 000000A8 006C 0009			xyPosBogy1 COORD   <108,9>
+ 000000AC 006D 000D			xyPosBogy2 COORD   <109,13>
+ 000000B0 006E 0011			xyPosBogy3 COORD   <110,17>
+ 000000B4 006F 0015			xyPosBogy4 COORD   <111,21>
+ 000000B8 0070 0019			xyPosBogy5 COORD   <112,25>
+ 000000BC 00000000			cells_Written DWORD ?
 
 					; 開始畫面的字
- 0000009A 20 5F 5F 5F 5F		startStr BYTE " _________    _      ____  _____ ___  ____   ____   ____  ______      ______     ___      ______ ____  ____ "
+ 000000C0 20 5F 5F 5F 5F		startStr BYTE " _________    _      ____  _____ ___  ____   ____   ____  ______      ______     ___      ______ ____  ____ "
 	   5F 5F 5F 5F 5F
 	   20 20 20 20 5F
 	   20 20 20 20 20
@@ -117,7 +136,7 @@ main.asm						     Page 1 - 1
 	   5F 20 5F 5F 5F
 	   5F 20 20 5F 5F
 	   5F 5F 20
- 00000106  7C 20 20 5F 20				 BYTE "|  _   _  |  / \    |_   \|_   _|_  ||_  _| |_  _| |_  _.' ____ \    |_   _ \  .'   `.  .' ___  |_  _||_  _|"
+ 0000012C  7C 20 20 5F 20				 BYTE "|  _   _  |  / \    |_   \|_   _|_  ||_  _| |_  _| |_  _.' ____ \    |_   _ \  .'   `.  .' ___  |_  _||_  _|"
 	   20 20 5F 20 20
 	   7C 20 20 2F 20
 	   5C 20 20 20 20
@@ -139,7 +158,7 @@ main.asm						     Page 1 - 1
 	   20 7C 5F 20 20
 	   5F 7C 7C 5F 20
 	   20 5F 7C
- 00000172  7C 5F 2F 20 7C				 BYTE "|_/ | | \_| / _ \     |   \ | |   | |_/ /     \ \   / / | (___ \_|     | |_) |/  .-.  \/ .'   \_| \ \  / /  " 
+ 00000198  7C 5F 2F 20 7C				 BYTE "|_/ | | \_| / _ \     |   \ | |   | |_/ /     \ \   / / | (___ \_|     | |_) |/  .-.  \/ .'   \_| \ \  / /  " 
 	   20 7C 20 5C 5F
 	   7C 20 2F 20 5F
 	   20 5C 20 20 20
@@ -161,7 +180,7 @@ main.asm						     Page 1 - 1
 	   5F 7C 20 5C 20
 	   5C 20 20 2F 20
 	   2F 20 20
- 000001DE  20 20 20 20 7C				 BYTE "    | |    / ___ \    | |\ \| |   |  __'.      \ \ / /   _.____`.      |  __'.| |   | || |   ____  \ \/ /   " 
+ 00000204  20 20 20 20 7C				 BYTE "    | |    / ___ \    | |\ \| |   |  __'.      \ \ / /   _.____`.      |  __'.| |   | || |   ____  \ \/ /   " 
 	   20 7C 20 20 20
 	   20 2F 20 5F 5F
 	   5F 20 5C 20 20
@@ -183,7 +202,7 @@ main.asm						     Page 1 - 1
 	   5F 5F 20 20 5C
 	   20 5C 2F 20 2F
 	   20 20 20
- 0000024A  20 20 20 5F 7C				 BYTE "   _| |_ _/ /   \ \_ _| |_\   |_ _| |  \ \_     \ ' /_  | \____) | _  _| |__) \  `-'  /\ `.___]  | _|  |_   " 
+ 00000270  20 20 20 5F 7C				 BYTE "   _| |_ _/ /   \ \_ _| |_\   |_ _| |  \ \_     \ ' /_  | \____) | _  _| |__) \  `-'  /\ `.___]  | _|  |_   " 
 	   20 7C 5F 20 5F
 	   2F 20 2F 20 20
 	   20 5C 20 5C 5F
@@ -205,7 +224,7 @@ main.asm						     Page 1 - 1
 	   20 20 7C 20 5F
 	   7C 20 20 7C 5F
 	   20 20 20
- 000002B6  20 20 7C 5F 5F				 BYTE "  |_____|____| |____|_____|\____|____||____|     \_/(_)  \______.'(_)|_______/ `.___.'  `._____.' |______|  "
+ 000002DC  20 20 7C 5F 5F				 BYTE "  |_____|____| |____|_____|\____|____||____|     \_/(_)  \______.'(_)|_______/ `.___.'  `._____.' |______|  "
 	   5F 5F 5F 7C 5F
 	   5F 5F 5F 7C 20
 	   7C 5F 5F 5F 5F
@@ -229,64 +248,64 @@ main.asm						     Page 1 - 1
 	   7C 20 20
 
 					;印開始畫面的提示字
- 00000322 50 72 65 73 73		enterMsg BYTE "Press ‘E’ to enter"
+ 00000348 50 72 65 73 73		enterMsg BYTE "Press ‘E’ to enter"
 	   20 A1 A5 45 A1
 	   A6 20 74 6F 20
 	   65 6E 74 65 72
- 00000336 50 72 65 73 73		leaveMsg BYTE "Press ‘L’ to leave"
+ 0000035C 50 72 65 73 73		leaveMsg BYTE "Press ‘L’ to leave"
 	   20 A1 A5 4C A1
 	   A6 20 74 6F 20
 	   6C 65 61 76 65
 
 					;印坦克
- 0000034A 20 20 20 20 20		startTank BYTE "       \                "
+ 00000370 20 20 20 20 20		startTank BYTE "       \                "
 	   20 20 5C 20 20
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20
- 00000362  20 20 20 20 20				  BYTE "       _\______         "
+ 00000388  20 20 20 20 20				  BYTE "       _\______         "
 	   20 20 5F 5C 5F
 	   5F 5F 5F 5F 5F
 	   20 20 20 20 20
 	   20 20 20 20
- 0000037A  20 20 20 20 20				  BYTE "      /        \=======D"
+ 000003A0  20 20 20 20 20				  BYTE "      /        \=======D"
 	   20 2F 20 20 20
 	   20 20 20 20 20
 	   5C 3D 3D 3D 3D
 	   3D 3D 3D 44
- 00000392  20 5F 5F 5F 5F				  BYTE " ____|_HUA_TANK_\_____  "
+ 000003B8  20 5F 5F 5F 5F				  BYTE " ____|_HUA_TANK_\_____  "
 	   7C 5F 48 55 41
 	   5F 54 41 4E 4B
 	   5F 5C 5F 5F 5F
 	   5F 5F 20 20
- 000003AA  2F 20 5F 5F 5F				  BYTE "/ ___WHERE_ARE_YOU?__ \ "
+ 000003D0  2F 20 5F 5F 5F				  BYTE "/ ___WHERE_ARE_YOU?__ \ "
 	   57 48 45 52 45
 	   5F 41 52 45 5F
 	   59 4F 55 3F 5F
 	   5F 20 5C 20
- 000003C2  5C 2F 20 5F 3D				  BYTE "\/ _===============_ \/ "
+ 000003E8  5C 2F 20 5F 3D				  BYTE "\/ _===============_ \/ "
 	   3D 3D 3D 3D 3D
 	   3D 3D 3D 3D 3D
 	   3D 3D 3D 3D 5F
 	   20 5C 2F 20
- 000003DA  20 20 5C 2D 3D				  BYTE "  \-===============-/   "
+ 00000400  20 20 5C 2D 3D				  BYTE "  \-===============-/   "
 	   3D 3D 3D 3D 3D
 	   3D 3D 3D 3D 3D
 	   3D 3D 3D 3D 2D
 	   2F 20 20 20
 					;印Bogy
- 000003F2 20 28 5C 5F 2F		startBogy BYTE " (\_/) "
+ 00000418 20 28 5C 5F 2F		startBogy BYTE " (\_/) "
 	   29 20
- 000003F9  20 7C 4F 76 4F				  BYTE " |OvO| "
+ 0000041F  20 7C 4F 76 4F				  BYTE " |OvO| "
 	   7C 20
- 00000400  2F 20 48 55 41				  BYTE "/ HUA \"
+ 00000426  2F 20 48 55 41				  BYTE "/ HUA \"
 	   20 5C
- 00000407  5C 7C 20 58 20				  BYTE "\| X |/"
+ 0000042D  5C 7C 20 58 20				  BYTE "\| X |/"
 	   7C 2F
- 0000040E  20 7C 5F 7C 5F				  BYTE " |_|_| "
+ 00000434  20 7C 5F 7C 5F				  BYTE " |_|_| "
 	   7C 20
 
- 00000415 2A 2A 2A 2A 2A		gameIntro BYTE "*****************************************************************"
+ 0000043B 2A 2A 2A 2A 2A		gameIntro BYTE "*****************************************************************"
 	   2A 2A 2A 2A 2A
 	   2A 2A 2A 2A 2A
 	   2A 2A 2A 2A 2A
@@ -299,7 +318,7 @@ main.asm						     Page 1 - 1
 	   2A 2A 2A 2A 2A
 	   2A 2A 2A 2A 2A
 	   2A 2A 2A 2A 2A
- 00000456  2A 20 20 20 20	              BYTE "*                      Game Introduction:                       *"
+ 0000047C  2A 20 20 20 20	              BYTE "*                      Game Introduction:                       *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 20
@@ -312,7 +331,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 00000497  2A 20 20 20 20	              BYTE "*            Control the Hua Tank to kill the Bogy.             *"
+ 000004BD  2A 20 20 20 20	              BYTE "*            Control the Hua Tank to kill the Bogy.             *"
 	   20 20 20 20 20
 	   20 20 20 43 6F
 	   6E 74 72 6F 6C
@@ -325,7 +344,7 @@ main.asm						     Page 1 - 1
 	   2E 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 000004D8  2A 20 20 20 20	              BYTE "*             Don't let Bogy cross the green line,              *"
+ 000004FE  2A 20 20 20 20	              BYTE "*             Don't let Bogy cross the green line,              *"
 	   20 20 20 20 20
 	   20 20 20 20 44
 	   6F 6E 27 74 20
@@ -338,7 +357,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 00000519  2A 20 20 20 20				  BYTE "*                or your life will shock down!!                 *"
+ 0000053F  2A 20 20 20 20				  BYTE "*                or your life will shock down!!                 *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 6F 72 20
@@ -351,7 +370,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 0000055A  2A 20 20 20 53	              BYTE "*   Start with 3 lives, once the live reaches zero, you lose!!  *"
+ 00000580  2A 20 20 20 53	              BYTE "*   Start with 3 lives, once the live reaches zero, you lose!!  *"
 	   74 61 72 74 20
 	   77 69 74 68 20
 	   33 20 6C 69 76
@@ -364,7 +383,7 @@ main.asm						     Page 1 - 1
 	   2C 20 79 6F 75
 	   20 6C 6F 73 65
 	   21 21 20 20 2A
- 0000059B  2A 20 20 20 20	              BYTE "*     Kill the last monsters, if you still alive, you win!!     *"
+ 000005C1  2A 20 20 20 20	              BYTE "*     Kill the last monsters, if you still alive, you win!!     *"
 	   20 4B 69 6C 6C
 	   20 74 68 65 20
 	   6C 61 73 74 20
@@ -377,7 +396,7 @@ main.asm						     Page 1 - 1
 	   79 6F 75 20 77
 	   69 6E 21 21 20
 	   20 20 20 20 2A
- 000005DC  2A 20 20 20 20	              BYTE "*                                                               *"
+ 00000602  2A 20 20 20 20	              BYTE "*                                                               *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 20
@@ -390,7 +409,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 0000061D  2A 20 20 20 20	              BYTE "*                   How to control the tank:                    *"
+ 00000643  2A 20 20 20 20	              BYTE "*                   How to control the tank:                    *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 20
@@ -403,7 +422,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 0000065E  2A 20 20 20 20	              BYTE "*               + press 'up'    to move up                      *"
+ 00000684  2A 20 20 20 20	              BYTE "*               + press 'up'    to move up                      *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 2B 20 70 72
@@ -416,7 +435,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 0000069F  2A 20 20 20 20	              BYTE "*               + press 'down'  to move down                    *"
+ 000006C5  2A 20 20 20 20	              BYTE "*               + press 'down'  to move down                    *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 2B 20 70 72
@@ -429,7 +448,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 000006E0  2A 20 20 20 20	              BYTE "*               + press 'right' to fire bullet                  *"
+ 00000706  2A 20 20 20 20	              BYTE "*               + press 'right' to fire bullet                  *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 2B 20 70 72
@@ -442,7 +461,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 00000721  2A 20 20 20 20	              BYTE "*                                                               *"
+ 00000747  2A 20 20 20 20	              BYTE "*                                                               *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 20
@@ -455,7 +474,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 00000762  2A 20 20 20 20	              BYTE "*                         How to play:                          *"
+ 00000788  2A 20 20 20 20	              BYTE "*                         How to play:                          *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 20
@@ -468,7 +487,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 000007A3  2A 20 20 20 20	              BYTE "*               + press 'space' to start game                   *"
+ 000007C9  2A 20 20 20 20	              BYTE "*               + press 'space' to start game                   *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 2B 20 70 72
@@ -481,7 +500,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 000007E4  2A 20 20 20 20	              BYTE "*               + press 'P'     to pause game                   *"
+ 0000080A  2A 20 20 20 20	              BYTE "*               + press 'P'     to pause game                   *"
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 2B 20 70 72
@@ -494,7 +513,7 @@ main.asm						     Page 1 - 1
 	   20 20 20 20 20
 	   20 20 20 20 20
 	   20 20 20 20 2A
- 00000825  2A 2A 2A 2A 2A	              BYTE "*****************************************************************"
+ 0000084B  2A 2A 2A 2A 2A	              BYTE "*****************************************************************"
 	   2A 2A 2A 2A 2A
 	   2A 2A 2A 2A 2A
 	   2A 2A 2A 2A 2A
@@ -508,78 +527,78 @@ main.asm						     Page 1 - 1
 	   2A 2A 2A 2A 2A
 	   2A 2A 2A 2A 2A
 
- 00000866 20 20 5F 5F 20		gameTank  BYTE "  __    "
+ 0000088C 20 20 5F 5F 20		gameTank  BYTE "  __    "
 	   20 20 20
- 0000086E  20 48 75 61 5C				  BYTE " Hua\==D"
+ 00000894  20 48 75 61 5C				  BYTE " Hua\==D"
 	   3D 3D 44
- 00000876  28 54 61 6E 6B				  BYTE "(Tank)  "
+ 0000089C  28 54 61 6E 6B				  BYTE "(Tank)  "
 	   29 20 20
 
- 0000087E 20 20 20 20 20		clearTank BYTE "        "
+ 000008A4 20 20 20 20 20		clearTank BYTE "        "
 	   20 20 20
- 00000886  20 20 20 20 20				  BYTE "        "
+ 000008AC  20 20 20 20 20				  BYTE "        "
 	   20 20 20
- 0000088E  20 20 20 20 20				  BYTE "        "
+ 000008B4  20 20 20 20 20				  BYTE "        "
 	   20 20 20
 
- 00000896 28 5C 5F 2F 29		gameBogy  BYTE "(\_/)"
- 0000089B  7C 4F 76 4F 7C				  BYTE "|OvO|"
- 000008A0  7C 5F 7C 5F 7C				  BYTE "|_|_|"
+ 000008BC 28 5C 5F 2F 29		gameBogy  BYTE "(\_/)"
+ 000008C1  7C 4F 76 4F 7C				  BYTE "|OvO|"
+ 000008C6  7C 5F 7C 5F 7C				  BYTE "|_|_|"
 
- 000008A5 20 20 20 20 20		clearBogy BYTE "     "
- 000008AA  20 20 20 20 20				  BYTE "     "
- 000008AF  20 20 20 20 20				  BYTE "     "
+ 000008CB 20 20 20 20 20		clearBogy BYTE "     "
+ 000008D0  20 20 20 20 20				  BYTE "     "
+ 000008D5  20 20 20 20 20				  BYTE "     "
 
- 000008B4 4E 4F 57 4F 52		bullet BYTE "NOWORK",0
+ 000008DA 4E 4F 57 4F 52		bullet BYTE "NOWORK",0
 	   4B 00
- 000008BB 20 20 20 20 20		clearBullet BYTE "      ",0
+ 000008E1 20 20 20 20 20		clearBullet BYTE "      ",0
 	   20 00
 
- 000008C2 7C 00				line BYTE "|",0
- 000008C4 000A				greenColor WORD 0Ah
+ 000008E8 7C 00				line BYTE "|",0
+ 000008EA 000A				greenColor WORD 0Ah
 
- 000008C6 000E				yellowColor WORD 0Eh
+ 000008EC 000E				yellowColor WORD 0Eh
 
- 000008C8 4C 65 76 65 6C		level BYTE "Level: ",0
+ 000008EE 4C 65 76 65 6C		level BYTE "Level: ",0
 	   3A 20 00
- 000008D0 53 74 61 74 65		state BYTE "State: ",0
+ 000008F6 53 74 61 74 65		state BYTE "State: ",0
 	   3A 20 00
- 000008D8 53 63 6F 72 65		score BYTE "Score: ",0
+ 000008FE 53 63 6F 72 65		score BYTE "Score: ",0
 	   3A 20 00
- 000008E0 4C 69 76 65 73		lives BYTE "Lives: ",0
+ 00000906 4C 69 76 65 73		lives BYTE "Lives: ",0
 	   3A 20 00
- 000008E8 42 6F 67 69 65		bogys BYTE "Bogies:",0
+ 0000090E 42 6F 67 69 65		bogys BYTE "Bogies:",0
 	   73 3A 00
 
- 000008F0 0001				levelNum WORD 1
- 000008F2  00000004 [			levelStr BYTE 4 DUP(?)
+ 00000916 0001				levelNum WORD 1
+ 00000918  00000004 [			levelStr BYTE 4 DUP(?)
 	    00
 	   ]
 
- 000008F6 50 61 75 73 65		paused BYTE "Paused ",0
+ 0000091C 50 61 75 73 65		paused BYTE "Paused ",0
 	   64 20 00
- 000008FE 50 6C 61 79 69		playing BYTE "Playing",0
+ 00000924 50 6C 61 79 69		playing BYTE "Playing",0
 	   6E 67 00
 
- 00000906 0000				scoreNum WORD 0
- 00000908  00000004 [			scoreStr BYTE 4 DUP(?)
+ 0000092C 0000				scoreNum WORD 0
+ 0000092E  00000004 [			scoreStr BYTE 4 DUP(?)
 	    00
 	   ]
 
- 0000090C 000A				livesNum WORD 10
- 0000090E  00000004 [			livesStr BYTE 4 DUP(?)
+ 00000932 000A				livesNum WORD 10
+ 00000934  00000004 [			livesStr BYTE 4 DUP(?)
 	    00
 	   ]
 					
- 00000912 0005				bogysNum WORD 5
- 00000914  00000004 [			bogysStr BYTE 4 DUP(?)
+ 00000938 0005				bogysNum WORD 5
+ 0000093A  00000004 [			bogysStr BYTE 4 DUP(?)
 	    00
 	   ]
 
- 00000918  0000006E [			gameBgTB BYTE 110 DUP("*"),0
+ 0000093E  0000006E [			gameBgTB BYTE 110 DUP("*"),0
 	    2A
 	   ] 00
- 00000987 2A				gameBgM  BYTE "*", 108 DUP(" "), "*",0	  
+ 000009AD 2A				gameBgM  BYTE "*", 108 DUP(" "), "*",0	  
 	   0000006C [
 	    20
 	   ] 2A 00
@@ -601,7 +620,7 @@ main.asm						     Page 1 - 1
 
  0000002D			Ex:	.IF ebx == 4        ;直接離開
  00000032  E8 00000000 E			call Clrscr
- 00000037  E9 00000438				jmp ExitProgram
+ 00000037  E9 000012B7				jmp ExitProgram
 					.ENDIF
 
 					;print test Bogy
@@ -627,25 +646,176 @@ main.asm						     Page 1 - 1
 					.ENDIF
 
 					.IF ax == 4D00h
-						.IF xyPosTank.y == 15
- 000000A9  66| C7 05					mov N10, 1
+						.IF xyPosTank.y == 5
+ 000000AD  66| C7 05		            mov N0, 1
 	   0000007A R
 	   0001
-						.ENDIF
-						.IF xyPosTank.y == 16
- 000000BC  66| C7 05					mov N11, 1
+				        .ENDIF
+				        .IF xyPosTank.y == 6
+ 000000C0  66| C7 05		            mov N1, 1
 	   0000007C R
 	   0001
-						.ENDIF
+				        .ENDIF
+				        .IF xyPosTank.y == 7
+ 000000D3  66| C7 05		            mov N2, 1
+	   0000007E R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 8
+ 000000E6  66| C7 05		            mov N3, 1
+	   00000080 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 9
+ 000000F9  66| C7 05		            mov N4, 1
+	   00000082 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 10
+ 0000010C  66| C7 05		            mov N5, 1
+	   00000084 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 11
+ 0000011F  66| C7 05		            mov N6, 1
+	   00000086 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 12
+ 00000132  66| C7 05		            mov N7, 1
+	   00000088 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 13
+ 00000145  66| C7 05		            mov N8, 1
+	   0000008A R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 14
+ 00000158  66| C7 05		            mov N9, 1
+	   0000008C R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 15
+ 0000016B  66| C7 05		            mov N10, 1
+	   0000008E R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 16
+ 0000017E  66| C7 05		            mov N11, 1
+	   00000090 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 17
+ 00000191  66| C7 05		            mov N12, 1
+	   00000092 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 18
+ 000001A4  66| C7 05		            mov N13, 1
+	   00000094 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 19
+ 000001B7  66| C7 05		            mov N14, 1
+	   00000096 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 20
+ 000001CA  66| C7 05		            mov N15, 1
+	   00000098 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 21
+ 000001DD  66| C7 05		            mov N16, 1
+	   0000009A R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 22
+ 000001F0  66| C7 05		            mov N17, 1
+	   0000009C R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 23
+ 00000203  66| C7 05		            mov N18, 1
+	   0000009E R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 24
+ 00000216  66| C7 05		            mov N19, 1
+	   000000A0 R
+	   0001
+				        .ENDIF
+				        .IF xyPosTank.y == 25
+ 00000229  66| C7 05		            mov N20, 1
+	   000000A2 R
+	   0001
+				        .ENDIF
 					.ENDIF
 
-					.IF N10 == 1
-						INVOKE noWorkWalking, xyPosNoWork10 
-					.ENDIF
-
-					.IF N11 == 1
-						INVOKE noWorkWalking, xyPosNoWork11 
-					.ENDIF
+					.IF N0 == 1
+				        INVOKE noWorkWalking, xyPosNoWork0 
+				    .ENDIF
+				    .IF N1 == 1
+				        INVOKE noWorkWalking, xyPosNoWork1 
+				    .ENDIF
+				    .IF N2 == 1
+				        INVOKE noWorkWalking, xyPosNoWork2 
+				    .ENDIF
+				    .IF N3 == 1
+				        INVOKE noWorkWalking, xyPosNoWork3 
+				    .ENDIF
+				    .IF N4 == 1
+				        INVOKE noWorkWalking, xyPosNoWork4 
+				    .ENDIF
+				    .IF N5 == 1
+				        INVOKE noWorkWalking, xyPosNoWork5 
+				    .ENDIF
+				    .IF N6 == 1
+				        INVOKE noWorkWalking, xyPosNoWork6 
+				    .ENDIF
+				    .IF N7 == 1
+				        INVOKE noWorkWalking, xyPosNoWork7 
+				    .ENDIF
+				    .IF N8 == 1
+				        INVOKE noWorkWalking, xyPosNoWork8 
+				    .ENDIF
+				    .IF N9 == 1
+				        INVOKE noWorkWalking, xyPosNoWork9 
+				    .ENDIF
+				    .IF N10 == 1
+				        INVOKE noWorkWalking, xyPosNoWork10 
+				    .ENDIF
+				    .IF N11 == 1
+				        INVOKE noWorkWalking, xyPosNoWork11 
+				    .ENDIF
+				    .IF N12 == 1
+				        INVOKE noWorkWalking, xyPosNoWork12
+				    .ENDIF
+				    .IF N13 == 1
+				        INVOKE noWorkWalking, xyPosNoWork13
+				    .ENDIF
+				    .IF N14 == 1
+				        INVOKE noWorkWalking, xyPosNoWork14
+				    .ENDIF
+				    .IF N15 == 1
+				        INVOKE noWorkWalking, xyPosNoWork15
+				    .ENDIF
+				    .IF N16 == 1
+				        INVOKE noWorkWalking, xyPosNoWork16
+				    .ENDIF
+				    .IF N17 == 1
+				        INVOKE noWorkWalking, xyPosNoWork17
+				    .ENDIF
+				    .IF N18 == 1
+				        INVOKE noWorkWalking, xyPosNoWork18
+				    .ENDIF
+				    .IF N19 == 1
+				        INVOKE noWorkWalking, xyPosNoWork19
+				    .ENDIF
+				    .IF N20 == 1
+				        INVOKE noWorkWalking, xyPosNoWork20
+				    .ENDIF
 
 					.IF xyPosBogy0.x < 107
 						INVOKE bogyWalking, xyPosBogy0
@@ -666,10 +836,10 @@ main.asm						     Page 1 - 1
 						INVOKE bogyWalking, xyPosBogy5
 					.ENDIF
 
- 0000016D  50				push eax
- 0000016E  B8 000001F4			mov eax, 500
- 00000173  E8 00000000 E		call Delay
- 00000178  58				pop eax
+ 00000469  50				push eax
+ 0000046A  B8 000001F4			mov eax, 500
+ 0000046F  E8 00000000 E		call Delay
+ 00000474  58				pop eax
 
 					.IF xyPosBogy0.x < 107
 						INVOKE bogyClear, xyPosBogy0
@@ -690,179 +860,877 @@ main.asm						     Page 1 - 1
 						INVOKE bogyClear, xyPosBogy5
 					.ENDIF
 
-					.IF N10 == 1
-						INVOKE noWorkClear, xyPosNoWork10 
-					.ENDIF
-
-					.IF N11 == 1
-						INVOKE noWorkClear, xyPosNoWork11 
-					.ENDIF
+					; clear no work
+					.IF N0 == 1
+				        INVOKE noWorkClear, xyPosNoWork0
+				    .ENDIF
+				    .IF N1 == 1
+				        INVOKE noWorkClear, xyPosNoWork1
+				    .ENDIF
+				    .IF N2 == 1
+				        INVOKE noWorkClear, xyPosNoWork2
+				    .ENDIF
+				    .IF N3 == 1
+				        INVOKE noWorkClear, xyPosNoWork3
+				    .ENDIF
+				    .IF N4 == 1
+				        INVOKE noWorkClear, xyPosNoWork4
+				    .ENDIF
+				    .IF N5 == 1
+				        INVOKE noWorkClear, xyPosNoWork5
+				    .ENDIF
+				    .IF N6 == 1
+				        INVOKE noWorkClear, xyPosNoWork6
+				    .ENDIF
+				    .IF N7 == 1
+				        INVOKE noWorkClear, xyPosNoWork7
+				    .ENDIF
+				    .IF N8 == 1
+				        INVOKE noWorkClear, xyPosNoWork8
+				    .ENDIF
+				    .IF N9 == 1
+				        INVOKE noWorkClear, xyPosNoWork9
+				    .ENDIF
+				    .IF N10 == 1
+				        INVOKE noWorkClear, xyPosNoWork10 
+				    .ENDIF
+				    .IF N11 == 1
+				        INVOKE noWorkClear, xyPosNoWork11 
+				    .ENDIF
+				    .IF N12 == 1
+				        INVOKE noWorkClear, xyPosNoWork12
+				    .ENDIF
+				    .IF N13 == 1
+				        INVOKE noWorkClear, xyPosNoWork13
+				    .ENDIF
+				    .IF N14 == 1
+				        INVOKE noWorkClear, xyPosNoWork14
+				    .ENDIF
+				    .IF N15 == 1
+				        INVOKE noWorkClear, xyPosNoWork15
+				    .ENDIF
+				    .IF N16 == 1
+				        INVOKE noWorkClear, xyPosNoWork16
+				    .ENDIF
+				    .IF N17 == 1
+				        INVOKE noWorkClear, xyPosNoWork17
+				    .ENDIF
+				    .IF N18 == 1
+				        INVOKE noWorkClear, xyPosNoWork18
+				    .ENDIF
+				    .IF N19 == 1
+				        INVOKE noWorkClear, xyPosNoWork19
+				    .ENDIF
+				    .IF N20 == 1
+				        INVOKE noWorkClear, xyPosNoWork20
+				    .ENDIF
 
 					
 					INVOKE printGreenLine, xyPos
- 0000022C  66| 83 2D			sub xyPosBogy0.x, 1
-	   0000007E R 01
- 00000234  66| 83 2D			sub xyPosBogy1.x, 1
-	   00000082 R 01
- 0000023C  66| 83 2D			sub xyPosBogy2.x, 1
-	   00000086 R 01
- 00000244  66| 83 2D			sub xyPosBogy3.x, 1
-	   0000008A R 01
- 0000024C  66| 83 2D			sub xyPosBogy4.x, 1
-	   0000008E R 01
- 00000254  66| 83 2D			sub xyPosBogy5.x, 1
-	   00000092 R 01
+ 000006B7  66| 83 2D			sub xyPosBogy0.x, 1
+	   000000A4 R 01
+ 000006BF  66| 83 2D			sub xyPosBogy1.x, 1
+	   000000A8 R 01
+ 000006C7  66| 83 2D			sub xyPosBogy2.x, 1
+	   000000AC R 01
+ 000006CF  66| 83 2D			sub xyPosBogy3.x, 1
+	   000000B0 R 01
+ 000006D7  66| 83 2D			sub xyPosBogy4.x, 1
+	   000000B4 R 01
+ 000006DF  66| 83 2D			sub xyPosBogy5.x, 1
+	   000000B8 R 01
 
-					.IF N10 == 1
- 00000266  66| 83 05				add xyPosNoWork10.x, 1
-	   0000004E R 01
-						.IF xyPosNoWork10.x > 106
- 00000278  66| C7 05					mov N10, 0
+					.IF N0 == 1
+ 000006F5  66| 83 05		        add xyPosNoWork0.x, 1
+	   00000026 R 01
+ 000006FD  50			        push eax
+ 000006FE  66| A1		        mov ax, xyPosBogy0.x
+	   000000A4 R
+ 00000704  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork0.x >= ax
+ 00000711  66| C7 05		            mov N0, 0
 	   0000007A R
 	   0000
- 00000281  66| C7 05					mov xyPosNoWork10.x, 15
+ 0000071A  66| C7 05		            mov xyPosNoWork0.x, 107
+	   00000026 R
+	   006B
+ 00000723  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 0000072B  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 00000753  BB 00000004		                mov ebx, 4
+ 00000758  E9 FFFFF8D0		                jmp Ex
+				            .ENDIF
+ 0000075D  66| C7 05		            mov xyPosBogy0.x, 00
+	   000000A4 R
+	   0000
+				        .ENDIF
+ 00000766  58			        pop eax
+				        .IF xyPosNoWork0.x > 106
+ 00000771  66| C7 05		            mov N0, 0
+	   0000007A R
+	   0000
+ 0000077A  66| C7 05		            mov xyPosNoWork0.x, 15
+	   00000026 R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N1 == 1
+ 00000791  66| 83 05		        add xyPosNoWork1.x, 1
+	   0000002A R 01
+ 00000799  50			        push eax
+ 0000079A  66| A1		        mov ax, xyPosBogy0.x
+	   000000A4 R
+ 000007A0  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork1.x >= ax
+ 000007AD  66| C7 05		            mov N1, 0
+	   0000007C R
+	   0000
+ 000007B6  66| C7 05		            mov xyPosNoWork1.x, 15
+	   0000002A R
+	   000F
+ 000007BF  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 000007C7  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 000007EF  BB 00000004		                mov ebx, 4
+ 000007F4  E9 FFFFF834		                jmp Ex
+				            .ENDIF
+ 000007F9  66| C7 05		            mov xyPosBogy0.x, 107
+	   000000A4 R
+	   006B
+				        .ENDIF
+ 00000802  58			        pop eax
+				        .IF xyPosNoWork1.x > 106
+ 0000080D  66| C7 05		            mov N1, 0
+	   0000007C R
+	   0000
+ 00000816  66| C7 05		            mov xyPosNoWork1.x, 15
+	   0000002A R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N2 == 1
+ 00000829  66| 83 05		        add xyPosNoWork2.x, 1
+	   0000002E R 01
+				        .IF xyPosNoWork2.x > 106
+ 0000083B  66| C7 05		            mov N2, 0
+	   0000007E R
+	   0000
+ 00000844  66| C7 05		            mov xyPosNoWork2.x, 15
+	   0000002E R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N3 == 1
+ 0000085B  66| 83 05		        add xyPosNoWork3.x, 1
+	   00000032 R 01
+ 00000863  50			        push eax
+ 00000864  66| A1		        mov ax, xyPosBogy1.x
+	   000000A8 R
+ 0000086A  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork3.x >= ax
+ 00000877  66| C7 05		            mov N3, 0
+	   00000080 R
+	   0000
+ 00000880  66| C7 05		            mov xyPosNoWork3.x, 15
+	   00000032 R
+	   000F
+ 00000889  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00000891  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 000008B9  BB 00000004		                mov ebx, 4
+ 000008BE  E9 FFFFF76A		                jmp Ex
+				            .ENDIF
+ 000008C3  66| C7 05		            mov xyPosBogy1.x, 108
+	   000000A8 R
+	   006C
+				        .ENDIF
+ 000008CC  58			        pop eax
+				        .IF xyPosNoWork3.x > 106
+ 000008D7  66| C7 05		            mov N3, 0
+	   00000080 R
+	   0000
+ 000008E0  66| C7 05		            mov xyPosNoWork3.x, 15
+	   00000032 R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N4 == 1
+ 000008F7  66| 83 05		        add xyPosNoWork4.x, 1
+	   00000036 R 01
+ 000008FF  50			        push eax
+ 00000900  66| A1		        mov ax, xyPosBogy1.x
+	   000000A8 R
+ 00000906  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork4.x >= ax
+ 00000913  66| C7 05		            mov N4, 0
+	   00000082 R
+	   0000
+ 0000091C  66| C7 05		            mov xyPosNoWork4.x, 15
+	   00000036 R
+	   000F
+ 00000925  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 0000092D  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 00000955  BB 00000004		                mov ebx, 4
+ 0000095A  E9 FFFFF6CE		                jmp Ex
+				            .ENDIF
+ 0000095F  66| C7 05		            mov xyPosBogy1.x, 108
+	   000000A8 R
+	   006C
+				        .ENDIF
+ 00000968  58			        pop eax
+				        .IF xyPosNoWork4.x > 106
+ 00000973  66| C7 05		            mov N4, 0
+	   00000082 R
+	   0000
+ 0000097C  66| C7 05		            mov xyPosNoWork4.x, 15
+	   00000036 R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N5 == 1
+ 00000993  66| 83 05		        add xyPosNoWork5.x, 1
+	   0000003A R 01
+ 0000099B  50			        push eax
+ 0000099C  66| A1		        mov ax, xyPosBogy1.x
+	   000000A8 R
+ 000009A2  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork5.x >= ax
+ 000009AF  66| C7 05		            mov N5, 0
+	   00000084 R
+	   0000
+ 000009B8  66| C7 05		            mov xyPosNoWork5.x, 15
+	   0000003A R
+	   000F
+ 000009C1  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 000009C9  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 000009F1  BB 00000004		                mov ebx, 4
+ 000009F6  E9 FFFFF632		                jmp Ex
+				            .ENDIF
+ 000009FB  66| C7 05		            mov xyPosBogy1.x, 108
+	   000000A8 R
+	   006C
+				        .ENDIF
+ 00000A04  58			        pop eax
+				        .IF xyPosNoWork5.x > 106
+ 00000A0F  66| C7 05		            mov N5, 0
+	   00000084 R
+	   0000
+ 00000A18  66| C7 05		            mov xyPosNoWork5.x, 15
+	   0000003A R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N6 == 1
+ 00000A2B  66| 83 05		        add xyPosNoWork6.x, 1
+	   0000003E R 01
+				        .IF xyPosNoWork6.x > 106
+ 00000A3D  66| C7 05		            mov N6, 0
+	   00000086 R
+	   0000
+ 00000A46  66| C7 05		            mov xyPosNoWork6.x, 15
+	   0000003E R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N7 == 1
+ 00000A5D  66| 83 05		        add xyPosNoWork7.x, 1
+	   00000042 R 01
+ 00000A65  50			        push eax
+ 00000A66  66| A1		        mov ax, xyPosBogy2.x
+	   000000AC R
+ 00000A6C  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork7.x >= ax
+ 00000A79  66| C7 05		            mov N7, 0
+	   00000088 R
+	   0000
+ 00000A82  66| C7 05		            mov xyPosNoWork7.x, 15
+	   00000042 R
+	   000F
+ 00000A8B  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00000A93  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 00000ABB  BB 00000004		                mov ebx, 4
+ 00000AC0  E9 FFFFF568		                jmp Ex
+				            .ENDIF
+ 00000AC5  66| C7 05		            mov xyPosBogy2.x, 109
+	   000000AC R
+	   006D
+				        .ENDIF
+ 00000ACE  58			        pop eax
+				        .IF xyPosNoWork7.x > 106
+ 00000AD9  66| C7 05		            mov N7, 0
+	   00000088 R
+	   0000
+ 00000AE2  66| C7 05		            mov xyPosNoWork7.x, 15
+	   00000042 R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N8 == 1
+ 00000AF9  66| 83 05		        add xyPosNoWork8.x, 1
+	   00000046 R 01
+ 00000B01  50			        push eax
+ 00000B02  66| A1		        mov ax, xyPosBogy2.x
+	   000000AC R
+ 00000B08  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork8.x >= ax
+ 00000B15  66| C7 05		            mov N8, 0
+	   0000008A R
+	   0000
+ 00000B1E  66| C7 05		            mov xyPosNoWork8.x, 15
+	   00000046 R
+	   000F
+ 00000B27  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00000B2F  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 00000B57  BB 00000004		                mov ebx, 4
+ 00000B5C  E9 FFFFF4CC		                jmp Ex
+				            .ENDIF
+ 00000B61  66| C7 05		            mov xyPosBogy2.x, 109
+	   000000AC R
+	   006D
+				        .ENDIF
+ 00000B6A  58			        pop eax
+				        .IF xyPosNoWork8.x > 106
+ 00000B75  66| C7 05		            mov N8, 0
+	   0000008A R
+	   0000
+ 00000B7E  66| C7 05		            mov xyPosNoWork8.x, 15
+	   00000046 R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N9 == 1
+ 00000B95  66| 83 05		        add xyPosNoWork9.x, 1
+	   0000004A R 01
+ 00000B9D  50			        push eax
+ 00000B9E  66| A1		        mov ax, xyPosBogy2.x
+	   000000AC R
+ 00000BA4  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork9.x >= ax
+ 00000BB1  66| C7 05		            mov N9, 0
+	   0000008C R
+	   0000
+ 00000BBA  66| C7 05		            mov xyPosNoWork9.x, 15
+	   0000004A R
+	   000F
+ 00000BC3  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00000BCB  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 00000BF3  BB 00000004		                mov ebx, 4
+ 00000BF8  E9 FFFFF430		                jmp Ex
+				            .ENDIF
+ 00000BFD  66| C7 05		            mov xyPosBogy2.x, 109
+	   000000AC R
+	   006D
+				        .ENDIF
+ 00000C06  58			        pop eax
+				        .IF xyPosNoWork9.x > 106
+ 00000C11  66| C7 05		            mov N9, 0
+	   0000008C R
+	   0000
+ 00000C1A  66| C7 05		            mov xyPosNoWork9.x, 15
+	   0000004A R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N10 == 1
+ 00000C2D  66| 83 05				add xyPosNoWork10.x, 1
+	   0000004E R 01
+						.IF xyPosNoWork10.x > 106
+ 00000C3F  66| C7 05					mov N10, 0
+	   0000008E R
+	   0000
+ 00000C48  66| C7 05					mov xyPosNoWork10.x, 15
 	   0000004E R
 	   000F
 						.ENDIF
 					.ENDIF
 
 					.IF N11 == 1
- 00000294  66| 83 05				add xyPosNoWork11.x, 1
+ 00000C5F  66| 83 05				add xyPosNoWork11.x, 1
 	   00000052 R 01
- 0000029C  50					push eax
- 0000029D  66| A1				mov ax, xyPosBogy3.x
-	   0000008A R
- 000002A3  66| 83 E8 06				sub ax, 6
+ 00000C67  50					push eax
+ 00000C68  66| A1				mov ax, xyPosBogy3.x
+	   000000B0 R
+ 00000C6E  66| 83 E8 06				sub ax, 6
 						.IF xyPosNoWork11.x >= ax
- 000002B0  66| C7 05					mov N11, 0
-	   0000007C R
+ 00000C7B  66| C7 05					mov N11, 0
+	   00000090 R
 	   0000
- 000002B9  66| C7 05					mov xyPosNoWork11.x, 15
+ 00000C84  66| C7 05					mov xyPosNoWork11.x, 15
 	   00000052 R
 	   000F
- 000002C2  66| 83 05					add scoreNum, 10
-	   00000906 R 0A
- 000002CA  66| 83 2D					sub bogysNum, 1
-	   00000912 R 01
+ 00000C8D  66| 83 05					add scoreNum, 10
+	   0000092C R 0A
+ 00000C95  66| 83 2D					sub bogysNum, 1
+	   00000938 R 01
 							INVOKE printScore, xyPos
 							INVOKE printBogys, xyPos
- 000002E8  66| C7 05					mov xyPosBogy3.x, 110
-	   0000008A R
+							.IF bogysNum == 0
+ 00000CBD  BB 00000004						mov ebx, 4
+ 00000CC2  E9 FFFFF366						jmp Ex
+							.ENDIF
+ 00000CC7  66| C7 05					mov xyPosBogy3.x, 110
+	   000000B0 R
 	   006E
 						.ENDIF
- 000002F1  58					pop eax
+ 00000CD0  58					pop eax
 						.IF xyPosNoWork11.x > 106
- 000002FC  66| C7 05					mov N11, 0
-	   0000007C R
+ 00000CDB  66| C7 05					mov N11, 0
+	   00000090 R
 	   0000
- 00000305  66| C7 05					mov xyPosNoWork11.x, 15
+ 00000CE4  66| C7 05					mov xyPosNoWork11.x, 15
 	   00000052 R
 	   000F
 						.ENDIF
 					.ENDIF
+
+					.IF N12 == 1
+ 00000CFB  66| 83 05		        add xyPosNoWork12.x, 1
+	   00000056 R 01
+ 00000D03  50			        push eax
+ 00000D04  66| A1		        mov ax, xyPosBogy3.x
+	   000000B0 R
+ 00000D0A  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork12.x >= ax
+ 00000D17  66| C7 05		            mov N12, 0
+	   00000092 R
+	   0000
+ 00000D20  66| C7 05		            mov xyPosNoWork12.x, 15
+	   00000056 R
+	   000F
+ 00000D29  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00000D31  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 00000D59  BB 00000004		                mov ebx, 4
+ 00000D5E  E9 FFFFF2CA		                jmp Ex
+				            .ENDIF
+ 00000D63  66| C7 05		            mov xyPosBogy3.x, 110
+	   000000B0 R
+	   006E
+				        .ENDIF
+ 00000D6C  58			        pop eax
+				        .IF xyPosNoWork12.x > 106
+ 00000D77  66| C7 05		            mov N12, 0
+	   00000092 R
+	   0000
+ 00000D80  66| C7 05		            mov xyPosNoWork12.x, 15
+	   00000056 R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N13 == 1
+ 00000D97  66| 83 05		        add xyPosNoWork13.x, 1
+	   0000005A R 01
+ 00000D9F  50			        push eax
+ 00000DA0  66| A1		        mov ax, xyPosBogy3.x
+	   000000B0 R
+ 00000DA6  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork13.x >= ax
+ 00000DB3  66| C7 05		            mov N13, 0
+	   00000094 R
+	   0000
+ 00000DBC  66| C7 05		            mov xyPosNoWork13.x, 15
+	   0000005A R
+	   000F
+ 00000DC5  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00000DCD  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 00000DF5  BB 00000004		                mov ebx, 4
+ 00000DFA  E9 FFFFF22E		                jmp Ex
+				            .ENDIF
+ 00000DFF  66| C7 05		            mov xyPosBogy3.x, 110
+	   000000B0 R
+	   006E
+				        .ENDIF
+ 00000E08  58			        pop eax
+				        .IF xyPosNoWork13.x > 106
+ 00000E13  66| C7 05		            mov N13, 0
+	   00000094 R
+	   0000
+ 00000E1C  66| C7 05		            mov xyPosNoWork13.x, 15
+	   0000005A R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N14 == 1
+ 00000E2F  66| 83 05		        add xyPosNoWork14.x, 1
+	   0000005E R 01
+				        .IF xyPosNoWork14.x > 106
+ 00000E41  66| C7 05		            mov N14, 0
+	   00000096 R
+	   0000
+ 00000E4A  66| C7 05		            mov xyPosNoWork14.x, 15
+	   0000005E R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N15 == 1
+ 00000E61  66| 83 05		        add xyPosNoWork15.x, 1
+	   00000062 R 01
+ 00000E69  50			        push eax
+ 00000E6A  66| A1		        mov ax, xyPosBogy4.x
+	   000000B4 R
+ 00000E70  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork15.x >= ax
+ 00000E7D  66| C7 05		            mov N15, 0
+	   00000098 R
+	   0000
+ 00000E86  66| C7 05		            mov xyPosNoWork15.x, 15
+	   00000062 R
+	   000F
+ 00000E8F  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00000E97  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 00000EBF  BB 00000004		                mov ebx, 4
+ 00000EC4  E9 FFFFF164		                jmp Ex
+				            .ENDIF
+ 00000EC9  66| C7 05		            mov xyPosBogy4.x, 111
+	   000000B4 R
+	   006F
+				        .ENDIF
+ 00000ED2  58			        pop eax
+				        .IF xyPosNoWork15.x > 106
+ 00000EDD  66| C7 05		            mov N15, 0
+	   00000098 R
+	   0000
+ 00000EE6  66| C7 05		            mov xyPosNoWork15.x, 15
+	   00000062 R
+	   000F
+				        .ENDIF
+				    .ENDIF
 					
+					.IF N16 == 1
+ 00000EFD  66| 83 05		        add xyPosNoWork16.x, 1
+	   00000066 R 01
+ 00000F05  50			        push eax
+ 00000F06  66| A1		        mov ax, xyPosBogy4.x
+	   000000B4 R
+ 00000F0C  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork16.x >= ax
+ 00000F19  66| C7 05		            mov N16, 0
+	   0000009A R
+	   0000
+ 00000F22  66| C7 05		            mov xyPosNoWork16.x, 15
+	   00000066 R
+	   000F
+ 00000F2B  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00000F33  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 00000F5B  BB 00000004		                mov ebx, 4
+ 00000F60  E9 FFFFF0C8		                jmp Ex
+				            .ENDIF
+ 00000F65  66| C7 05		            mov xyPosBogy4.x, 111
+	   000000B4 R
+	   006F
+				        .ENDIF
+ 00000F6E  58			        pop eax
+				        .IF xyPosNoWork16.x > 106
+ 00000F79  66| C7 05		            mov N16, 0
+	   0000009A R
+	   0000
+ 00000F82  66| C7 05		            mov xyPosNoWork16.x, 15
+	   00000066 R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N17 == 1
+ 00000F99  66| 83 05		        add xyPosNoWork17.x, 1
+	   0000006A R 01
+ 00000FA1  50			        push eax
+ 00000FA2  66| A1		        mov ax, xyPosBogy4.x
+	   000000B4 R
+ 00000FA8  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork17.x >= ax
+ 00000FB5  66| C7 05		            mov N17, 0
+	   0000009C R
+	   0000
+ 00000FBE  66| C7 05		            mov xyPosNoWork17.x, 15
+	   0000006A R
+	   000F
+ 00000FC7  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00000FCF  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 00000FF7  BB 00000004		                mov ebx, 4
+ 00000FFC  E9 FFFFF02C		                jmp Ex
+				            .ENDIF
+ 00001001  66| C7 05		            mov xyPosBogy4.x, 111
+	   000000B4 R
+	   006F
+				        .ENDIF
+ 0000100A  58			        pop eax
+				        .IF xyPosNoWork17.x > 106
+ 00001015  66| C7 05		            mov N17, 0
+	   0000009C R
+	   0000
+ 0000101E  66| C7 05		            mov xyPosNoWork17.x, 15
+	   0000006A R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N18 == 1
+ 00001031  66| 83 05		        add xyPosNoWork18.x, 1
+	   0000006E R 01
+				        .IF xyPosNoWork18.x > 106
+ 00001043  66| C7 05		            mov N18, 0
+	   0000009E R
+	   0000
+ 0000104C  66| C7 05		            mov xyPosNoWork18.x, 15
+	   0000006E R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N19 == 1
+ 00001063  66| 83 05		        add xyPosNoWork19.x, 1
+	   00000072 R 01
+ 0000106B  50			        push eax
+ 0000106C  66| A1		        mov ax, xyPosBogy5.x
+	   000000B8 R
+ 00001072  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork19.x >= ax
+ 0000107F  66| C7 05		            mov N19, 0
+	   000000A0 R
+	   0000
+ 00001088  66| C7 05		            mov xyPosNoWork19.x, 15
+	   00000072 R
+	   000F
+ 00001091  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00001099  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 000010C1  BB 00000004		                mov ebx, 4
+ 000010C6  E9 FFFFEF62		                jmp Ex
+				            .ENDIF
+ 000010CB  66| C7 05		            mov xyPosBogy5.x, 112
+	   000000B8 R
+	   0070
+				        .ENDIF
+ 000010D4  58			        pop eax
+				        .IF xyPosNoWork19.x > 106
+ 000010DF  66| C7 05		            mov N19, 0
+	   000000A0 R
+	   0000
+ 000010E8  66| C7 05		            mov xyPosNoWork19.x, 15
+	   00000072 R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
+					.IF N20 == 1
+ 000010FF  66| 83 05		        add xyPosNoWork20.x, 1
+	   00000076 R 01
+ 00001107  50			        push eax
+ 00001108  66| A1		        mov ax, xyPosBogy5.x
+	   000000B8 R
+ 0000110E  66| 83 E8 06		        sub ax, 6
+				        .IF xyPosNoWork20.x >= ax
+ 0000111B  66| C7 05		            mov N20, 0
+	   000000A2 R
+	   0000
+ 00001124  66| C7 05		            mov xyPosNoWork20.x, 15
+	   00000076 R
+	   000F
+ 0000112D  66| 83 05		            add scoreNum, 10
+	   0000092C R 0A
+ 00001135  66| 83 2D		            sub bogysNum, 1
+	   00000938 R 01
+				            INVOKE printScore, xyPos
+				            INVOKE printBogys, xyPos
+				            .IF bogysNum == 0
+ 0000115D  BB 00000004		                mov ebx, 4
+ 00001162  E9 FFFFEEC6		                jmp Ex
+				            .ENDIF
+ 00001167  66| C7 05		            mov xyPosBogy5.x, 112
+	   000000B8 R
+	   0070
+				        .ENDIF
+ 00001170  58			        pop eax
+				        .IF xyPosNoWork20.x > 106
+ 0000117B  66| C7 05		            mov N20, 0
+	   000000A2 R
+	   0000
+ 00001184  66| C7 05		            mov xyPosNoWork20.x, 15
+	   00000076 R
+	   000F
+				        .ENDIF
+				    .ENDIF
+
 					.IF xyPosBogy0.x < 16
- 00000318  66| C7 05				mov xyPosBogy0.x, 107
-	   0000007E R
+ 00001197  66| C7 05				mov xyPosBogy0.x, 107
+	   000000A4 R
 	   006B
- 00000321  66| 83 2D				sub livesNum, 1
-	   0000090C R 01
+ 000011A0  66| 83 2D				sub livesNum, 1
+	   00000932 R 01
 						INVOKE printLives, xyPos
 						.IF livesNum == 0
- 0000033E  BB 00000004					mov ebx, 4 ;之後要改3
- 00000343  E9 FFFFFCE5					jmp Ex		
+ 000011BD  BB 00000004					mov ebx, 4 ;之後要改3
+ 000011C2  E9 FFFFEE66					jmp Ex		
 						.ENDIF
 					.ENDIF
 					.IF xyPosBogy1.x < 16
- 00000352  66| C7 05				mov xyPosBogy1.x, 107
-	   00000082 R
+ 000011D1  66| C7 05				mov xyPosBogy1.x, 107
+	   000000A8 R
 	   006B
- 0000035B  66| 83 2D				sub livesNum, 1
-	   0000090C R 01
+ 000011DA  66| 83 2D				sub livesNum, 1
+	   00000932 R 01
 						INVOKE printLives, xyPos
 						.IF livesNum == 0
- 00000378  BB 00000004					mov ebx, 4 ;之後要改3
- 0000037D  E9 FFFFFCAB					jmp Ex		
+ 000011F7  BB 00000004					mov ebx, 4 ;之後要改3
+ 000011FC  E9 FFFFEE2C					jmp Ex		
 						.ENDIF
 					.ENDIF
 					.IF xyPosBogy2.x < 16
- 0000038C  66| C7 05				mov xyPosBogy2.x, 107
-	   00000086 R
+ 0000120B  66| C7 05				mov xyPosBogy2.x, 107
+	   000000AC R
 	   006B
- 00000395  66| 83 2D				sub livesNum, 1
-	   0000090C R 01
+ 00001214  66| 83 2D				sub livesNum, 1
+	   00000932 R 01
 						INVOKE printLives, xyPos
 						.IF livesNum == 0
- 000003B2  BB 00000004					mov ebx, 4 ;之後要改3
- 000003B7  E9 FFFFFC71					jmp Ex		
+ 00001231  BB 00000004					mov ebx, 4 ;之後要改3
+ 00001236  E9 FFFFEDF2					jmp Ex		
 						.ENDIF
 					.ENDIF
 					.IF xyPosBogy3.x < 16
- 000003C6  66| C7 05				mov xyPosBogy3.x, 107
-	   0000008A R
+ 00001245  66| C7 05				mov xyPosBogy3.x, 107
+	   000000B0 R
 	   006B
- 000003CF  66| 83 2D				sub livesNum, 1
-	   0000090C R 01
+ 0000124E  66| 83 2D				sub livesNum, 1
+	   00000932 R 01
 						INVOKE printLives, xyPos
 						.IF livesNum == 0
- 000003EC  BB 00000004					mov ebx, 4 ;之後要改3
- 000003F1  E9 FFFFFC37					jmp Ex		
+ 0000126B  BB 00000004					mov ebx, 4 ;之後要改3
+ 00001270  E9 FFFFEDB8					jmp Ex		
 						.ENDIF
 					.ENDIF
 					.IF xyPosBogy4.x < 16
- 00000400  66| C7 05				mov xyPosBogy4.x, 107
-	   0000008E R
+ 0000127F  66| C7 05				mov xyPosBogy4.x, 107
+	   000000B4 R
 	   006B
- 00000409  66| 83 2D				sub livesNum, 1
-	   0000090C R 01
+ 00001288  66| 83 2D				sub livesNum, 1
+	   00000932 R 01
 						INVOKE printLives, xyPos
 						.IF livesNum == 0
- 00000426  BB 00000004					mov ebx, 4 ;之後要改3
- 0000042B  E9 FFFFFBFD					jmp Ex		
+ 000012A5  BB 00000004					mov ebx, 4 ;之後要改3
+ 000012AA  E9 FFFFED7E					jmp Ex		
 						.ENDIF
 					.ENDIF
 					.IF xyPosBogy5.x < 16
- 0000043A  66| C7 05				mov xyPosBogy5.x, 107
-	   00000092 R
+ 000012B9  66| C7 05				mov xyPosBogy5.x, 107
+	   000000B8 R
 	   006B
- 00000443  66| 83 2D				sub livesNum, 1
-	   0000090C R 01
+ 000012C2  66| 83 2D				sub livesNum, 1
+	   00000932 R 01
 						INVOKE printLives, xyPos
 						.IF livesNum == 0
- 00000460  BB 00000004					mov ebx, 4 ;之後要改3
- 00000465  E9 FFFFFBC3					jmp Ex		
+ 000012DF  BB 00000004					mov ebx, 4 ;之後要改3
+ 000012E4  E9 FFFFED44					jmp Ex		
 						.ENDIF
 					.ENDIF
 					
- 0000046A  E9 FFFFFBD2			jmp GameLoop
+ 000012E9  E9 FFFFED53			jmp GameLoop
 
 
 
- 0000046F  E8 00000000 E		call WaitMsg
+ 000012EE  E8 00000000 E		call WaitMsg
 
- 00000474			ExitProgram:
+ 000012F3			ExitProgram:
 					exit
- 0000047B			main ENDP
+ 000012FA			main ENDP
 
- 0000047B			printStartScene PROC
+ 000012FA			printStartScene PROC
 					LOCAL cursorInfo:CONSOLE_CURSOR_INFO
- 00000481  C7 45 F8			mov cursorInfo.dwSize, 100
+ 00001300  C7 45 F8			mov cursorInfo.dwSize, 100
 	   00000064
- 00000488  C7 45 FC			mov cursorInfo.bVisible, 0
+ 00001307  C7 45 FC			mov cursorInfo.bVisible, 0
 	   00000000
 					INVOKE SetConsoleCursorInfo,
 				    	consoleHandle,
 				        ADDR cursorInfo
 
 					; 清空畫面
- 0000049E  E8 00000000 E		call Clrscr
+ 0000131D  E8 00000000 E		call Clrscr
 
- 000004A3  B9 00000006			mov ecx, 6
- 000004A8  BE 00000000			mov esi, 0
+ 00001322  B9 00000006			mov ecx, 6
+ 00001327  BE 00000000			mov esi, 0
 
 				; 印開始畫面的標題
- 000004AD			ShowStartStr:
- 000004AD  51				push ecx
+ 0000132C			ShowStartStr:
+ 0000132C  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR [startStr + esi],
@@ -870,17 +1738,17 @@ main.asm						     Page 1 - 1
 						xyPos,
 						ADDR cells_Written
 
- 000004CD  83 C6 6C			add esi, 108
- 000004D0  66| FF 05			inc xyPos.y
+ 0000134C  83 C6 6C			add esi, 108
+ 0000134F  66| FF 05			inc xyPos.y
 	   00000020 R
- 000004D7  59				pop ecx
- 000004D8  E2 D3			loop ShowStartStr
+ 00001356  59				pop ecx
+ 00001357  E2 D3			loop ShowStartStr
 
 				; 印開始畫面的選項
- 000004DA			PrintOption:
- 000004DA  66| 83 05		    add xyPos.y, 7
+ 00001359			PrintOption:
+ 00001359  66| 83 05		    add xyPos.y, 7
 	   00000020 R 07
- 000004E2  66| 83 05		    add xyPos.x, 48
+ 00001361  66| 83 05		    add xyPos.x, 48
 	   0000001E R 30
 
 				    INVOKE WriteConsoleOutputCharacter,
@@ -890,7 +1758,7 @@ main.asm						     Page 1 - 1
 				        xyPos,
 				        ADDR cells_Written
 
- 00000507  66| 83 05		    add xyPos.y, 2
+ 00001386  66| 83 05		    add xyPos.y, 2
 	   00000020 R 02
 
 				    INVOKE WriteConsoleOutputCharacter,
@@ -900,17 +1768,17 @@ main.asm						     Page 1 - 1
 				        xyPos,
 				        ADDR cells_Written
 
- 0000052C  B9 00000007			mov ecx, 7
- 00000531  BE 00000000			mov esi, 0
- 00000536  66| C7 05			mov xyPos.x, 20
+ 000013AB  B9 00000007			mov ecx, 7
+ 000013B0  BE 00000000			mov esi, 0
+ 000013B5  66| C7 05			mov xyPos.x, 20
 	   0000001E R
 	   0014
- 0000053F  66| C7 05			mov xyPos.y, 15
+ 000013BE  66| C7 05			mov xyPos.y, 15
 	   00000020 R
 	   000F
 
- 00000548			PrintStartTank:
- 00000548  51				push ecx
+ 000013C7			PrintStartTank:
+ 000013C7  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR [startTank + esi],
@@ -918,23 +1786,23 @@ main.asm						     Page 1 - 1
 						xyPos,
 						ADDR cells_Written
 
- 00000568  83 C6 18			add esi, 24
- 0000056B  66| FF 05			inc xyPos.y
+ 000013E7  83 C6 18			add esi, 24
+ 000013EA  66| FF 05			inc xyPos.y
 	   00000020 R
- 00000572  59				pop ecx
- 00000573  E2 D3			loop PrintStartTank
+ 000013F1  59				pop ecx
+ 000013F2  E2 D3			loop PrintStartTank
 
- 00000575  B9 00000005			mov ecx, 5
- 0000057A  BE 00000000			mov esi, 0
- 0000057F  66| C7 05			mov xyPos.x, 85
+ 000013F4  B9 00000005			mov ecx, 5
+ 000013F9  BE 00000000			mov esi, 0
+ 000013FE  66| C7 05			mov xyPos.x, 85
 	   0000001E R
 	   0055
- 00000588  66| C7 05			mov xyPos.y, 16
+ 00001407  66| C7 05			mov xyPos.y, 16
 	   00000020 R
 	   0010
 
- 00000591			PrintStartBogy:
- 00000591  51				push ecx
+ 00001410			PrintStartBogy:
+ 00001410  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR [startBogy + esi],
@@ -942,36 +1810,36 @@ main.asm						     Page 1 - 1
 						xyPos,
 						ADDR cells_Written
 
- 000005B1  83 C6 07			add esi, 7
- 000005B4  66| FF 05			inc xyPos.y
+ 00001430  83 C6 07			add esi, 7
+ 00001433  66| FF 05			inc xyPos.y
 	   00000020 R
- 000005BB  59				pop ecx
- 000005BC  E2 D3			loop PrintStartBogy
+ 0000143A  59				pop ecx
+ 0000143B  E2 D3			loop PrintStartBogy
 
- 000005BE			StartOrNot:
- 000005BE  E8 00000000 E	    call ReadChar
+ 0000143D			StartOrNot:
+ 0000143D  E8 00000000 E	    call ReadChar
 
 					.IF ax == 1265h     ;press e to start game
- 000005C9  E8 00000000 E	        call Clrscr
- 000005CE  66| C7 05				mov xyPos.x, 28
+ 00001448  E8 00000000 E	        call Clrscr
+ 0000144D  66| C7 05				mov xyPos.x, 28
 	   0000001E R
 	   001C
- 000005D7  66| C7 05				mov xyPos.y, 7
+ 00001456  66| C7 05				mov xyPos.y, 7
 	   00000020 R
 	   0007
 
- 000005E0  B9 00000011				mov ecx, 17
- 000005E5  BE 00000000				mov esi, 0
- 000005EA  EB 0F				jmp PrintIntro
+ 0000145F  B9 00000011				mov ecx, 17
+ 00001464  BE 00000000				mov esi, 0
+ 00001469  EB 0F				jmp PrintIntro
 				    .ENDIF
 				    .IF ax == 266ch     ;press l to leave
- 000005F2  BB 00000004				mov ebx, 4
+ 00001471  BB 00000004				mov ebx, 4
 				        ret
 				    .ENDIF
- 000005F9  EB C3			jmp StartOrNot
+ 00001478  EB C3			jmp StartOrNot
 
- 000005FB			PrintIntro:
- 000005FB  51				push ecx
+ 0000147A			PrintIntro:
+ 0000147A  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR [gameIntro + esi],
@@ -979,49 +1847,49 @@ main.asm						     Page 1 - 1
 						xyPos,
 						ADDR cells_Written
 
- 0000061B  83 C6 41			add esi, 65
- 0000061E  66| FF 05			inc xyPos.y
+ 0000149A  83 C6 41			add esi, 65
+ 0000149D  66| FF 05			inc xyPos.y
 	   00000020 R
- 00000625  59				pop ecx
- 00000626  E2 D3			loop PrintIntro
+ 000014A4  59				pop ecx
+ 000014A5  E2 D3			loop PrintIntro
 
- 00000628			GameOrNot:
- 00000628  E8 00000000 E	    call ReadChar
+ 000014A7			GameOrNot:
+ 000014A7  E8 00000000 E	    call ReadChar
 					.IF ax == 3920h     ;press space to start game
- 00000633  E8 00000000 E	        call Clrscr
- 00000638  66| C7 05				mov xyPos.x, 5
+ 000014B2  E8 00000000 E	        call Clrscr
+ 000014B7  66| C7 05				mov xyPos.x, 5
 	   0000001E R
 	   0005
- 00000641  66| C7 05				mov xyPos.y, 4
+ 000014C0  66| C7 05				mov xyPos.y, 4
 	   00000020 R
 	   0004
- 0000064A  EB 02				jmp PrintGameSceneTop
+ 000014C9  EB 02				jmp PrintGameSceneTop
 					.ENDIF
- 0000064C  EB DA			jmp GameOrNot
+ 000014CB  EB DA			jmp GameOrNot
 
- 0000064E			PrintGameSceneTop:
+ 000014CD			PrintGameSceneTop:
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR gameBgTB,
 						110,
 						xyPos,
 						ADDR cells_Written
- 0000066B  66| FF 05			inc xyPos.y
+ 000014EA  66| FF 05			inc xyPos.y
 	   00000020 R
 
- 00000672  B9 00000018			mov ecx, 24
- 00000677			PrintGameScene:
- 00000677  51				push ecx
+ 000014F1  B9 00000018			mov ecx, 24
+ 000014F6			PrintGameScene:
+ 000014F6  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR gameBgM,
 						110,
 						xyPos,
 						ADDR cells_Written
- 00000695  66| FF 05			inc xyPos.y
+ 00001514  66| FF 05			inc xyPos.y
 	   00000020 R
- 0000069C  59				pop ecx
- 0000069D  E2 D8			loop PrintGameScene
+ 0000151B  59				pop ecx
+ 0000151C  E2 D8			loop PrintGameScene
 
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
@@ -1029,16 +1897,16 @@ main.asm						     Page 1 - 1
 						110,
 						xyPos,
 						ADDR cells_Written
- 000006BC  66| FF 05			inc xyPos.y
+ 0000153B  66| FF 05			inc xyPos.y
 	   00000020 R
 
 					INVOKE printGreenLine, xyPos
 					
- 000006CE			PrintBar:
- 000006CE  66| C7 05			mov xyPos.x, 5
+ 0000154D			PrintBar:
+ 0000154D  66| C7 05			mov xyPos.x, 5
 	   0000001E R
 	   0005
- 000006D7  66| C7 05			mov xyPos.y, 2
+ 00001556  66| C7 05			mov xyPos.y, 2
 	   00000020 R
 	   0002
 					INVOKE WriteConsoleOutputCharacter,
@@ -1050,7 +1918,7 @@ main.asm						     Page 1 - 1
 
 					INVOKE printLevel, xyPos
 
- 00000708  66| C7 05			mov xyPos.x, 29
+ 00001587  66| C7 05			mov xyPos.x, 29
 	   0000001E R
 	   001D
 					INVOKE WriteConsoleOutputCharacter,
@@ -1060,7 +1928,7 @@ main.asm						     Page 1 - 1
 						xyPos,
 						ADDR cells_Written
 					
- 0000072E  66| C7 05			mov xyPos.x, 56
+ 000015AD  66| C7 05			mov xyPos.x, 56
 	   0000001E R
 	   0038
 					INVOKE WriteConsoleOutputCharacter,
@@ -1072,7 +1940,7 @@ main.asm						     Page 1 - 1
 
 					INVOKE printScore, xyPos
 
- 0000075F  66| C7 05			mov xyPos.x, 80
+ 000015DE  66| C7 05			mov xyPos.x, 80
 	   0000001E R
 	   0050
 					INVOKE WriteConsoleOutputCharacter,
@@ -1084,7 +1952,7 @@ main.asm						     Page 1 - 1
 
 					INVOKE printLives, xyPos
 
- 00000790  66| C7 05			mov xyPos.x, 104
+ 0000160F  66| C7 05			mov xyPos.x, 104
 	   0000001E R
 	   0068
 					INVOKE WriteConsoleOutputCharacter,
@@ -1097,17 +1965,17 @@ main.asm						     Page 1 - 1
 					INVOKE printBogys, xyPos
 
 					ret
- 000007C3			printStartScene ENDP
+ 00001642			printStartScene ENDP
 
- 000007C3			printLevel PROC,
+ 00001642			printLevel PROC,
 					xyPosInit:COORD
- 000007C6  66| C7 45 08			mov xyPosInit.x, 12
+ 00001645  66| C7 45 08			mov xyPosInit.x, 12
 	   000C
- 000007CC  66| C7 45 0A			mov xyPosInit.y, 2
+ 0000164B  66| C7 45 0A			mov xyPosInit.y, 2
 	   0002
 
- 000007D2  66| 8B 15			mov dx, levelNum
-	   000008F0 R
+ 00001651  66| 8B 15			mov dx, levelNum
+	   00000916 R
 					INVOKE decStrLevel, dx
 
 					INVOKE WriteConsoleOutputCharacter,
@@ -1117,17 +1985,17 @@ main.asm						     Page 1 - 1
 						xyPosInit,
 						ADDR cells_Written
 					ret
- 00000801			printLevel ENDP
+ 00001680			printLevel ENDP
 
- 00000801			printScore PROC,
+ 00001680			printScore PROC,
 					xyPosInit:COORD
- 00000804  66| C7 45 08			mov xyPosInit.x, 63
+ 00001683  66| C7 45 08			mov xyPosInit.x, 63
 	   003F
- 0000080A  66| C7 45 0A			mov xyPosInit.y, 2
+ 00001689  66| C7 45 0A			mov xyPosInit.y, 2
 	   0002
 
- 00000810  66| 8B 15			mov dx, scoreNum
-	   00000906 R
+ 0000168F  66| 8B 15			mov dx, scoreNum
+	   0000092C R
 					INVOKE decStrScore, dx
 
 					INVOKE WriteConsoleOutputCharacter,
@@ -1137,17 +2005,17 @@ main.asm						     Page 1 - 1
 						xyPosInit,
 						ADDR cells_Written
 					ret
- 0000083F			printScore ENDP
+ 000016BE			printScore ENDP
 
- 0000083F			printLives PROC,
+ 000016BE			printLives PROC,
 					xyPosInit:COORD
- 00000842  66| C7 45 08			mov xyPosInit.x, 87
+ 000016C1  66| C7 45 08			mov xyPosInit.x, 87
 	   0057
- 00000848  66| C7 45 0A			mov xyPosInit.y, 2
+ 000016C7  66| C7 45 0A			mov xyPosInit.y, 2
 	   0002
 
- 0000084E  66| 8B 15			mov dx, livesNum
-	   0000090C R
+ 000016CD  66| 8B 15			mov dx, livesNum
+	   00000932 R
 					INVOKE decStrLives, dx
 
 					INVOKE WriteConsoleOutputCharacter,
@@ -1157,17 +2025,17 @@ main.asm						     Page 1 - 1
 						xyPosInit,
 						ADDR cells_Written
 					ret
- 0000087D			printLives ENDP
+ 000016FC			printLives ENDP
 
- 0000087D			printBogys PROC,
+ 000016FC			printBogys PROC,
 					xyPosInit:COORD
- 00000880  66| C7 45 08			mov xyPosInit.x, 111
+ 000016FF  66| C7 45 08			mov xyPosInit.x, 111
 	   006F
- 00000886  66| C7 45 0A			mov xyPosInit.y, 2
+ 00001705  66| C7 45 0A			mov xyPosInit.y, 2
 	   0002
 
- 0000088C  66| 8B 15			mov dx, bogysNum
-	   00000912 R
+ 0000170B  66| 8B 15			mov dx, bogysNum
+	   00000938 R
 					INVOKE decStrBogys, dx
 
 					INVOKE WriteConsoleOutputCharacter,
@@ -1177,128 +2045,128 @@ main.asm						     Page 1 - 1
 						xyPosInit,
 						ADDR cells_Written
 					ret
- 000008BB			printBogys ENDP
+ 0000173A			printBogys ENDP
 
- 000008BB			bogyWalking PROC,
+ 0000173A			bogyWalking PROC,
 					xyPosInBogy:COORD
- 000008BE  B9 00000003			mov ecx, 3
- 000008C3  BE 00000000			mov esi, 0
+ 0000173D  B9 00000003			mov ecx, 3
+ 00001742  BE 00000000			mov esi, 0
 
 					;mov ebx, xyPosInBogy.y
- 000008C8			printBogy:
- 000008C8  51				push ecx
+ 00001747			printBogy:
+ 00001747  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR [gameBogy + esi],
 						5,
 						xyPosInBogy,
 						ADDR cells_Written
- 000008E5  83 C6 05			add esi, 5
- 000008E8  66| FF 45 0A			inc xyPosInBogy.y
- 000008EC  59				pop ecx
- 000008ED  E2 D9			loop printBogy
+ 00001764  83 C6 05			add esi, 5
+ 00001767  66| FF 45 0A			inc xyPosInBogy.y
+ 0000176B  59				pop ecx
+ 0000176C  E2 D9			loop printBogy
 					
 					ret
- 000008F3			bogyWalking ENDP
+ 00001772			bogyWalking ENDP
 
- 000008F3			bogyClear PROC,
+ 00001772			bogyClear PROC,
 					xyPosInBogy:COORD
- 000008F6  B9 00000003			mov ecx, 3
- 000008FB  BE 00000000			mov esi, 0
- 00000900			removeBogy:
- 00000900  51				push ecx
+ 00001775  B9 00000003			mov ecx, 3
+ 0000177A  BE 00000000			mov esi, 0
+ 0000177F			removeBogy:
+ 0000177F  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR [clearBogy + esi],
 						5,
 						xyPosInBogy,
 						ADDR cells_Written
- 0000091D  83 C6 05			add esi, 5
- 00000920  66| FF 45 0A			inc xyPosInBogy.y
- 00000924  59				pop ecx
- 00000925  E2 D9			loop removeBogy
+ 0000179C  83 C6 05			add esi, 5
+ 0000179F  66| FF 45 0A			inc xyPosInBogy.y
+ 000017A3  59				pop ecx
+ 000017A4  E2 D9			loop removeBogy
 					ret
- 0000092B			bogyClear ENDP
+ 000017AA			bogyClear ENDP
 
- 0000092B			tankWalking PROC,
+ 000017AA			tankWalking PROC,
 					xyPosInit:COORD
- 0000092E  B9 00000003			mov ecx, 3
- 00000933  BE 00000000			mov esi, 0
+ 000017AD  B9 00000003			mov ecx, 3
+ 000017B2  BE 00000000			mov esi, 0
 
 					;mov ebx, xyPosInit.y
- 00000938			printTank:
- 00000938  51				push ecx
+ 000017B7			printTank:
+ 000017B7  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR [gameTank + esi],
 						8,
 						xyPosInit,
 						ADDR cells_Written
- 00000955  83 C6 08			add esi, 8
- 00000958  66| FF 45 0A			inc xyPosInit.y
- 0000095C  59				pop ecx
- 0000095D  E2 D9			loop printTank
+ 000017D4  83 C6 08			add esi, 8
+ 000017D7  66| FF 45 0A			inc xyPosInit.y
+ 000017DB  59				pop ecx
+ 000017DC  E2 D9			loop printTank
 					ret
- 00000963			tankWalking ENDP
+ 000017E2			tankWalking ENDP
 
- 00000963			tankClear PROC,
+ 000017E2			tankClear PROC,
 					xyPosInit:COORD
- 00000966  B9 00000003			mov ecx, 3
- 0000096B  BE 00000000			mov esi, 0
- 00000970			removeTank:
- 00000970  51				push ecx
+ 000017E5  B9 00000003			mov ecx, 3
+ 000017EA  BE 00000000			mov esi, 0
+ 000017EF			removeTank:
+ 000017EF  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR [clearTank + esi],
 						8,
 						xyPosInit,
 						ADDR cells_Written
- 0000098D  83 C6 08			add esi, 8
- 00000990  66| FF 45 0A			inc xyPosInit.y
- 00000994  59				pop ecx
- 00000995  E2 D9			loop removeTank
+ 0000180C  83 C6 08			add esi, 8
+ 0000180F  66| FF 45 0A			inc xyPosInit.y
+ 00001813  59				pop ecx
+ 00001814  E2 D9			loop removeTank
 					ret
- 0000099B			tankClear ENDP
+ 0000181A			tankClear ENDP
 
- 0000099B			noWorkWalking PROC,
+ 0000181A			noWorkWalking PROC,
 					xyPosInit:COORD
- 0000099E			printNoWork:
- 0000099E  51				push ecx
+ 0000181D			printNoWork:
+ 0000181D  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR bullet,
 						SIZEOF bullet,
 						xyPosInit,
 						ADDR cells_Written
- 000009B9  59				pop ecx
+ 00001838  59				pop ecx
 					ret
- 000009BE			noWorkWalking ENDP
+ 0000183D			noWorkWalking ENDP
 
- 000009BE			noWorkClear PROC,
+ 0000183D			noWorkClear PROC,
 					xyPosInit:COORD
- 000009C1			removeNoWork:
- 000009C1  51				push ecx
+ 00001840			removeNoWork:
+ 00001840  51				push ecx
 					INVOKE WriteConsoleOutputCharacter,
 						consoleHandle,
 						ADDR clearBullet,
 						SIZEOF clearBullet,
 						xyPosInit,
 						ADDR cells_Written
- 000009DC  59				pop ecx
+ 0000185B  59				pop ecx
 					ret
- 000009E1			noWorkClear ENDP
+ 00001860			noWorkClear ENDP
 
- 000009E1			printGreenLine PROC,
+ 00001860			printGreenLine PROC,
 					xyPosInLine:COORD
- 000009E4  66| C7 45 08			mov xyPosInLine.x, 20
+ 00001863  66| C7 45 08			mov xyPosInLine.x, 20
 	   0014
- 000009EA  66| C7 45 0A			mov xyPosInLine.y, 5
+ 00001869  66| C7 45 0A			mov xyPosInLine.y, 5
 	   0005
 
- 000009F0  B9 00000018			mov ecx, 24
- 000009F5  BE 00000000			mov esi, 0
- 000009FA			PrintLine:
- 000009FA  51				push ecx
+ 0000186F  B9 00000018			mov ecx, 24
+ 00001874  BE 00000000			mov esi, 0
+ 00001879			PrintLine:
+ 00001879  51				push ecx
 					INVOKE WriteConsoleOutputAttribute,
 						consoleHandle,
 						ADDR greenColor,
@@ -1312,82 +2180,82 @@ main.asm						     Page 1 - 1
 						1,
 						xyPosInLine,
 						ADDR cells_Written
- 00000A2F  66| FF 45 0A			inc xyPosInLine.y
- 00000A33  59				pop ecx
- 00000A34  E2 C4			loop PrintLine
+ 000018AE  66| FF 45 0A			inc xyPosInLine.y
+ 000018B2  59				pop ecx
+ 000018B3  E2 C4			loop PrintLine
 					ret
- 00000A3A			printGreenLine ENDP
+ 000018B9			printGreenLine ENDP
 
- 00000A3A			decStrLevel PROC,
+ 000018B9			decStrLevel PROC,
 					levelNumDec:WORD
- 00000A3D  B9 00000004			mov ecx, 4					;WORD型態最高4位數
- 00000A42  B2 0A			mov dl, 10					;除數
- 00000A44  66| 8B 45 08			mov ax, levelNumDec			;被除數
- 00000A48			change:
- 00000A48  51				push ecx
- 00000A49  F6 F2			div dl
- 00000A4B  80 C4 30			add ah, '0'					;餘數轉成字存到levelNum_inLevel
- 00000A4E  49				dec ecx
- 00000A4F  88 A1 000008F2 R		mov [levelStr + ecx], ah
- 00000A55  66| 0F B6 C0			movzx ax, al				;商繼續除
- 00000A59  59				pop ecx
- 00000A5A  E2 EC			loop change
+ 000018BC  B9 00000004			mov ecx, 4					;WORD型態最高4位數
+ 000018C1  B2 0A			mov dl, 10					;除數
+ 000018C3  66| 8B 45 08			mov ax, levelNumDec			;被除數
+ 000018C7			change:
+ 000018C7  51				push ecx
+ 000018C8  F6 F2			div dl
+ 000018CA  80 C4 30			add ah, '0'					;餘數轉成字存到levelNum_inLevel
+ 000018CD  49				dec ecx
+ 000018CE  88 A1 00000918 R		mov [levelStr + ecx], ah
+ 000018D4  66| 0F B6 C0			movzx ax, al				;商繼續除
+ 000018D8  59				pop ecx
+ 000018D9  E2 EC			loop change
 					ret
- 00000A60			decStrLevel ENDP
+ 000018DF			decStrLevel ENDP
 
- 00000A60			decStrScore PROC,
+ 000018DF			decStrScore PROC,
 					scoreNumDec:WORD
- 00000A63  B9 00000004			mov ecx, 4					;WORD型態最高4位數
- 00000A68  B2 0A			mov dl, 10					;除數
- 00000A6A  66| 8B 45 08			mov ax, scoreNumDec			;被除數
- 00000A6E			change:
- 00000A6E  51				push ecx
- 00000A6F  F6 F2			div dl
- 00000A71  80 C4 30			add ah, '0'					;餘數轉成字存到levelNum_inLevel
- 00000A74  49				dec ecx
- 00000A75  88 A1 00000908 R		mov [scoreStr + ecx], ah
- 00000A7B  66| 0F B6 C0			movzx ax, al				;商繼續除
- 00000A7F  59				pop ecx
- 00000A80  E2 EC			loop change
+ 000018E2  B9 00000004			mov ecx, 4					;WORD型態最高4位數
+ 000018E7  B2 0A			mov dl, 10					;除數
+ 000018E9  66| 8B 45 08			mov ax, scoreNumDec			;被除數
+ 000018ED			change:
+ 000018ED  51				push ecx
+ 000018EE  F6 F2			div dl
+ 000018F0  80 C4 30			add ah, '0'					;餘數轉成字存到levelNum_inLevel
+ 000018F3  49				dec ecx
+ 000018F4  88 A1 0000092E R		mov [scoreStr + ecx], ah
+ 000018FA  66| 0F B6 C0			movzx ax, al				;商繼續除
+ 000018FE  59				pop ecx
+ 000018FF  E2 EC			loop change
 					ret
- 00000A86			decStrScore ENDP
+ 00001905			decStrScore ENDP
 
- 00000A86			decStrLives PROC,
+ 00001905			decStrLives PROC,
 					livesNumDec:WORD
- 00000A89  B9 00000004			mov ecx, 4					;WORD型態最高4位數
- 00000A8E  B2 0A			mov dl, 10					;除數
- 00000A90  66| 8B 45 08			mov ax, livesNumDec			;被除數
- 00000A94			change:
- 00000A94  51				push ecx
- 00000A95  F6 F2			div dl
- 00000A97  80 C4 30			add ah, '0'					;餘數轉成字存到levelNum_inLevel
- 00000A9A  49				dec ecx
- 00000A9B  88 A1 0000090E R		mov [livesStr + ecx], ah
- 00000AA1  66| 0F B6 C0			movzx ax, al				;商繼續除
- 00000AA5  59				pop ecx
- 00000AA6  E2 EC			loop change
+ 00001908  B9 00000004			mov ecx, 4					;WORD型態最高4位數
+ 0000190D  B2 0A			mov dl, 10					;除數
+ 0000190F  66| 8B 45 08			mov ax, livesNumDec			;被除數
+ 00001913			change:
+ 00001913  51				push ecx
+ 00001914  F6 F2			div dl
+ 00001916  80 C4 30			add ah, '0'					;餘數轉成字存到levelNum_inLevel
+ 00001919  49				dec ecx
+ 0000191A  88 A1 00000934 R		mov [livesStr + ecx], ah
+ 00001920  66| 0F B6 C0			movzx ax, al				;商繼續除
+ 00001924  59				pop ecx
+ 00001925  E2 EC			loop change
 					ret
- 00000AAC			decStrLives ENDP
+ 0000192B			decStrLives ENDP
 
- 00000AAC			decStrBogys PROC,
+ 0000192B			decStrBogys PROC,
 					bogysNumDec:WORD
- 00000AAF  B9 00000004			mov ecx, 4					;WORD型態最高4位數
- 00000AB4  B2 0A			mov dl, 10					;除數
- 00000AB6  66| 8B 45 08			mov ax, bogysNumDec			;被除數
- 00000ABA			change:
- 00000ABA  51				push ecx
- 00000ABB  F6 F2			div dl
- 00000ABD  80 C4 30			add ah, '0'					;餘數轉成字存到levelNum_inLevel
- 00000AC0  49				dec ecx
- 00000AC1  88 A1 00000914 R		mov [bogysStr + ecx], ah
- 00000AC7  66| 0F B6 C0			movzx ax, al				;商繼續除
- 00000ACB  59				pop ecx
- 00000ACC  E2 EC			loop change
+ 0000192E  B9 00000004			mov ecx, 4					;WORD型態最高4位數
+ 00001933  B2 0A			mov dl, 10					;除數
+ 00001935  66| 8B 45 08			mov ax, bogysNumDec			;被除數
+ 00001939			change:
+ 00001939  51				push ecx
+ 0000193A  F6 F2			div dl
+ 0000193C  80 C4 30			add ah, '0'					;餘數轉成字存到levelNum_inLevel
+ 0000193F  49				dec ecx
+ 00001940  88 A1 0000093A R		mov [bogysStr + ecx], ah
+ 00001946  66| 0F B6 C0			movzx ax, al				;商繼續除
+ 0000194A  59				pop ecx
+ 0000194B  E2 EC			loop change
 					ret
- 00000AD2			decStrBogys ENDP
+ 00001951			decStrBogys ENDP
 
 				END main
-Microsoft (R) Macro Assembler Version 14.33.31630.0	    12/18/22 06:32:14
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    12/18/22 07:06:21
 main.asm						     Symbols 2 - 1
 
 
@@ -1481,8 +2349,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 000009F6 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000AD2 Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000A1C Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00001951 Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -1589,65 +2457,65 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-bogyClear  . . . . . . . . . . .	P Near	 000008F3 _TEXT	Length= 00000038 Public STDCALL
+bogyClear  . . . . . . . . . . .	P Near	 00001772 _TEXT	Length= 00000038 Public STDCALL
   xyPosInBogy  . . . . . . . . .	DWord	 bp + 00000008
-  removeBogy . . . . . . . . . .	L Near	 00000900 _TEXT	
-bogyWalking  . . . . . . . . . .	P Near	 000008BB _TEXT	Length= 00000038 Public STDCALL
+  removeBogy . . . . . . . . . .	L Near	 0000177F _TEXT	
+bogyWalking  . . . . . . . . . .	P Near	 0000173A _TEXT	Length= 00000038 Public STDCALL
   xyPosInBogy  . . . . . . . . .	DWord	 bp + 00000008
-  printBogy  . . . . . . . . . .	L Near	 000008C8 _TEXT	
-decStrBogys  . . . . . . . . . .	P Near	 00000AAC _TEXT	Length= 00000026 Public STDCALL
+  printBogy  . . . . . . . . . .	L Near	 00001747 _TEXT	
+decStrBogys  . . . . . . . . . .	P Near	 0000192B _TEXT	Length= 00000026 Public STDCALL
   bogysNumDec  . . . . . . . . .	Word	 bp + 00000008
-  change . . . . . . . . . . . .	L Near	 00000ABA _TEXT	
-decStrLevel  . . . . . . . . . .	P Near	 00000A3A _TEXT	Length= 00000026 Public STDCALL
+  change . . . . . . . . . . . .	L Near	 00001939 _TEXT	
+decStrLevel  . . . . . . . . . .	P Near	 000018B9 _TEXT	Length= 00000026 Public STDCALL
   levelNumDec  . . . . . . . . .	Word	 bp + 00000008
-  change . . . . . . . . . . . .	L Near	 00000A48 _TEXT	
-decStrLives  . . . . . . . . . .	P Near	 00000A86 _TEXT	Length= 00000026 Public STDCALL
+  change . . . . . . . . . . . .	L Near	 000018C7 _TEXT	
+decStrLives  . . . . . . . . . .	P Near	 00001905 _TEXT	Length= 00000026 Public STDCALL
   livesNumDec  . . . . . . . . .	Word	 bp + 00000008
-  change . . . . . . . . . . . .	L Near	 00000A94 _TEXT	
-decStrScore  . . . . . . . . . .	P Near	 00000A60 _TEXT	Length= 00000026 Public STDCALL
+  change . . . . . . . . . . . .	L Near	 00001913 _TEXT	
+decStrScore  . . . . . . . . . .	P Near	 000018DF _TEXT	Length= 00000026 Public STDCALL
   scoreNumDec  . . . . . . . . .	Word	 bp + 00000008
-  change . . . . . . . . . . . .	L Near	 00000A6E _TEXT	
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000047B Public STDCALL
+  change . . . . . . . . . . . .	L Near	 000018ED _TEXT	
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 000012FA Public STDCALL
   Ex . . . . . . . . . . . . . .	L Near	 0000002D _TEXT	
   GameLoop . . . . . . . . . . .	L Near	 00000041 _TEXT	
-  ExitProgram  . . . . . . . . .	L Near	 00000474 _TEXT	
-noWorkClear  . . . . . . . . . .	P Near	 000009BE _TEXT	Length= 00000023 Public STDCALL
+  ExitProgram  . . . . . . . . .	L Near	 000012F3 _TEXT	
+noWorkClear  . . . . . . . . . .	P Near	 0000183D _TEXT	Length= 00000023 Public STDCALL
   xyPosInit  . . . . . . . . . .	DWord	 bp + 00000008
-  removeNoWork . . . . . . . . .	L Near	 000009C1 _TEXT	
-noWorkWalking  . . . . . . . . .	P Near	 0000099B _TEXT	Length= 00000023 Public STDCALL
+  removeNoWork . . . . . . . . .	L Near	 00001840 _TEXT	
+noWorkWalking  . . . . . . . . .	P Near	 0000181A _TEXT	Length= 00000023 Public STDCALL
   xyPosInit  . . . . . . . . . .	DWord	 bp + 00000008
-  printNoWork  . . . . . . . . .	L Near	 0000099E _TEXT	
-printBogys . . . . . . . . . . .	P Near	 0000087D _TEXT	Length= 0000003E Public STDCALL
+  printNoWork  . . . . . . . . .	L Near	 0000181D _TEXT	
+printBogys . . . . . . . . . . .	P Near	 000016FC _TEXT	Length= 0000003E Public STDCALL
   xyPosInit  . . . . . . . . . .	DWord	 bp + 00000008
-printGreenLine . . . . . . . . .	P Near	 000009E1 _TEXT	Length= 00000059 Public STDCALL
+printGreenLine . . . . . . . . .	P Near	 00001860 _TEXT	Length= 00000059 Public STDCALL
   xyPosInLine  . . . . . . . . .	DWord	 bp + 00000008
-  PrintLine  . . . . . . . . . .	L Near	 000009FA _TEXT	
-printLevel . . . . . . . . . . .	P Near	 000007C3 _TEXT	Length= 0000003E Public STDCALL
+  PrintLine  . . . . . . . . . .	L Near	 00001879 _TEXT	
+printLevel . . . . . . . . . . .	P Near	 00001642 _TEXT	Length= 0000003E Public STDCALL
   xyPosInit  . . . . . . . . . .	DWord	 bp + 00000008
-printLives . . . . . . . . . . .	P Near	 0000083F _TEXT	Length= 0000003E Public STDCALL
+printLives . . . . . . . . . . .	P Near	 000016BE _TEXT	Length= 0000003E Public STDCALL
   xyPosInit  . . . . . . . . . .	DWord	 bp + 00000008
-printScore . . . . . . . . . . .	P Near	 00000801 _TEXT	Length= 0000003E Public STDCALL
+printScore . . . . . . . . . . .	P Near	 00001680 _TEXT	Length= 0000003E Public STDCALL
   xyPosInit  . . . . . . . . . .	DWord	 bp + 00000008
-printStartScene  . . . . . . . .	P Near	 0000047B _TEXT	Length= 00000348 Public STDCALL
+printStartScene  . . . . . . . .	P Near	 000012FA _TEXT	Length= 00000348 Public STDCALL
   cursorInfo . . . . . . . . . .	QWord	 bp - 00000008
-  ShowStartStr . . . . . . . . .	L Near	 000004AD _TEXT	
-  PrintOption  . . . . . . . . .	L Near	 000004DA _TEXT	
-  PrintStartTank . . . . . . . .	L Near	 00000548 _TEXT	
-  PrintStartBogy . . . . . . . .	L Near	 00000591 _TEXT	
-  StartOrNot . . . . . . . . . .	L Near	 000005BE _TEXT	
-  PrintIntro . . . . . . . . . .	L Near	 000005FB _TEXT	
-  GameOrNot  . . . . . . . . . .	L Near	 00000628 _TEXT	
-  PrintGameSceneTop  . . . . . .	L Near	 0000064E _TEXT	
-  PrintGameScene . . . . . . . .	L Near	 00000677 _TEXT	
-  PrintBar . . . . . . . . . . .	L Near	 000006CE _TEXT	
+  ShowStartStr . . . . . . . . .	L Near	 0000132C _TEXT	
+  PrintOption  . . . . . . . . .	L Near	 00001359 _TEXT	
+  PrintStartTank . . . . . . . .	L Near	 000013C7 _TEXT	
+  PrintStartBogy . . . . . . . .	L Near	 00001410 _TEXT	
+  StartOrNot . . . . . . . . . .	L Near	 0000143D _TEXT	
+  PrintIntro . . . . . . . . . .	L Near	 0000147A _TEXT	
+  GameOrNot  . . . . . . . . . .	L Near	 000014A7 _TEXT	
+  PrintGameSceneTop  . . . . . .	L Near	 000014CD _TEXT	
+  PrintGameScene . . . . . . . .	L Near	 000014F6 _TEXT	
+  PrintBar . . . . . . . . . . .	L Near	 0000154D _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
-tankClear  . . . . . . . . . . .	P Near	 00000963 _TEXT	Length= 00000038 Public STDCALL
+tankClear  . . . . . . . . . . .	P Near	 000017E2 _TEXT	Length= 00000038 Public STDCALL
   xyPosInit  . . . . . . . . . .	DWord	 bp + 00000008
-  removeTank . . . . . . . . . .	L Near	 00000970 _TEXT	
-tankWalking  . . . . . . . . . .	P Near	 0000092B _TEXT	Length= 00000038 Public STDCALL
+  removeTank . . . . . . . . . .	L Near	 000017EF _TEXT	
+tankWalking  . . . . . . . . . .	P Near	 000017AA _TEXT	Length= 00000038 Public STDCALL
   xyPosInit  . . . . . . . . . .	DWord	 bp + 00000008
-  printTank  . . . . . . . . . .	L Near	 00000938 _TEXT	
+  printTank  . . . . . . . . . .	L Near	 000017B7 _TEXT	
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 
 
@@ -1764,8 +2632,27 @@ MB_YESNO . . . . . . . . . . . .	Number	 00000004h
 MENU_EVENT . . . . . . . . . . .	Number	 00000008h   
 MOUSE_EVENT  . . . . . . . . . .	Number	 00000002h   
 MessageBox . . . . . . . . . . .	Text   	 MessageBoxA
-N10  . . . . . . . . . . . . . .	Word	 0000007A _DATA	
-N11  . . . . . . . . . . . . . .	Word	 0000007C _DATA	
+N0 . . . . . . . . . . . . . . .	Word	 0000007A _DATA	
+N10  . . . . . . . . . . . . . .	Word	 0000008E _DATA	
+N11  . . . . . . . . . . . . . .	Word	 00000090 _DATA	
+N12  . . . . . . . . . . . . . .	Word	 00000092 _DATA	
+N13  . . . . . . . . . . . . . .	Word	 00000094 _DATA	
+N14  . . . . . . . . . . . . . .	Word	 00000096 _DATA	
+N15  . . . . . . . . . . . . . .	Word	 00000098 _DATA	
+N16  . . . . . . . . . . . . . .	Word	 0000009A _DATA	
+N17  . . . . . . . . . . . . . .	Word	 0000009C _DATA	
+N18  . . . . . . . . . . . . . .	Word	 0000009E _DATA	
+N19  . . . . . . . . . . . . . .	Word	 000000A0 _DATA	
+N1 . . . . . . . . . . . . . . .	Word	 0000007C _DATA	
+N20  . . . . . . . . . . . . . .	Word	 000000A2 _DATA	
+N2 . . . . . . . . . . . . . . .	Word	 0000007E _DATA	
+N3 . . . . . . . . . . . . . . .	Word	 00000080 _DATA	
+N4 . . . . . . . . . . . . . . .	Word	 00000082 _DATA	
+N5 . . . . . . . . . . . . . . .	Word	 00000084 _DATA	
+N6 . . . . . . . . . . . . . . .	Word	 00000086 _DATA	
+N7 . . . . . . . . . . . . . . .	Word	 00000088 _DATA	
+N8 . . . . . . . . . . . . . . .	Word	 0000008A _DATA	
+N9 . . . . . . . . . . . . . . .	Word	 0000008C _DATA	
 NULL . . . . . . . . . . . . . .	Number	 00000000h   
 NUMLOCK_ON . . . . . . . . . . .	Number	 00000020h   
 OPEN_ALWAYS  . . . . . . . . . .	Number	 00000004h   
@@ -1868,62 +2755,62 @@ WriteConsoleOutputCharacter  . .	Text   	 WriteConsoleOutputCharacterA
 WriteConsole . . . . . . . . . .	Text   	 WriteConsoleA
 black  . . . . . . . . . . . . .	Number	 00000000h   
 blue . . . . . . . . . . . . . .	Number	 00000001h   
-bogysNum . . . . . . . . . . . .	Word	 00000912 _DATA	
-bogysStr . . . . . . . . . . . .	Byte	 00000914 _DATA	
-bogys  . . . . . . . . . . . . .	Byte	 000008E8 _DATA	
+bogysNum . . . . . . . . . . . .	Word	 00000938 _DATA	
+bogysStr . . . . . . . . . . . .	Byte	 0000093A _DATA	
+bogys  . . . . . . . . . . . . .	Byte	 0000090E _DATA	
 brown  . . . . . . . . . . . . .	Number	 00000006h   
-bullet . . . . . . . . . . . . .	Byte	 000008B4 _DATA	
-cells_Written  . . . . . . . . .	DWord	 00000096 _DATA	
-clearBogy  . . . . . . . . . . .	Byte	 000008A5 _DATA	
-clearBullet  . . . . . . . . . .	Byte	 000008BB _DATA	
-clearTank  . . . . . . . . . . .	Byte	 0000087E _DATA	
+bullet . . . . . . . . . . . . .	Byte	 000008DA _DATA	
+cells_Written  . . . . . . . . .	DWord	 000000BC _DATA	
+clearBogy  . . . . . . . . . . .	Byte	 000008CB _DATA	
+clearBullet  . . . . . . . . . .	Byte	 000008E1 _DATA	
+clearTank  . . . . . . . . . . .	Byte	 000008A4 _DATA	
 consoleHandle  . . . . . . . . .	DWord	 0000001A _DATA	
 cyan . . . . . . . . . . . . . .	Number	 00000003h   
-enterMsg . . . . . . . . . . . .	Byte	 00000322 _DATA	
+enterMsg . . . . . . . . . . . .	Byte	 00000348 _DATA	
 exit . . . . . . . . . . . . . .	Text   	 INVOKE ExitProcess,0
-gameBgM  . . . . . . . . . . . .	Byte	 00000987 _DATA	
-gameBgTB . . . . . . . . . . . .	Byte	 00000918 _DATA	
-gameBogy . . . . . . . . . . . .	Byte	 00000896 _DATA	
-gameIntro  . . . . . . . . . . .	Byte	 00000415 _DATA	
-gameTank . . . . . . . . . . . .	Byte	 00000866 _DATA	
+gameBgM  . . . . . . . . . . . .	Byte	 000009AD _DATA	
+gameBgTB . . . . . . . . . . . .	Byte	 0000093E _DATA	
+gameBogy . . . . . . . . . . . .	Byte	 000008BC _DATA	
+gameIntro  . . . . . . . . . . .	Byte	 0000043B _DATA	
+gameTank . . . . . . . . . . . .	Byte	 0000088C _DATA	
 gray . . . . . . . . . . . . . .	Number	 00000008h   
-greenColor . . . . . . . . . . .	Word	 000008C4 _DATA	
+greenColor . . . . . . . . . . .	Word	 000008EA _DATA	
 green  . . . . . . . . . . . . .	Number	 00000002h   
-leaveMsg . . . . . . . . . . . .	Byte	 00000336 _DATA	
-levelNum . . . . . . . . . . . .	Word	 000008F0 _DATA	
-levelStr . . . . . . . . . . . .	Byte	 000008F2 _DATA	
-level  . . . . . . . . . . . . .	Byte	 000008C8 _DATA	
+leaveMsg . . . . . . . . . . . .	Byte	 0000035C _DATA	
+levelNum . . . . . . . . . . . .	Word	 00000916 _DATA	
+levelStr . . . . . . . . . . . .	Byte	 00000918 _DATA	
+level  . . . . . . . . . . . . .	Byte	 000008EE _DATA	
 lightBlue  . . . . . . . . . . .	Number	 00000009h   
 lightCyan  . . . . . . . . . . .	Number	 0000000Bh   
 lightGray  . . . . . . . . . . .	Number	 00000007h   
 lightGreen . . . . . . . . . . .	Number	 0000000Ah   
 lightMagenta . . . . . . . . . .	Number	 0000000Dh   
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
-line . . . . . . . . . . . . . .	Byte	 000008C2 _DATA	
-livesNum . . . . . . . . . . . .	Word	 0000090C _DATA	
-livesStr . . . . . . . . . . . .	Byte	 0000090E _DATA	
-lives  . . . . . . . . . . . . .	Byte	 000008E0 _DATA	
+line . . . . . . . . . . . . . .	Byte	 000008E8 _DATA	
+livesNum . . . . . . . . . . . .	Word	 00000932 _DATA	
+livesStr . . . . . . . . . . . .	Byte	 00000934 _DATA	
+lives  . . . . . . . . . . . . .	Byte	 00000906 _DATA	
 magenta  . . . . . . . . . . . .	Number	 00000005h   
-paused . . . . . . . . . . . . .	Byte	 000008F6 _DATA	
-playing  . . . . . . . . . . . .	Byte	 000008FE _DATA	
+paused . . . . . . . . . . . . .	Byte	 0000091C _DATA	
+playing  . . . . . . . . . . . .	Byte	 00000924 _DATA	
 red  . . . . . . . . . . . . . .	Number	 00000004h   
-scoreNum . . . . . . . . . . . .	Word	 00000906 _DATA	
-scoreStr . . . . . . . . . . . .	Byte	 00000908 _DATA	
-score  . . . . . . . . . . . . .	Byte	 000008D8 _DATA	
-startBogy  . . . . . . . . . . .	Byte	 000003F2 _DATA	
-startStr . . . . . . . . . . . .	Byte	 0000009A _DATA	
-startTank  . . . . . . . . . . .	Byte	 0000034A _DATA	
-state  . . . . . . . . . . . . .	Byte	 000008D0 _DATA	
+scoreNum . . . . . . . . . . . .	Word	 0000092C _DATA	
+scoreStr . . . . . . . . . . . .	Byte	 0000092E _DATA	
+score  . . . . . . . . . . . . .	Byte	 000008FE _DATA	
+startBogy  . . . . . . . . . . .	Byte	 00000418 _DATA	
+startStr . . . . . . . . . . . .	Byte	 000000C0 _DATA	
+startTank  . . . . . . . . . . .	Byte	 00000370 _DATA	
+state  . . . . . . . . . . . . .	Byte	 000008F6 _DATA	
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 windowBound  . . . . . . . . . .	SMALL_RECT  00000012 _DATA	
 windowTitleStr . . . . . . . . .	Byte	 00000000 _DATA	
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
-xyPosBogy0 . . . . . . . . . . .	COORD	 0000007E _DATA	
-xyPosBogy1 . . . . . . . . . . .	COORD	 00000082 _DATA	
-xyPosBogy2 . . . . . . . . . . .	COORD	 00000086 _DATA	
-xyPosBogy3 . . . . . . . . . . .	COORD	 0000008A _DATA	
-xyPosBogy4 . . . . . . . . . . .	COORD	 0000008E _DATA	
-xyPosBogy5 . . . . . . . . . . .	COORD	 00000092 _DATA	
+xyPosBogy0 . . . . . . . . . . .	COORD	 000000A4 _DATA	
+xyPosBogy1 . . . . . . . . . . .	COORD	 000000A8 _DATA	
+xyPosBogy2 . . . . . . . . . . .	COORD	 000000AC _DATA	
+xyPosBogy3 . . . . . . . . . . .	COORD	 000000B0 _DATA	
+xyPosBogy4 . . . . . . . . . . .	COORD	 000000B4 _DATA	
+xyPosBogy5 . . . . . . . . . . .	COORD	 000000B8 _DATA	
 xyPosNoWork0 . . . . . . . . . .	COORD	 00000026 _DATA	
 xyPosNoWork10  . . . . . . . . .	COORD	 0000004E _DATA	
 xyPosNoWork11  . . . . . . . . .	COORD	 00000052 _DATA	
@@ -1947,7 +2834,7 @@ xyPosNoWork8 . . . . . . . . . .	COORD	 00000046 _DATA
 xyPosNoWork9 . . . . . . . . . .	COORD	 0000004A _DATA	
 xyPosTank  . . . . . . . . . . .	COORD	 00000022 _DATA	
 xyPos  . . . . . . . . . . . . .	COORD	 0000001E _DATA	
-yellowColor  . . . . . . . . . .	Word	 000008C6 _DATA	
+yellowColor  . . . . . . . . . .	Word	 000008EC _DATA	
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   
 
 	   0 Warnings

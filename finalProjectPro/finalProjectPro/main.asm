@@ -58,15 +58,15 @@ noWorkClear   PROTO, xyPosInit:COORD
 	xyPosNoWork19 COORD <15,25>
 	xyPosNoWork20 COORD <15,26>
 
-	;noWorkArr WORD 20 DUP(0)
 	N10 WORD 0
+	N11 WORD 0
 
-	xyPosBogy0 COORD   <120,5>
-	xyPosBogy1 COORD   <110,9>
-	xyPosBogy2 COORD   <145,13>
-	xyPosBogy3 COORD   <130,17>
-	xyPosBogy4 COORD   <113,21>
-	xyPosBogy5 COORD   <122,25>
+	xyPosBogy0 COORD   <107,5>
+	xyPosBogy1 COORD   <108,9>
+	xyPosBogy2 COORD   <109,13>
+	xyPosBogy3 COORD   <110,17>
+	xyPosBogy4 COORD   <111,21>
+	xyPosBogy5 COORD   <112,25>
 	cells_Written DWORD ?
 
 	; 開始畫面的字
@@ -206,10 +206,17 @@ GameLoop:
 		.IF xyPosTank.y == 15
 			mov N10, 1
 		.ENDIF
+		.IF xyPosTank.y == 16
+			mov N11, 1
+		.ENDIF
 	.ENDIF
 
 	.IF N10 == 1
 		INVOKE noWorkWalking, xyPosNoWork10 
+	.ENDIF
+
+	.IF N11 == 1
+		INVOKE noWorkWalking, xyPosNoWork11 
 	.ENDIF
 
 	.IF xyPosBogy0.x < 107
@@ -259,20 +266,45 @@ GameLoop:
 		INVOKE noWorkClear, xyPosNoWork10 
 	.ENDIF
 
+	.IF N11 == 1
+		INVOKE noWorkClear, xyPosNoWork11 
+	.ENDIF
+
 	
 	INVOKE printGreenLine, xyPos
-	sub xyPosBogy0.x, 10
-	sub xyPosBogy1.x, 2
-	sub xyPosBogy2.x, 3
-	sub xyPosBogy3.x, 4
-	sub xyPosBogy4.x, 5
-	sub xyPosBogy5.x, 6
+	sub xyPosBogy0.x, 1
+	sub xyPosBogy1.x, 1
+	sub xyPosBogy2.x, 1
+	sub xyPosBogy3.x, 1
+	sub xyPosBogy4.x, 1
+	sub xyPosBogy5.x, 1
 
 	.IF N10 == 1
 		add xyPosNoWork10.x, 1
 		.IF xyPosNoWork10.x > 106
 			mov N10, 0
 			mov xyPosNoWork10.x, 15
+		.ENDIF
+	.ENDIF
+
+	.IF N11 == 1
+		add xyPosNoWork11.x, 1
+		push eax
+		mov ax, xyPosBogy3.x
+		sub ax, 6
+		.IF xyPosNoWork11.x >= ax
+			mov N11, 0
+			mov xyPosNoWork11.x, 15
+			add scoreNum, 10
+			sub bogysNum, 1
+			INVOKE printScore, xyPos
+			INVOKE printBogys, xyPos
+			mov xyPosBogy3.x, 110
+		.ENDIF
+		pop eax
+		.IF xyPosNoWork11.x > 106
+			mov N11, 0
+			mov xyPosNoWork11.x, 15
 		.ENDIF
 	.ENDIF
 	

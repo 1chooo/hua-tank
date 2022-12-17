@@ -1,12 +1,12 @@
  finalProjectPro
 
- Timestamp is 639e3148 (Sun Dec 18 05:14:48 2022)
+ Timestamp is 639e436f (Sun Dec 18 06:32:15 2022)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
  0001:00000000 00002730H .text                   CODE
- 0001:00002730 00001d76H .text$mn                CODE
+ 0001:00002730 00001e67H .text$mn                CODE
  0002:00000000 00000144H .rdata                  DATA
  0002:00000143 00000000H .edata                  DATA
  0002:00000144 00000194H .rdata$zzzdbg           DATA
@@ -100,52 +100,52 @@
  0001:000011d5       _WriteToFile@0             004021d5 f   Irvine32:Irvine32.obj
  0001:000011ea       _WriteWindowsMsg@0         004021ea f   Irvine32:Irvine32.obj
  0001:00002730       _main@0                    00403730 f   main.obj
- 0001:00002aea       _printStartScene@0         00403aea f   main.obj
- 0001:00002e32       _printLevel@4              00403e32 f   main.obj
- 0001:00002e70       _printScore@4              00403e70 f   main.obj
- 0001:00002eae       _printLives@4              00403eae f   main.obj
- 0001:00002eec       _printBogys@4              00403eec f   main.obj
- 0001:00002f2a       _bogyWalking@4             00403f2a f   main.obj
- 0001:00002f62       _bogyClear@4               00403f62 f   main.obj
- 0001:00002f9a       _tankWalking@4             00403f9a f   main.obj
- 0001:00002fd2       _tankClear@4               00403fd2 f   main.obj
- 0001:0000300a       _noWorkWalking@4           0040400a f   main.obj
- 0001:0000302d       _noWorkClear@4             0040402d f   main.obj
- 0001:00003050       _printGreenLine@4          00404050 f   main.obj
- 0001:000030a9       _decStrLevel@4             004040a9 f   main.obj
- 0001:000030cf       _decStrScore@4             004040cf f   main.obj
- 0001:000030f5       _decStrLives@4             004040f5 f   main.obj
- 0001:0000311b       _decStrBogys@4             0040411b f   main.obj
- 0001:000033c5       _ExitProcess@4             004043c5 f   kernel32:KERNEL32.dll
- 0001:000033cb       _GetStdHandle@4            004043cb f   kernel32:KERNEL32.dll
- 0001:000033d1       _SetConsoleCursorInfo@8    004043d1 f   kernel32:KERNEL32.dll
- 0001:000033d7       _SetConsoleTitleA@4        004043d7 f   kernel32:KERNEL32.dll
- 0001:000033dd       _SetConsoleWindowInfo@12   004043dd f   kernel32:KERNEL32.dll
- 0001:000033e3       _WriteConsoleOutputCharacterA@20 004043e3 f   kernel32:KERNEL32.dll
- 0001:000033e9       _WriteConsoleOutputAttribute@20 004043e9 f   kernel32:KERNEL32.dll
- 0001:000033ef       _CloseHandle@4             004043ef f   kernel32:KERNEL32.dll
- 0001:000033f5       _CreateFileA@28            004043f5 f   kernel32:KERNEL32.dll
- 0001:000033fb       _FormatMessageA@28         004043fb f   kernel32:KERNEL32.dll
- 0001:00003401       _FlushConsoleInputBuffer@4 00404401 f   kernel32:KERNEL32.dll
- 0001:00003407       _GetCommandLineA@0         00404407 f   kernel32:KERNEL32.dll
- 0001:0000340d       _GetConsoleMode@8          0040440d f   kernel32:KERNEL32.dll
- 0001:00003413       _GetConsoleScreenBufferInfo@8 00404413 f   kernel32:KERNEL32.dll
- 0001:00003419       _GetLastError@0            00404419 f   kernel32:KERNEL32.dll
- 0001:0000341f       _GetLocalTime@4            0040441f f   kernel32:KERNEL32.dll
- 0001:00003425       _GetSystemTime@4           00404425 f   kernel32:KERNEL32.dll
- 0001:0000342b       _LocalFree@4               0040442b f   kernel32:KERNEL32.dll
- 0001:00003431       _PeekConsoleInputA@16      00404431 f   kernel32:KERNEL32.dll
- 0001:00003437       _ReadConsoleA@20           00404437 f   kernel32:KERNEL32.dll
- 0001:0000343d       _ReadConsoleInputA@16      0040443d f   kernel32:KERNEL32.dll
- 0001:00003443       _ReadFile@20               00404443 f   kernel32:KERNEL32.dll
- 0001:00003449       _SetConsoleCursorPosition@8 00404449 f   kernel32:KERNEL32.dll
- 0001:0000344f       _SetConsoleMode@8          0040444f f   kernel32:KERNEL32.dll
- 0001:00003455       _SetConsoleTextAttribute@8 00404455 f   kernel32:KERNEL32.dll
- 0001:0000345b       _Sleep@4                   0040445b f   kernel32:KERNEL32.dll
- 0001:00003461       _SystemTimeToFileTime@8    00404461 f   kernel32:KERNEL32.dll
- 0001:00003467       _WriteConsoleA@20          00404467 f   kernel32:KERNEL32.dll
- 0001:0000346d       _WriteFile@20              0040446d f   kernel32:KERNEL32.dll
- 0001:00003473       _MessageBoxA@16            00404473 f   user32:USER32.dll
+ 0001:00002bab       _printStartScene@0         00403bab f   main.obj
+ 0001:00002ef3       _printLevel@4              00403ef3 f   main.obj
+ 0001:00002f31       _printScore@4              00403f31 f   main.obj
+ 0001:00002f6f       _printLives@4              00403f6f f   main.obj
+ 0001:00002fad       _printBogys@4              00403fad f   main.obj
+ 0001:00002feb       _bogyWalking@4             00403feb f   main.obj
+ 0001:00003023       _bogyClear@4               00404023 f   main.obj
+ 0001:0000305b       _tankWalking@4             0040405b f   main.obj
+ 0001:00003093       _tankClear@4               00404093 f   main.obj
+ 0001:000030cb       _noWorkWalking@4           004040cb f   main.obj
+ 0001:000030ee       _noWorkClear@4             004040ee f   main.obj
+ 0001:00003111       _printGreenLine@4          00404111 f   main.obj
+ 0001:0000316a       _decStrLevel@4             0040416a f   main.obj
+ 0001:00003190       _decStrScore@4             00404190 f   main.obj
+ 0001:000031b6       _decStrLives@4             004041b6 f   main.obj
+ 0001:000031dc       _decStrBogys@4             004041dc f   main.obj
+ 0001:000034b6       _ExitProcess@4             004044b6 f   kernel32:KERNEL32.dll
+ 0001:000034bc       _GetStdHandle@4            004044bc f   kernel32:KERNEL32.dll
+ 0001:000034c2       _SetConsoleCursorInfo@8    004044c2 f   kernel32:KERNEL32.dll
+ 0001:000034c8       _SetConsoleTitleA@4        004044c8 f   kernel32:KERNEL32.dll
+ 0001:000034ce       _SetConsoleWindowInfo@12   004044ce f   kernel32:KERNEL32.dll
+ 0001:000034d4       _WriteConsoleOutputCharacterA@20 004044d4 f   kernel32:KERNEL32.dll
+ 0001:000034da       _WriteConsoleOutputAttribute@20 004044da f   kernel32:KERNEL32.dll
+ 0001:000034e0       _CloseHandle@4             004044e0 f   kernel32:KERNEL32.dll
+ 0001:000034e6       _CreateFileA@28            004044e6 f   kernel32:KERNEL32.dll
+ 0001:000034ec       _FormatMessageA@28         004044ec f   kernel32:KERNEL32.dll
+ 0001:000034f2       _FlushConsoleInputBuffer@4 004044f2 f   kernel32:KERNEL32.dll
+ 0001:000034f8       _GetCommandLineA@0         004044f8 f   kernel32:KERNEL32.dll
+ 0001:000034fe       _GetConsoleMode@8          004044fe f   kernel32:KERNEL32.dll
+ 0001:00003504       _GetConsoleScreenBufferInfo@8 00404504 f   kernel32:KERNEL32.dll
+ 0001:0000350a       _GetLastError@0            0040450a f   kernel32:KERNEL32.dll
+ 0001:00003510       _GetLocalTime@4            00404510 f   kernel32:KERNEL32.dll
+ 0001:00003516       _GetSystemTime@4           00404516 f   kernel32:KERNEL32.dll
+ 0001:0000351c       _LocalFree@4               0040451c f   kernel32:KERNEL32.dll
+ 0001:00003522       _PeekConsoleInputA@16      00404522 f   kernel32:KERNEL32.dll
+ 0001:00003528       _ReadConsoleA@20           00404528 f   kernel32:KERNEL32.dll
+ 0001:0000352e       _ReadConsoleInputA@16      0040452e f   kernel32:KERNEL32.dll
+ 0001:00003534       _ReadFile@20               00404534 f   kernel32:KERNEL32.dll
+ 0001:0000353a       _SetConsoleCursorPosition@8 0040453a f   kernel32:KERNEL32.dll
+ 0001:00003540       _SetConsoleMode@8          00404540 f   kernel32:KERNEL32.dll
+ 0001:00003546       _SetConsoleTextAttribute@8 00404546 f   kernel32:KERNEL32.dll
+ 0001:0000354c       _Sleep@4                   0040454c f   kernel32:KERNEL32.dll
+ 0001:00003552       _SystemTimeToFileTime@8    00404552 f   kernel32:KERNEL32.dll
+ 0001:00003558       _WriteConsoleA@20          00404558 f   kernel32:KERNEL32.dll
+ 0001:0000355e       _WriteFile@20              0040455e f   kernel32:KERNEL32.dll
+ 0001:00003564       _MessageBoxA@16            00404564 f   user32:USER32.dll
  0004:00000000       __imp__ExitProcess@4       00409000     kernel32:KERNEL32.dll
  0004:00000004       __imp__GetStdHandle@4      00409004     kernel32:KERNEL32.dll
  0004:00000008       __imp__SetConsoleCursorInfo@8 00409008     kernel32:KERNEL32.dll
@@ -249,45 +249,46 @@
  0003:00000072       xyPosNoWork19              00407072     main.obj
  0003:00000076       xyPosNoWork20              00407076     main.obj
  0003:0000007a       N10                        0040707a     main.obj
- 0003:0000007c       xyPosBogy0                 0040707c     main.obj
- 0003:00000080       xyPosBogy1                 00407080     main.obj
- 0003:00000084       xyPosBogy2                 00407084     main.obj
- 0003:00000088       xyPosBogy3                 00407088     main.obj
- 0003:0000008c       xyPosBogy4                 0040708c     main.obj
- 0003:00000090       xyPosBogy5                 00407090     main.obj
- 0003:00000094       cells_Written              00407094     main.obj
- 0003:00000098       startStr                   00407098     main.obj
- 0003:00000320       enterMsg                   00407320     main.obj
- 0003:00000334       leaveMsg                   00407334     main.obj
- 0003:00000348       startTank                  00407348     main.obj
- 0003:000003f0       startBogy                  004073f0     main.obj
- 0003:00000413       gameIntro                  00407413     main.obj
- 0003:00000864       gameTank                   00407864     main.obj
- 0003:0000087c       clearTank                  0040787c     main.obj
- 0003:00000894       gameBogy                   00407894     main.obj
- 0003:000008a3       clearBogy                  004078a3     main.obj
- 0003:000008b2       bullet                     004078b2     main.obj
- 0003:000008b9       clearBullet                004078b9     main.obj
- 0003:000008c0       line                       004078c0     main.obj
- 0003:000008c2       greenColor                 004078c2     main.obj
- 0003:000008c4       yellowColor                004078c4     main.obj
- 0003:000008c6       level                      004078c6     main.obj
- 0003:000008ce       state                      004078ce     main.obj
- 0003:000008d6       score                      004078d6     main.obj
- 0003:000008de       lives                      004078de     main.obj
- 0003:000008e6       bogys                      004078e6     main.obj
- 0003:000008ee       levelNum                   004078ee     main.obj
- 0003:000008f0       levelStr                   004078f0     main.obj
- 0003:000008f4       paused                     004078f4     main.obj
- 0003:000008fc       playing                    004078fc     main.obj
- 0003:00000904       scoreNum                   00407904     main.obj
- 0003:00000906       scoreStr                   00407906     main.obj
- 0003:0000090a       livesNum                   0040790a     main.obj
- 0003:0000090c       livesStr                   0040790c     main.obj
- 0003:00000910       bogysNum                   00407910     main.obj
- 0003:00000912       bogysStr                   00407912     main.obj
- 0003:00000916       gameBgTB                   00407916     main.obj
- 0003:00000985       gameBgM                    00407985     main.obj
+ 0003:0000007c       N11                        0040707c     main.obj
+ 0003:0000007e       xyPosBogy0                 0040707e     main.obj
+ 0003:00000082       xyPosBogy1                 00407082     main.obj
+ 0003:00000086       xyPosBogy2                 00407086     main.obj
+ 0003:0000008a       xyPosBogy3                 0040708a     main.obj
+ 0003:0000008e       xyPosBogy4                 0040708e     main.obj
+ 0003:00000092       xyPosBogy5                 00407092     main.obj
+ 0003:00000096       cells_Written              00407096     main.obj
+ 0003:0000009a       startStr                   0040709a     main.obj
+ 0003:00000322       enterMsg                   00407322     main.obj
+ 0003:00000336       leaveMsg                   00407336     main.obj
+ 0003:0000034a       startTank                  0040734a     main.obj
+ 0003:000003f2       startBogy                  004073f2     main.obj
+ 0003:00000415       gameIntro                  00407415     main.obj
+ 0003:00000866       gameTank                   00407866     main.obj
+ 0003:0000087e       clearTank                  0040787e     main.obj
+ 0003:00000896       gameBogy                   00407896     main.obj
+ 0003:000008a5       clearBogy                  004078a5     main.obj
+ 0003:000008b4       bullet                     004078b4     main.obj
+ 0003:000008bb       clearBullet                004078bb     main.obj
+ 0003:000008c2       line                       004078c2     main.obj
+ 0003:000008c4       greenColor                 004078c4     main.obj
+ 0003:000008c6       yellowColor                004078c6     main.obj
+ 0003:000008c8       level                      004078c8     main.obj
+ 0003:000008d0       state                      004078d0     main.obj
+ 0003:000008d8       score                      004078d8     main.obj
+ 0003:000008e0       lives                      004078e0     main.obj
+ 0003:000008e8       bogys                      004078e8     main.obj
+ 0003:000008f0       levelNum                   004078f0     main.obj
+ 0003:000008f2       levelStr                   004078f2     main.obj
+ 0003:000008f6       paused                     004078f6     main.obj
+ 0003:000008fe       playing                    004078fe     main.obj
+ 0003:00000906       scoreNum                   00407906     main.obj
+ 0003:00000908       scoreStr                   00407908     main.obj
+ 0003:0000090c       livesNum                   0040790c     main.obj
+ 0003:0000090e       livesStr                   0040790e     main.obj
+ 0003:00000912       bogysNum                   00407912     main.obj
+ 0003:00000914       bogysStr                   00407914     main.obj
+ 0003:00000918       gameBgTB                   00407918     main.obj
+ 0003:00000987       gameBgM                    00407987     main.obj
  0003:00000c00       InitFlag                   00407c00     Irvine32:Irvine32.obj
  0003:00000c01       xtable                     00407c01     Irvine32:Irvine32.obj
  0003:00000c11       blanks                     00407c11     Irvine32:Irvine32.obj

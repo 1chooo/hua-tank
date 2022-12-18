@@ -25,6 +25,8 @@ noWorkClear   PROTO, xyPosInit:COORD
 printEndScene PROTO
 printGameStage PROTO
 
+initialLevelBogyPos PROTO
+
 ; 	玩遊戲   ebx = 1
 ; 	暫停		ebx = 2
 ; 	結束畫面	ebx = 3
@@ -83,12 +85,20 @@ printGameStage PROTO
 	N19 WORD 0
 	N20 WORD 0
 
-	xyPosBogy0 COORD   <107,5>
-	xyPosBogy1 COORD   <108,9>
-	xyPosBogy2 COORD   <109,13>
-	xyPosBogy3 COORD   <110,17>
-	xyPosBogy4 COORD   <111,21>
-	xyPosBogy5 COORD   <112,25>
+	xPosBogy0LevelArr WORD 107, 109, 102
+    xPosBogy1LevelArr WORD 128, 101, 110
+    xPosBogy2LevelArr WORD 109, 123, 122
+    xPosBogy3LevelArr WORD 120, 103, 115
+    xPosBogy4LevelArr WORD 111, 113, 105
+    xPosBogy5LevelArr WORD 122, 100, 100
+
+    xyPosBogy0 COORD   <?,5>
+    xyPosBogy1 COORD   <?,9>
+    xyPosBogy2 COORD   <?,13>
+    xyPosBogy3 COORD   <?,17>
+    xyPosBogy4 COORD   <?,21>
+    xyPosBogy5 COORD   <?,25>
+
 	cells_Written DWORD ?
 
 	; 開始畫面的字
@@ -100,9 +110,10 @@ printGameStage PROTO
 			 BYTE "  |_____|____| |____|_____|\____|____||____|     \_/(_)  \______.'(_)|_______/ `.___.'  `._____.' |______|  "
 
 	;印開始畫面的提示字
-	enterMsg BYTE "Press 'E' to enter",0
-	leaveMsg BYTE "Press 'L' to leave",0
-	restart  BYTE "Press 'R' to restart",0
+	enterMsg  BYTE "Press 'E' to enter",0
+	leaveMsg  BYTE "Press 'L' to leave",0
+	restart   BYTE "Press 'R' to restart",0
+	nextLevel BYTE "Press 'N' to next level", 0
 
 	;印坦克
 	startTank BYTE "       \                "
@@ -194,7 +205,7 @@ printGameStage PROTO
 
 	loseStr BYTE " _____      ___    ______  ________ "
 			BYTE "|_   _|   .'   `..' ____ \|_   __  |"
-			BYTE "  | |    /  .-.  | (___ \_| | |_ \_|"	
+			BYTE "  | |    /  .-.  | (____\_| | |_ \_|"	
 			BYTE "  | |   _| |   | |_.____ \  |  _| _ "
 			BYTE " _| |__/ \  `-'  / \____) \_| |__/ |"
 			BYTE "|________|`.___.' \_______/________|"
@@ -232,12 +243,7 @@ Ex:
 		mov bogysNum, 5
 		INVOKE printGameStage
 
-		mov xyPosBogy0.x, 107
-		mov xyPosBogy1.x, 108
-		mov xyPosBogy2.x, 109
-		mov xyPosBogy3.x, 110
-		mov xyPosBogy4.x, 111
-		mov xyPosBogy5.x, 112
+		INVOKE initialLevelBogyPos
 
 		mov xyPosTank.y, 15
 
@@ -403,7 +409,7 @@ backToGame:
 
 	.IF ax == 4800h
 		INVOKE tankClear, xyPosTank
-		sub xyPosTank.y, 1
+		sub xyPosTank.y, 2
 		.IF xyPosTank.y < 5
 			mov xyPosTank.y, 5
 		.ENDIF
@@ -412,7 +418,7 @@ backToGame:
 
 	.IF ax == 5000h
 		INVOKE tankClear, xyPosTank
-		add xyPosTank.y, 1
+		add xyPosTank.y, 2
 		.IF xyPosTank.y > 25
 			mov xyPosTank.y, 25
 		.ENDIF
@@ -599,7 +605,16 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy0.x, 107
+			.IF levelNum == 1
+				mov ax, [xPosBogy0LevelArr + 0]
+			.ENDIF
+			.IF levelNum == 2
+				mov ax, [xPosBogy0LevelArr + 4]
+			.ENDIF
+			.IF levelNum == 3
+				mov ax, [xPosBogy0LevelArr + 8]
+			.ENDIF
+			mov xyPosBogy0.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork0.x > 106
@@ -624,7 +639,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy0.x, 107
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy0LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy0LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy0LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy0.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork1.x > 106
@@ -657,7 +682,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy1.x, 108
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy1LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy1LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy1LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy1.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork3.x > 106
@@ -682,7 +717,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy1.x, 108
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy1LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy1LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy1LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy1.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork4.x > 106
@@ -707,7 +752,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy1.x, 108
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy1LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy1LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy1LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy1.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork5.x > 106
@@ -740,7 +795,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy2.x, 109
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy2LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy2LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy2LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy2.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork7.x > 106
@@ -765,7 +830,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy2.x, 109
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy2LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy2LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy2LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy2.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork8.x > 106
@@ -790,7 +865,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy2.x, 109
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy2LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy2LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy2LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy2.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork9.x > 106
@@ -823,7 +908,17 @@ backToGame:
 				mov ebx, 3
 				jmp Ex
 			.ENDIF
-			mov xyPosBogy3.x, 110
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy3LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy3LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy3LevelArr + 8]
+            .ENDIF
+			mov xyPosBogy3.x, ax
 		.ENDIF
 		pop eax
 		.IF xyPosNoWork11.x > 106
@@ -848,7 +943,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy3.x, 110
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy3LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy3LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy3LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy3.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork12.x > 106
@@ -873,7 +978,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy3.x, 110
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy3LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy3LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy3LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy3.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork13.x > 106
@@ -906,7 +1021,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy4.x, 111
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy4LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy4LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy4LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy4.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork15.x > 106
@@ -931,7 +1056,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy4.x, 111
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy4LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy4LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy4LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy4.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork16.x > 106
@@ -956,7 +1091,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy4.x, 111
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy4LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy4LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy4LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy4.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork17.x > 106
@@ -989,7 +1134,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy5.x, 112
+
+			.IF levelNum == 1
+                mov ax, [xPosBogy5LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy5LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy5LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy5.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork19.x > 106
@@ -1014,7 +1169,17 @@ backToGame:
                 mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy5.x, 112
+            
+			.IF levelNum == 1
+                mov ax, [xPosBogy5LevelArr + 0]
+            .ENDIF
+            .IF levelNum == 2
+                mov ax, [xPosBogy5LevelArr + 4]
+            .ENDIF
+            .IF levelNum == 3
+                mov ax, [xPosBogy5LevelArr + 8]
+            .ENDIF
+            mov xyPosBogy5.x, ax
         .ENDIF
         pop eax
         .IF xyPosNoWork20.x > 106
@@ -1024,7 +1189,18 @@ backToGame:
     .ENDIF
 
 	.IF xyPosBogy0.x < 16
-		mov xyPosBogy0.x, 107
+		push eax
+		.IF levelNum == 1
+			mov ax, [xPosBogy0LevelArr + 0]
+		.ENDIF
+		.IF levelNum == 2
+			mov ax, [xPosBogy0LevelArr + 4]
+		.ENDIF
+		.IF levelNum == 3
+			mov ax, [xPosBogy0LevelArr + 8]
+		.ENDIF
+		mov xyPosBogy0.x, ax
+		pop eax
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
@@ -1032,8 +1208,20 @@ backToGame:
 			jmp Ex		
 		.ENDIF
 	.ENDIF
+
 	.IF xyPosBogy1.x < 16
-		mov xyPosBogy1.x, 107
+		push eax
+		.IF levelNum == 1
+			mov ax, [xPosBogy1LevelArr + 0]
+		.ENDIF
+		.IF levelNum == 2
+			mov ax, [xPosBogy1LevelArr + 4]
+		.ENDIF
+		.IF levelNum == 3
+			mov ax, [xPosBogy1LevelArr + 8]
+		.ENDIF
+		mov xyPosBogy1.x, ax
+		pop eax
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
@@ -1042,7 +1230,18 @@ backToGame:
 		.ENDIF
 	.ENDIF
 	.IF xyPosBogy2.x < 16
-		mov xyPosBogy2.x, 107
+		push eax
+		.IF levelNum == 1
+			mov ax, [xPosBogy2LevelArr + 0]
+		.ENDIF
+		.IF levelNum == 2
+			mov ax, [xPosBogy2LevelArr + 4]
+		.ENDIF
+		.IF levelNum == 3
+			mov ax, [xPosBogy2LevelArr + 8]
+		.ENDIF
+		mov xyPosBogy2.x, ax
+		pop eax
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
@@ -1050,8 +1249,20 @@ backToGame:
 			jmp Ex		
 		.ENDIF
 	.ENDIF
+
 	.IF xyPosBogy3.x < 16
-		mov xyPosBogy3.x, 107
+		push eax
+		.IF levelNum == 1
+			mov ax, [xPosBogy3LevelArr + 0]
+		.ENDIF
+		.IF levelNum == 2
+			mov ax, [xPosBogy3LevelArr + 4]
+		.ENDIF
+		.IF levelNum == 3
+			mov ax, [xPosBogy3LevelArr + 8]
+		.ENDIF
+		mov xyPosBogy3.x, ax
+		pop eax
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
@@ -1059,8 +1270,20 @@ backToGame:
 			jmp Ex		
 		.ENDIF
 	.ENDIF
+
 	.IF xyPosBogy4.x < 16
-		mov xyPosBogy4.x, 107
+		push eax
+		.IF levelNum == 1
+			mov ax, [xPosBogy4LevelArr + 0]
+		.ENDIF
+		.IF levelNum == 2
+			mov ax, [xPosBogy4LevelArr + 4]
+		.ENDIF
+		.IF levelNum == 3
+			mov ax, [xPosBogy4LevelArr + 8]
+		.ENDIF
+		mov xyPosBogy4.x, ax
+		pop eax
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
@@ -1068,8 +1291,20 @@ backToGame:
 			jmp Ex		
 		.ENDIF
 	.ENDIF
+
 	.IF xyPosBogy5.x < 16
-		mov xyPosBogy5.x, 107
+		push eax
+		.IF levelNum == 1
+			mov ax, [xPosBogy5LevelArr + 0]
+		.ENDIF
+		.IF levelNum == 2
+			mov ax, [xPosBogy5LevelArr + 4]
+		.ENDIF
+		.IF levelNum == 3
+			mov ax, [xPosBogy5LevelArr + 8]
+		.ENDIF
+		mov xyPosBogy5.x, ax
+		pop eax
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
@@ -1213,7 +1448,7 @@ GameOrNot:
 	.IF ax == 3920h     ;press space to start game
         call Clrscr
 		INVOKE printGameStage
-		;mov ebx, 1
+		mov ebx, 1
 		jmp ExitFunc
 	.ENDIF
 	jmp GameOrNot
@@ -1419,6 +1654,16 @@ printLose:
 		xyPos,
 		ADDR cells_Written
 
+	.IF bogysNum == 0
+		add xyPos.y, 2
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR nextLevel,
+			SIZEOF nextLevel,
+			xyPos,
+			ADDR cells_Written
+	.ENDIF
+
 restartOrLeave:
 	call ReadChar
 	.IF ax == 1372h
@@ -1429,6 +1674,15 @@ restartOrLeave:
 	.IF ax == 266ch
 		mov ebx, 4
 		jmp ExitEndScene
+	.ENDIF
+	.IF bogysNum == 0
+		.IF ax == 316eh
+			mov ebx, 1
+			.IF levelNum < 3
+				inc levelNum
+			.ENDIF
+			jmp ExitEndScene
+		.ENDIF
 	.ENDIF
 	jmp restartOrLeave
 
@@ -1503,6 +1757,73 @@ printBogys PROC,
 		ADDR cells_Written
 	ret
 printBogys ENDP
+
+initialLevelBogyPos PROC
+	push eax
+
+    .IF levelNum == 1
+        mov ax, [xPosBogy0LevelArr + 0]
+        mov xyPosBogy0.x, ax
+
+        mov ax, [xPosBogy1LevelArr + 0]
+        mov xyPosBogy1.x, ax
+
+        mov ax, [xPosBogy2LevelArr + 0]
+        mov xyPosBogy2.x, ax
+
+        mov ax, [xPosBogy3LevelArr + 0]
+        mov xyPosBogy3.x, ax
+
+        mov ax, [xPosBogy4LevelArr + 0]
+        mov xyPosBogy4.x, ax
+
+        mov ax, [xPosBogy5LevelArr + 0]
+        mov xyPosBogy5.x, ax
+    .ENDIF
+
+    .IF levelNum == 2
+        mov ax, [xPosBogy0LevelArr + 4]
+        mov xyPosBogy0.x, ax
+
+        mov ax, [xPosBogy1LevelArr + 4]
+        mov xyPosBogy1.x, ax
+
+        mov ax, [xPosBogy2LevelArr + 4]
+        mov xyPosBogy2.x, ax
+
+        mov ax, [xPosBogy3LevelArr + 4]
+        mov xyPosBogy3.x, ax
+
+        mov ax, [xPosBogy4LevelArr + 4]
+        mov xyPosBogy4.x, ax
+
+        mov ax, [xPosBogy5LevelArr + 4]
+        mov xyPosBogy5.x, ax
+    .ENDIF
+
+    .IF levelNum == 3
+        mov ax, [xPosBogy0LevelArr + 8]
+        mov xyPosBogy0.x, ax
+
+        mov ax, [xPosBogy1LevelArr + 8]
+        mov xyPosBogy1.x, ax
+
+        mov ax, [xPosBogy2LevelArr + 8]
+        mov xyPosBogy2.x, ax
+
+        mov ax, [xPosBogy3LevelArr + 8]
+        mov xyPosBogy3.x, ax
+
+        mov ax, [xPosBogy4LevelArr + 8]
+        mov xyPosBogy4.x, ax
+
+        mov ax, [xPosBogy5LevelArr + 8]
+        mov xyPosBogy5.x, ax
+    .ENDIF
+
+    pop eax
+    ret
+initialLevelBogyPos ENDP
 
 bogyWalking PROC,
 	xyPosInBogy:COORD

@@ -22,6 +22,9 @@ tankClear   PROTO, xyPosInit:COORD
 noWorkWalking PROTO, xyPosInit:COORD
 noWorkClear   PROTO, xyPosInit:COORD
 
+printEndScene PROTO
+printGameStage PROTO
+
 ; 	玩遊戲   ebx = 1
 ; 	暫停		ebx = 2
 ; 	結束畫面	ebx = 3
@@ -97,8 +100,9 @@ noWorkClear   PROTO, xyPosInit:COORD
 			 BYTE "  |_____|____| |____|_____|\____|____||____|     \_/(_)  \______.'(_)|_______/ `.___.'  `._____.' |______|  "
 
 	;印開始畫面的提示字
-	enterMsg BYTE "Press ‘E’ to enter"
-	leaveMsg BYTE "Press ‘L’ to leave"
+	enterMsg BYTE "Press 'E' to enter",0
+	leaveMsg BYTE "Press 'L' to leave",0
+	restart  BYTE "Press 'R' to restart",0
 
 	;印坦克
 	startTank BYTE "       \                "
@@ -172,14 +176,29 @@ noWorkClear   PROTO, xyPosInit:COORD
 	scoreNum WORD 0
 	scoreStr BYTE 4 DUP(?)
 
-	livesNum WORD 10
+	livesNum WORD 3
 	livesStr BYTE 4 DUP(?)
 	
-	bogysNum WORD 5
+	bogysNum WORD 1
 	bogysStr BYTE 4 DUP(?)
 
 	gameBgTB BYTE 110 DUP("*"),0
-	gameBgM  BYTE "*", 108 DUP(" "), "*",0	  
+	gameBgM  BYTE "*", 108 DUP(" "), "*",0	
+	
+	winStr  BYTE "  ____      ____ _____ ____  _____  "
+		    BYTE " |_  _|    |_  _|_   _|_   \|_   _| "
+		    BYTE "   \ \  /\  / /   | |   |   \ | |   "
+		    BYTE "    \ \/  \/ /    | |   | |\ \| |   "
+		    BYTE "     \  /\  /    _| |_ _| |_\   |_  "
+		    BYTE "      \/  \/    |_____|_____|\____| "
+
+	loseStr BYTE " _____      ___    ______  ________ "
+			BYTE "|_   _|   .'   `..' ____ \|_   __  |"
+			BYTE "  | |    /  .-.  | (___ \_| | |_ \_|"	
+			BYTE "  | |   _| |   | |_.____ \  |  _| _ "
+			BYTE " _| |__/ \  `-'  / \____) \_| |__/ |"
+			BYTE "|________|`.___.' \_______/________|"
+
 
 .code
 
@@ -196,96 +215,79 @@ main PROC
 	
 	INVOKE printStartScene
 
-Ex:	.IF ebx == 4        ;直接離開
+Ex:	
+	.IF ebx == 3
+		call Clrscr
+		INVOKE printEndScene
+	.ENDIF
+
+	.IF ebx == 4        ;直接離開
 		call Clrscr
 		jmp ExitProgram
 	.ENDIF
 
-	;print test Bogy
+	.IF ebx == 1 ; 進入遊戲
+		mov scoreNum, 0
+		mov livesNum, 3
+		mov bogysNum, 5
+		INVOKE printGameStage
 
-	mov ebx, 1 ; 進入遊戲
+		mov xyPosBogy0.x, 107
+		mov xyPosBogy1.x, 108
+		mov xyPosBogy2.x, 109
+		mov xyPosBogy3.x, 110
+		mov xyPosBogy4.x, 111
+		mov xyPosBogy5.x, 112
+
+		mov xyPosTank.y, 15
+
+		mov N0, 0
+		mov N1, 0
+		mov N2, 0
+		mov N3, 0
+		mov N4 , 0 
+		mov N5 , 0 
+		mov N6 , 0 
+		mov N7 , 0 
+		mov N8 , 0 
+		mov N9 , 0 
+		mov N10, 0 
+		mov N11, 0 
+		mov N12, 0 
+		mov N13, 0 
+		mov N14, 0 
+		mov N15, 0 
+		mov N16, 0 
+		mov N17, 0 
+		mov N18, 0 
+		mov N19, 0 
+		mov N20, 0
+
+		mov xyPosNoWork0.x , 15
+		mov xyPosNoWork1.x , 15
+		mov xyPosNoWork2.x , 15
+		mov xyPosNoWork3.x , 15
+		mov xyPosNoWork4.x , 15
+		mov xyPosNoWork5.x , 15
+		mov xyPosNoWork6.x , 15
+		mov xyPosNoWork7.x , 15
+		mov xyPosNoWork8.x , 15
+		mov xyPosNoWork9.x , 15
+		mov xyPosNoWork10.x, 15
+		mov xyPosNoWork11.x, 15
+		mov xyPosNoWork12.x, 15
+		mov xyPosNoWork13.x, 15
+		mov xyPosNoWork14.x, 15
+		mov xyPosNoWork15.x, 15
+		mov xyPosNoWork16.x, 15
+		mov xyPosNoWork17.x, 15
+		mov xyPosNoWork18.x, 15
+		mov xyPosNoWork19.x, 15
+		mov xyPosNoWork20.x, 15
+	.ENDIF
 
 GameLoop:
 	INVOKE tankWalking, xyPosTank
-	call ReadKey
-
-	.IF ax == 4800h
-		INVOKE tankClear, xyPosTank
-		sub xyPosTank.y, 1
-		INVOKE tankWalking, xyPosTank
-	.ENDIF
-
-	.IF ax == 5000h
-		INVOKE tankClear, xyPosTank
-		add xyPosTank.y, 1
-		INVOKE tankWalking, xyPosTank
-	.ENDIF
-
-	.IF ax == 4D00h
-		.IF xyPosTank.y == 5
-            mov N0, 1
-        .ENDIF
-        .IF xyPosTank.y == 6
-            mov N1, 1
-        .ENDIF
-        .IF xyPosTank.y == 7
-            mov N2, 1
-        .ENDIF
-        .IF xyPosTank.y == 8
-            mov N3, 1
-        .ENDIF
-        .IF xyPosTank.y == 9
-            mov N4, 1
-        .ENDIF
-        .IF xyPosTank.y == 10
-            mov N5, 1
-        .ENDIF
-        .IF xyPosTank.y == 11
-            mov N6, 1
-        .ENDIF
-        .IF xyPosTank.y == 12
-            mov N7, 1
-        .ENDIF
-        .IF xyPosTank.y == 13
-            mov N8, 1
-        .ENDIF
-        .IF xyPosTank.y == 14
-            mov N9, 1
-        .ENDIF
-        .IF xyPosTank.y == 15
-            mov N10, 1
-        .ENDIF
-        .IF xyPosTank.y == 16
-            mov N11, 1
-        .ENDIF
-        .IF xyPosTank.y == 17
-            mov N12, 1
-        .ENDIF
-        .IF xyPosTank.y == 18
-            mov N13, 1
-        .ENDIF
-        .IF xyPosTank.y == 19
-            mov N14, 1
-        .ENDIF
-        .IF xyPosTank.y == 20
-            mov N15, 1
-        .ENDIF
-        .IF xyPosTank.y == 21
-            mov N16, 1
-        .ENDIF
-        .IF xyPosTank.y == 22
-            mov N17, 1
-        .ENDIF
-        .IF xyPosTank.y == 23
-            mov N18, 1
-        .ENDIF
-        .IF xyPosTank.y == 24
-            mov N19, 1
-        .ENDIF
-        .IF xyPosTank.y == 25
-            mov N20, 1
-        .ENDIF
-	.ENDIF
 
 	.IF N0 == 1
         INVOKE noWorkWalking, xyPosNoWork0 
@@ -368,6 +370,119 @@ GameLoop:
 	.ENDIF
 	.IF xyPosBogy5.x < 107
 		INVOKE bogyWalking, xyPosBogy5
+	.ENDIF
+
+	mov xyPos.x, 36
+	mov xyPos.y, 2
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR playing,
+		SIZEOF playing,
+		xyPos,
+		ADDR cells_Written
+	call ReadKey
+
+	.IF ax == 1970h
+	mov xyPos.x, 36
+	mov xyPos.y, 2
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR paused,
+		SIZEOF paused,
+		xyPos,
+		ADDR cells_Written
+pauseLoop:
+		call ReadKey
+		.IF ax == 3920h
+			jmp backToGame
+		.ENDIF
+		jmp pauseLoop
+	.ENDIF
+
+backToGame:
+
+	.IF ax == 4800h
+		INVOKE tankClear, xyPosTank
+		sub xyPosTank.y, 1
+		.IF xyPosTank.y < 5
+			mov xyPosTank.y, 5
+		.ENDIF
+		INVOKE tankWalking, xyPosTank
+	.ENDIF
+
+	.IF ax == 5000h
+		INVOKE tankClear, xyPosTank
+		add xyPosTank.y, 1
+		.IF xyPosTank.y > 25
+			mov xyPosTank.y, 25
+		.ENDIF
+		INVOKE tankWalking, xyPosTank
+	.ENDIF
+
+	.IF ax == 4D00h
+		.IF xyPosTank.y == 5
+            mov N0, 1
+        .ENDIF
+        .IF xyPosTank.y == 6
+            mov N1, 1
+        .ENDIF
+        .IF xyPosTank.y == 7
+            mov N2, 1
+        .ENDIF
+        .IF xyPosTank.y == 8
+            mov N3, 1
+        .ENDIF
+        .IF xyPosTank.y == 9
+            mov N4, 1
+        .ENDIF
+        .IF xyPosTank.y == 10
+            mov N5, 1
+        .ENDIF
+        .IF xyPosTank.y == 11
+            mov N6, 1
+        .ENDIF
+        .IF xyPosTank.y == 12
+            mov N7, 1
+        .ENDIF
+        .IF xyPosTank.y == 13
+            mov N8, 1
+        .ENDIF
+        .IF xyPosTank.y == 14
+            mov N9, 1
+        .ENDIF
+        .IF xyPosTank.y == 15
+            mov N10, 1
+        .ENDIF
+        .IF xyPosTank.y == 16
+            mov N11, 1
+        .ENDIF
+        .IF xyPosTank.y == 17
+            mov N12, 1
+        .ENDIF
+        .IF xyPosTank.y == 18
+            mov N13, 1
+        .ENDIF
+        .IF xyPosTank.y == 19
+            mov N14, 1
+        .ENDIF
+        .IF xyPosTank.y == 20
+            mov N15, 1
+        .ENDIF
+        .IF xyPosTank.y == 21
+            mov N16, 1
+        .ENDIF
+        .IF xyPosTank.y == 22
+            mov N17, 1
+        .ENDIF
+        .IF xyPosTank.y == 23
+            mov N18, 1
+        .ENDIF
+        .IF xyPosTank.y == 24
+            mov N19, 1
+        .ENDIF
+        .IF xyPosTank.y == 25
+            mov N20, 1
+        .ENDIF
 	.ENDIF
 
 	push eax
@@ -469,22 +584,22 @@ GameLoop:
 	sub xyPosBogy5.x, 1
 
 	.IF N0 == 1
-        add xyPosNoWork0.x, 1
+        add xyPosNoWork0.x, 3
         push eax
         mov ax, xyPosBogy0.x
         sub ax, 6
         .IF xyPosNoWork0.x >= ax
             mov N0, 0
-            mov xyPosNoWork0.x, 107
+            mov xyPosNoWork0.x, 15
             add scoreNum, 10
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
-            mov xyPosBogy0.x, 00
+            mov xyPosBogy0.x, 107
         .ENDIF
         pop eax
         .IF xyPosNoWork0.x > 106
@@ -494,7 +609,7 @@ GameLoop:
     .ENDIF
 
 	.IF N1 == 1
-        add xyPosNoWork1.x, 1
+        add xyPosNoWork1.x, 3
         push eax
         mov ax, xyPosBogy0.x
         sub ax, 6
@@ -506,7 +621,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy0.x, 107
@@ -519,7 +634,7 @@ GameLoop:
     .ENDIF
 
 	.IF N2 == 1
-        add xyPosNoWork2.x, 1
+        add xyPosNoWork2.x, 3
         .IF xyPosNoWork2.x > 106
             mov N2, 0
             mov xyPosNoWork2.x, 15
@@ -527,7 +642,7 @@ GameLoop:
     .ENDIF
 
 	.IF N3 == 1
-        add xyPosNoWork3.x, 1
+        add xyPosNoWork3.x, 3
         push eax
         mov ax, xyPosBogy1.x
         sub ax, 6
@@ -539,7 +654,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy1.x, 108
@@ -552,7 +667,7 @@ GameLoop:
     .ENDIF
 
 	.IF N4 == 1
-        add xyPosNoWork4.x, 1
+        add xyPosNoWork4.x, 3
         push eax
         mov ax, xyPosBogy1.x
         sub ax, 6
@@ -564,7 +679,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy1.x, 108
@@ -577,7 +692,7 @@ GameLoop:
     .ENDIF
 
 	.IF N5 == 1
-        add xyPosNoWork5.x, 1
+        add xyPosNoWork5.x, 3
         push eax
         mov ax, xyPosBogy1.x
         sub ax, 6
@@ -589,7 +704,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy1.x, 108
@@ -602,7 +717,7 @@ GameLoop:
     .ENDIF
 
 	.IF N6 == 1
-        add xyPosNoWork6.x, 1
+        add xyPosNoWork6.x, 3
         .IF xyPosNoWork6.x > 106
             mov N6, 0
             mov xyPosNoWork6.x, 15
@@ -610,7 +725,7 @@ GameLoop:
     .ENDIF
 
 	.IF N7 == 1
-        add xyPosNoWork7.x, 1
+        add xyPosNoWork7.x, 3
         push eax
         mov ax, xyPosBogy2.x
         sub ax, 6
@@ -622,7 +737,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy2.x, 109
@@ -635,7 +750,7 @@ GameLoop:
     .ENDIF
 
 	.IF N8 == 1
-        add xyPosNoWork8.x, 1
+        add xyPosNoWork8.x, 3
         push eax
         mov ax, xyPosBogy2.x
         sub ax, 6
@@ -647,7 +762,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy2.x, 109
@@ -660,7 +775,7 @@ GameLoop:
     .ENDIF
 
 	.IF N9 == 1
-        add xyPosNoWork9.x, 1
+        add xyPosNoWork9.x, 3
         push eax
         mov ax, xyPosBogy2.x
         sub ax, 6
@@ -672,7 +787,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy2.x, 109
@@ -685,7 +800,7 @@ GameLoop:
     .ENDIF
 
 	.IF N10 == 1
-		add xyPosNoWork10.x, 1
+		add xyPosNoWork10.x, 3
 		.IF xyPosNoWork10.x > 106
 			mov N10, 0
 			mov xyPosNoWork10.x, 15
@@ -693,7 +808,7 @@ GameLoop:
 	.ENDIF
 
 	.IF N11 == 1
-		add xyPosNoWork11.x, 1
+		add xyPosNoWork11.x, 3
 		push eax
 		mov ax, xyPosBogy3.x
 		sub ax, 6
@@ -705,7 +820,7 @@ GameLoop:
 			INVOKE printScore, xyPos
 			INVOKE printBogys, xyPos
 			.IF bogysNum == 0
-				mov ebx, 4
+				mov ebx, 3
 				jmp Ex
 			.ENDIF
 			mov xyPosBogy3.x, 110
@@ -718,7 +833,7 @@ GameLoop:
 	.ENDIF
 
 	.IF N12 == 1
-        add xyPosNoWork12.x, 1
+        add xyPosNoWork12.x, 3
         push eax
         mov ax, xyPosBogy3.x
         sub ax, 6
@@ -730,7 +845,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy3.x, 110
@@ -743,7 +858,7 @@ GameLoop:
     .ENDIF
 
 	.IF N13 == 1
-        add xyPosNoWork13.x, 1
+        add xyPosNoWork13.x, 3
         push eax
         mov ax, xyPosBogy3.x
         sub ax, 6
@@ -755,7 +870,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy3.x, 110
@@ -768,7 +883,7 @@ GameLoop:
     .ENDIF
 
 	.IF N14 == 1
-        add xyPosNoWork14.x, 1
+        add xyPosNoWork14.x, 3
         .IF xyPosNoWork14.x > 106
             mov N14, 0
             mov xyPosNoWork14.x, 15
@@ -776,7 +891,7 @@ GameLoop:
     .ENDIF
 
 	.IF N15 == 1
-        add xyPosNoWork15.x, 1
+        add xyPosNoWork15.x, 3
         push eax
         mov ax, xyPosBogy4.x
         sub ax, 6
@@ -788,7 +903,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy4.x, 111
@@ -801,7 +916,7 @@ GameLoop:
     .ENDIF
 	
 	.IF N16 == 1
-        add xyPosNoWork16.x, 1
+        add xyPosNoWork16.x, 3
         push eax
         mov ax, xyPosBogy4.x
         sub ax, 6
@@ -813,7 +928,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy4.x, 111
@@ -826,7 +941,7 @@ GameLoop:
     .ENDIF
 
 	.IF N17 == 1
-        add xyPosNoWork17.x, 1
+        add xyPosNoWork17.x, 3
         push eax
         mov ax, xyPosBogy4.x
         sub ax, 6
@@ -838,7 +953,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy4.x, 111
@@ -851,7 +966,7 @@ GameLoop:
     .ENDIF
 
 	.IF N18 == 1
-        add xyPosNoWork18.x, 1
+        add xyPosNoWork18.x, 3
         .IF xyPosNoWork18.x > 106
             mov N18, 0
             mov xyPosNoWork18.x, 15
@@ -859,7 +974,7 @@ GameLoop:
     .ENDIF
 
 	.IF N19 == 1
-        add xyPosNoWork19.x, 1
+        add xyPosNoWork19.x, 3
         push eax
         mov ax, xyPosBogy5.x
         sub ax, 6
@@ -871,7 +986,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy5.x, 112
@@ -884,7 +999,7 @@ GameLoop:
     .ENDIF
 
 	.IF N20 == 1
-        add xyPosNoWork20.x, 1
+        add xyPosNoWork20.x, 3
         push eax
         mov ax, xyPosBogy5.x
         sub ax, 6
@@ -896,7 +1011,7 @@ GameLoop:
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
             .IF bogysNum == 0
-                mov ebx, 4
+                mov ebx, 3
                 jmp Ex
             .ENDIF
             mov xyPosBogy5.x, 112
@@ -913,7 +1028,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov ebx, 4 ;之後要改3
+			mov ebx, 3 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -922,7 +1037,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov ebx, 4 ;之後要改3
+			mov ebx, 3 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -931,7 +1046,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov ebx, 4 ;之後要改3
+			mov ebx, 3 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -940,7 +1055,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov ebx, 4 ;之後要改3
+			mov ebx, 3 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -949,7 +1064,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov ebx, 4 ;之後要改3
+			mov ebx, 3 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -958,7 +1073,7 @@ GameLoop:
 		sub livesNum, 1
 		INVOKE printLives, xyPos
 		.IF livesNum == 0
-			mov ebx, 4 ;之後要改3
+			mov ebx, 3 ;之後要改3
 			jmp Ex		
 		.ENDIF
 	.ENDIF
@@ -1097,13 +1212,20 @@ GameOrNot:
     call ReadChar
 	.IF ax == 3920h     ;press space to start game
         call Clrscr
-		mov xyPos.x, 5
-		mov xyPos.y, 4
-		jmp PrintGameSceneTop
+		INVOKE printGameStage
+		;mov ebx, 1
+		jmp ExitFunc
 	.ENDIF
 	jmp GameOrNot
 
-PrintGameSceneTop:
+ExitFunc:
+	ret
+printStartScene ENDP
+
+printGameStage PROC
+	PrintGameSceneTop:
+	mov xyPos.x, 5
+	mov xyPos.y, 4
 	INVOKE WriteConsoleOutputCharacter,
 		consoleHandle,
 		ADDR gameBgTB,
@@ -1184,9 +1306,135 @@ PrintBar:
 		ADDR cells_Written
 
 	INVOKE printBogys, xyPos
-
 	ret
-printStartScene ENDP
+printGameStage ENDP
+
+printEndScene PROC
+	mov xyPos.x, 40
+	mov xyPos.y, 5
+	mov ecx, 6
+	mov esi, 0
+	.IF bogysNum == 0
+printWin:
+		push ecx
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [winStr + esi],
+			36,
+			xyPos,
+			ADDR cells_Written
+		pop ecx
+		add esi, 36
+		inc xyPos.y
+		loop printWin
+	.ENDIF
+
+	.IF livesNum == 0
+printLose:
+		push ecx
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [loseStr + esi],
+			36,
+			xyPos,
+			ADDR cells_Written
+		pop ecx
+		add esi, 36
+		inc xyPos.y
+		loop printLose
+	.ENDIF
+
+	mov xyPos.y, 15
+	mov xyPos.x, 32
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR score,
+		SIZEOF score,
+		xyPos,
+		ADDR cells_Written
+
+	add xyPos.x, 7
+	mov dx, scoreNum
+	INVOKE decStrScore, dx
+
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR scoreStr,
+		4,
+		xyPos,
+		ADDR cells_Written
+
+	add xyPos.x, 15
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR lives,
+		SIZEOF lives,
+		xyPos,
+		ADDR cells_Written
+
+	add xyPos.x, 7
+	mov dx, livesNum
+	INVOKE decStrLives, dx
+
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR livesStr,
+		4,
+		xyPos,
+		ADDR cells_Written
+
+	add xyPos.x, 15
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR bogys,
+		SIZEOF bogys,
+		xyPos,
+		ADDR cells_Written
+
+	add xyPos.x, 7
+	mov dx, bogysNum
+	INVOKE decStrBogys, dx
+
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR bogysStr,
+		4,
+		xyPos,
+		ADDR cells_Written
+
+	add xyPos.y, 3
+	mov xyPos.x, 50
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR restart,
+		SIZEOF restart,
+		xyPos,
+		ADDR cells_Written
+
+	add xyPos.y, 2
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR leaveMsg,
+		SIZEOF leaveMsg,
+		xyPos,
+		ADDR cells_Written
+
+restartOrLeave:
+	call ReadChar
+	.IF ax == 1372h
+		mov ebx, 1
+		call Clrscr
+		jmp ExitEndScene
+	.ENDIF
+	.IF ax == 266ch
+		mov ebx, 4
+		jmp ExitEndScene
+	.ENDIF
+	jmp restartOrLeave
+
+ExitEndScene:
+	ret
+printEndScene ENDP
 
 printLevel PROC,
 	xyPosInit:COORD

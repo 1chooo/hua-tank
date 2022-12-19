@@ -85,12 +85,12 @@ initialLevelBogyPos PROTO
 	N19 WORD 0
 	N20 WORD 0
 
-	xPosBogy0LevelArr WORD 108, 109, 123
-    xPosBogy1LevelArr WORD 135, 133, 124
-    xPosBogy2LevelArr WORD 109, 119, 150
-    xPosBogy3LevelArr WORD 120, 110, 174
-    xPosBogy4LevelArr WORD 111, 124, 153
-    xPosBogy5LevelArr WORD 122, 130, 122
+	xPosBogy0LevelArr WORD 142, 234, 223
+    xPosBogy1LevelArr WORD 135, 113, 122
+    xPosBogy2LevelArr WORD 110, 243, 175
+    xPosBogy3LevelArr WORD 120, 110, 123
+    xPosBogy4LevelArr WORD 175, 124, 153
+    xPosBogy5LevelArr WORD 127, 130, 190
 
     xyPosBogy0 COORD   <?,5>
     xyPosBogy1 COORD   <?,9>
@@ -103,27 +103,38 @@ initialLevelBogyPos PROTO
 
 	; 開始畫面的字
 	startStr BYTE " _________    _      ____  _____ ___  ____   ____   ____  ______      ______     ___      ______ ____  ____ "
-			 BYTE "|  _   _  |  / \    |_   \|_   _|_  ||_  _| |_  _| |_  _.' ____ \    |_   _ \  .'   `.  .' ___  |_  _||_  _|"
-			 BYTE "|_/ | | \_| / _ \     |   \ | |   | |_/ /     \ \   / / | (___ \_|     | |_) |/  .-.  \/ .'   \_| \ \  / /  " 
-			 BYTE "    | |    / ___ \    | |\ \| |   |  __'.      \ \ / /   _.____`.      |  __'.| |   | || |   ____  \ \/ /   " 
-			 BYTE "   _| |_ _/ /   \ \_ _| |_\   |_ _| |  \ \_     \ ' /_  | \____) | _  _| |__) \  `-'  /\ `.___]  | _|  |_   " 
+			 BYTE "|  _   _  |  / \    |_   \|_   _|_  ||_  _| |_  _| |_  _|/ ____ \    |_   _ \  .'   `.  /  ___  |_  _||_  _|"
+			 BYTE "|_/ | | \_| / A \     |   \ | |   | |_/ /     \ \   / / | (___ \_|     | |_) |/  .-.  \/  /   \_| \ \  / /  " 
+			 BYTE "    | |    / ___ \    | |\ \| |   |  __ \      \ \ / /   _.____`.      |  __'.| |   | || |   ____  \ \/ /   " 
+			 BYTE "   _| |_ _/ /   \ \_ _| |_\   |_ _| |  \ \_     \ ' /_  | \____) | _  _| |__) \  `-'  /\  \___]  | _|  |_   " 
 			 BYTE "  |_____|____| |____|_____|\____|____||____|     \_/(_)  \______.'(_)|_______/ `.___.'  `._____.' |______|  "
 
+	startColor WORD 44 DUP(0Ah), 25 DUP(0fh), 39 DUP(0Bh)
+	
 	;印開始畫面的提示字
 	enterMsg  BYTE "Press 'E' to enter",0
 	leaveMsg  BYTE "Press 'L' to leave",0
 	restart   BYTE "Press 'R' to restart",0
 	nextLevel BYTE "Press 'N' to next level",0
 	finalMsg  BYTE "The day is saved, thanks to the Powerful Hua Tank!",0
+	finalColor WORD 50 DUP(0Ah)
 	
 	;印坦克
-	startTank BYTE "      C\                "
+	startTank BYTE "       \                "
 			  BYTE "       _\______         "
 			  BYTE "      /        \=======D"
 			  BYTE " ____|_HUA_TANK_\_____  "
 			  BYTE "/ ___WHERE_ARE_YOU?__ \ "
 			  BYTE "\/ _===============_ \/ "
 			  BYTE "  \-===============-/   "
+
+	startTankColor WORD 24 DUP(0Ah)
+				   WORD 24 DUP(0Ah)
+				   WORD 24 DUP(0Ah)
+				   WORD 24 DUP(0Ah)
+				   WORD 24 DUP(0Ah)
+				   WORD 24 DUP(0Ah)
+				   WORD 24 DUP(0Ah)
 	;印Bogy
 	startBogy BYTE " (\_/) "
 			  BYTE " |OvO| "
@@ -131,24 +142,32 @@ initialLevelBogyPos PROTO
 			  BYTE "\| X |/"
 			  BYTE " |_|_| "
 
+	startBogyColor WORD 7 DUP(0Bh)
+				   WORD 7 DUP(0Bh)
+				   WORD 7 DUP(0Bh)
+				   WORD 7 DUP(0Bh)
+				   WORD 7 DUP(0Bh)
+
 	gameIntro BYTE "*****************************************************************"
-              BYTE "*                      Game Introduction:                       *"
-              BYTE "*            Control the Hua Tank to kill the Bogy.             *"
-              BYTE "*             Don't let Bogy cross the green line,              *"
-			  BYTE "*                or your life will shock down!!                 *"
-              BYTE "*   Start with 3 lives, once the live reaches zero, you lose!!  *"
-              BYTE "*     Kill the last monsters, if you still alive, you win!!     *"
-              BYTE "*                                                               *"
-              BYTE "*                   How to control the tank:                    *"
-              BYTE "*               + press 'up'    to move up                      *"
-              BYTE "*               + press 'down'  to move down                    *"
-              BYTE "*               + press 'right' to fire bullet                  *"
-              BYTE "*                                                               *"
-              BYTE "*                         How to play:                          *"
-              BYTE "*               + press 'space' to start game                   *"
-              BYTE "*               + press 'P'     to pause game                   *"
+              BYTE "                       Game Introduction:                        "
+              BYTE "             Control the Hua Tank to kill the Bogy.              "
+              BYTE "              Don't let Bogy cross the green line,               "
+			  BYTE "                 or your life will shock down!!                  "
+              BYTE "   Start with 10 lives, once the live reaches zero, you lose!!   "
+              BYTE "      Kill the last monsters, if you still alive, you win!!      "
+              BYTE "                                                                 "
+              BYTE "                    How to control the tank:                     "
+              BYTE "                + press 'up'    to move up                       "
+              BYTE "                + press 'down'  to move down                     "
+              BYTE "                + press 'right' to fire bullet                   "
+              BYTE "                                                                 "
+              BYTE "                          How to play:                           "
+              BYTE "                + press 'space' to start game                    "
+              BYTE "                + press 'P'     to pause game                    "
               BYTE "*****************************************************************"
 
+	gameIntroColor WORD 65 DUP(0Eh)
+	
 	gameTank  BYTE "  __    "
 			  BYTE " Hua\==D"
 			  BYTE "(Tank)  "
@@ -157,6 +176,14 @@ initialLevelBogyPos PROTO
 			  BYTE "        "
 			  BYTE "        "
 
+	tankColor WORD 8 DUP(0Ah)
+			  WORD 8 DUP(0Ah)
+			  WORD 8 DUP(0Ah)
+
+	tankColorClear WORD 8 DUP(0Fh)
+				   WORD 8 DUP(0Fh)
+			       WORD 8 DUP(0Fh)
+
 	gameBogy  BYTE "(\_/)"
 			  BYTE "|OvO|"
 			  BYTE "|_|_|"
@@ -164,14 +191,26 @@ initialLevelBogyPos PROTO
 	clearBogy BYTE "     "
 			  BYTE "     "
 			  BYTE "     "
+			  
+	gameBogyColor0 WORD 5 DUP(0Eh)
+	               WORD 5 DUP(0Eh)
+				   WORD 5 DUP(0Eh)
+
+	gameBogyColor1 WORD 5 DUP(0Bh)
+	               WORD 5 DUP(0Bh)
+				   WORD 5 DUP(0Bh)
+
+	gameBogyColor2 WORD 5 DUP(0Dh)
+	               WORD 5 DUP(0Dh)
+				   WORD 5 DUP(0Dh)
 
 	bullet BYTE "NOWORK",0
 	clearBullet BYTE "      ",0
 
+	bulletColor WORD 6 DUP(0fh)
+
 	line BYTE "|",0
 	greenColor WORD 0Ah
-
-	yellowColor WORD 0Eh
 
 	level BYTE "Level: ",0
 	state BYTE "State: ",0
@@ -186,12 +225,14 @@ initialLevelBogyPos PROTO
 	playing BYTE "Playing",0
 
 	scoreNum WORD 0
+	scoreNumInLevel WORD ?
 	scoreStr BYTE 4 DUP(?)
 
-	livesNum WORD 3
+	livesNum WORD 10
+	livesNumInLevel WORD ?
 	livesStr BYTE 4 DUP(?)
 	
-	bogysNum WORD 1
+	bogysNum WORD ?
 	bogysStr BYTE 4 DUP(?)
 
 	gameBgTB BYTE 110 DUP("*"),0
@@ -203,6 +244,9 @@ initialLevelBogyPos PROTO
 		    BYTE "    \ \/  \/ /    | |   | |\ \| |   "
 		    BYTE "     \  /\  /    _| |_ _| |_\   |_  "
 		    BYTE "      \/  \/    |_____|_____|\____| "
+
+	winColor WORD 36 DUP(0Ah)
+	loseColor WORD 36 DUP(0Bh)
 
 	loseStr BYTE " _____      ___    ______  ________ "
 			BYTE "|_   _|   .'   `..' ____ \|_   __  |"
@@ -239,18 +283,20 @@ Ex:
 	.ENDIF
 
 	.IF ebx == 1 ; 進入遊戲
-		mov scoreNum, 0
+		mov ax, livesNum
+		mov livesNumInLevel, ax
+
+		mov ax, scoreNum
+		mov scoreNumInLevel, ax
+
 		.IF levelNum == 1
-			mov livesNum, 3
-			mov bogysNum, 5
-		.ENDIF
-		.IF levelNum == 2
-			mov livesNum, 5
 			mov bogysNum, 10
 		.ENDIF
-		.IF levelNum == 3
-			mov livesNum, 7
+		.IF levelNum == 2
 			mov bogysNum, 15
+		.ENDIF
+		.IF levelNum == 3
+			mov bogysNum, 20
 		.ENDIF
 		INVOKE printGameStage
 
@@ -305,7 +351,6 @@ Ex:
 	.ENDIF
 
 GameLoop:
-	
 	INVOKE tankWalking, xyPosTank
 
 	.IF N0 == 1
@@ -505,7 +550,7 @@ backToGame:
 	.ENDIF
 
 	push eax
-	mov eax, 500
+	mov eax, 150
 	call Delay
 	pop eax
 
@@ -595,6 +640,7 @@ backToGame:
 
 	
 	INVOKE printGreenLine, xyPos
+
 	.IF levelNum == 1
 		sub xyPosBogy0.x, 1
 		sub xyPosBogy1.x, 1
@@ -605,26 +651,29 @@ backToGame:
 	.ENDIF
 	.IF levelNum == 2
 		push eax
-		mov eax, 4
+		mov eax, 2
 		call RandomRange
 		inc eax
 		sub xyPosBogy0.x, ax
-		mov eax, 4
+		mov eax, 2
 		call RandomRange
 		inc eax
 		sub xyPosBogy1.x, ax
-		mov eax, 4
+		mov eax, 2
 		call RandomRange
+		inc eax
 		sub xyPosBogy2.x, ax
-		mov eax, 4
+		mov eax, 2
 		call RandomRange
 		inc eax
 		sub xyPosBogy3.x, ax
-		mov eax, 4
+		mov eax, 2
 		call RandomRange
+		inc eax
 		sub xyPosBogy4.x, ax
-		mov eax, 4
+		mov eax, 2
 		call RandomRange
+		inc eax
 		sub xyPosBogy5.x, ax
 		pop eax
 	.ENDIF
@@ -632,18 +681,17 @@ backToGame:
 		push eax
 		mov eax, 5
 		call RandomRange
-		add eax, 2
 		sub xyPosBogy0.x, ax
 		mov eax, 7
 		call RandomRange
 		sub xyPosBogy1.x, ax
-		mov eax, 9
+		mov eax, 8
 		call RandomRange
 		sub xyPosBogy2.x, ax
 		mov eax, 7
 		call RandomRange
 		sub xyPosBogy3.x, ax
-		mov eax, 9
+		mov eax, 6
 		call RandomRange
 		sub xyPosBogy4.x, ax
 		mov eax, 5
@@ -653,9 +701,11 @@ backToGame:
 	.ENDIF
 
 	.IF N0 == 1
-        add xyPosNoWork0.x, 3
+        add xyPosNoWork0.x, 4
 		.IF levelNum == 3
-			inc xyPosNoWork0.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork0.x, ax
 		.ENDIF
         push eax
         mov ax, xyPosBogy0.x
@@ -663,7 +713,13 @@ backToGame:
         .IF xyPosNoWork0.x >= ax
             mov N0, 0
             mov xyPosNoWork0.x, 15
-            add scoreNum, 10
+			add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx 
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -690,9 +746,11 @@ backToGame:
     .ENDIF
 
 	.IF N1 == 1
-        add xyPosNoWork1.x, 3
+        add xyPosNoWork1.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork1.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork1.x, ax
 		.ENDIF
 		push eax
         mov ax, xyPosBogy0.x
@@ -700,7 +758,13 @@ backToGame:
         .IF xyPosNoWork1.x >= ax
             mov N1, 0
             mov xyPosNoWork1.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -728,9 +792,11 @@ backToGame:
     .ENDIF
 
 	.IF N2 == 1
-        add xyPosNoWork2.x, 3
+        add xyPosNoWork2.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork2.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork2.x, ax
 		.ENDIF
 		.IF xyPosNoWork2.x > 106
             mov N2, 0
@@ -739,9 +805,11 @@ backToGame:
     .ENDIF
 
 	.IF N3 == 1
-        add xyPosNoWork3.x, 3
+        add xyPosNoWork3.x, 4
 		.IF levelNum == 3
-			inc xyPosNoWork3.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork3.x, ax
 		.ENDIF
         push eax
         mov ax, xyPosBogy1.x
@@ -749,7 +817,13 @@ backToGame:
         .IF xyPosNoWork3.x >= ax
             mov N3, 0
             mov xyPosNoWork3.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -777,9 +851,11 @@ backToGame:
     .ENDIF
 
 	.IF N4 == 1
-        add xyPosNoWork4.x, 3
+        add xyPosNoWork4.x, 4
 		.IF levelNum == 3
-			inc xyPosNoWork4.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork4.x, ax
 		.ENDIF
         push eax
         mov ax, xyPosBogy1.x
@@ -787,7 +863,13 @@ backToGame:
         .IF xyPosNoWork4.x >= ax
             mov N4, 0
             mov xyPosNoWork4.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -815,9 +897,11 @@ backToGame:
     .ENDIF
 
 	.IF N5 == 1
-        add xyPosNoWork5.x, 3
+        add xyPosNoWork5.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork5.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork5.x, ax
 		.ENDIF
 		push eax
         mov ax, xyPosBogy1.x
@@ -825,7 +909,13 @@ backToGame:
         .IF xyPosNoWork5.x >= ax
             mov N5, 0
             mov xyPosNoWork5.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -853,9 +943,11 @@ backToGame:
     .ENDIF
 
 	.IF N6 == 1
-        add xyPosNoWork6.x, 3
+        add xyPosNoWork6.x, 4
 		.IF levelNum == 3
-			inc xyPosNoWork6.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork5.x, ax
 		.ENDIF
         .IF xyPosNoWork6.x > 106
             mov N6, 0
@@ -864,9 +956,11 @@ backToGame:
     .ENDIF
 
 	.IF N7 == 1
-        add xyPosNoWork7.x, 3
+        add xyPosNoWork7.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork7.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork7.x, ax
 		.ENDIF
 		push eax
         mov ax, xyPosBogy2.x
@@ -874,7 +968,13 @@ backToGame:
         .IF xyPosNoWork7.x >= ax
             mov N7, 0
             mov xyPosNoWork7.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -902,9 +1002,11 @@ backToGame:
     .ENDIF
 
 	.IF N8 == 1
-        add xyPosNoWork8.x, 3
+        add xyPosNoWork8.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork8.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork8.x, ax
 		.ENDIF
 		push eax
         mov ax, xyPosBogy2.x
@@ -912,7 +1014,13 @@ backToGame:
         .IF xyPosNoWork8.x >= ax
             mov N8, 0
             mov xyPosNoWork8.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -940,9 +1048,11 @@ backToGame:
     .ENDIF
 
 	.IF N9 == 1
-        add xyPosNoWork9.x, 3
+        add xyPosNoWork9.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork9.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork9.x, ax
 		.ENDIF
 		push eax
         mov ax, xyPosBogy2.x
@@ -950,7 +1060,13 @@ backToGame:
         .IF xyPosNoWork9.x >= ax
             mov N9, 0
             mov xyPosNoWork9.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -978,9 +1094,11 @@ backToGame:
     .ENDIF
 
 	.IF N10 == 1
-		add xyPosNoWork10.x, 3
+		add xyPosNoWork10.x, 4
 		.IF levelNum == 3
-			inc xyPosNoWork10.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork10.x, ax
 		.ENDIF
 		.IF xyPosNoWork10.x > 106
 			mov N10, 0
@@ -989,9 +1107,11 @@ backToGame:
 	.ENDIF
 
 	.IF N11 == 1
-		add xyPosNoWork11.x, 3
+		add xyPosNoWork11.x, 4
 		.IF levelNum == 3
-			inc xyPosNoWork11.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork11.x, ax
 		.ENDIF
 		push eax
 		mov ax, xyPosBogy3.x
@@ -999,7 +1119,13 @@ backToGame:
 		.IF xyPosNoWork11.x >= ax
 			mov N11, 0
 			mov xyPosNoWork11.x, 15
-			add scoreNum, 10
+			add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
 			sub bogysNum, 1
 			INVOKE printScore, xyPos
 			INVOKE printBogys, xyPos
@@ -1027,9 +1153,11 @@ backToGame:
 	.ENDIF
 
 	.IF N12 == 1
-        add xyPosNoWork12.x, 3
+        add xyPosNoWork12.x, 4
 		.IF levelNum == 3
-			inc xyPosNoWork12.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork12.x, ax
 		.ENDIF
         push eax
         mov ax, xyPosBogy3.x
@@ -1037,7 +1165,13 @@ backToGame:
         .IF xyPosNoWork12.x >= ax
             mov N12, 0
             mov xyPosNoWork12.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -1065,9 +1199,11 @@ backToGame:
     .ENDIF
 
 	.IF N13 == 1
-        add xyPosNoWork13.x, 3
+        add xyPosNoWork13.x, 4
 		.IF levelNum == 3
-			inc xyPosNoWork13.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork13.x, ax
 		.ENDIF
         push eax
         mov ax, xyPosBogy3.x
@@ -1075,7 +1211,13 @@ backToGame:
         .IF xyPosNoWork13.x >= ax
             mov N13, 0
             mov xyPosNoWork13.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -1103,9 +1245,11 @@ backToGame:
     .ENDIF
 
 	.IF N14 == 1
-        add xyPosNoWork14.x, 3
+        add xyPosNoWork14.x, 4
 		.IF levelNum == 3
-			inc xyPosNoWork14.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork14.x, ax
 		.ENDIF
         .IF xyPosNoWork14.x > 106
             mov N14, 0
@@ -1114,9 +1258,11 @@ backToGame:
     .ENDIF
 
 	.IF N15 == 1
-        add xyPosNoWork15.x, 3
+        add xyPosNoWork15.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork15.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork15.x, ax
 		.ENDIF
 		push eax
         mov ax, xyPosBogy4.x
@@ -1124,7 +1270,13 @@ backToGame:
         .IF xyPosNoWork15.x >= ax
             mov N15, 0
             mov xyPosNoWork15.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -1152,9 +1304,11 @@ backToGame:
     .ENDIF
 	
 	.IF N16 == 1
-        add xyPosNoWork16.x, 3
+        add xyPosNoWork16.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork16.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork16.x, ax
 		.ENDIF
 		push eax
         mov ax, xyPosBogy4.x
@@ -1162,7 +1316,13 @@ backToGame:
         .IF xyPosNoWork16.x >= ax
             mov N16, 0
             mov xyPosNoWork16.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -1190,9 +1350,11 @@ backToGame:
     .ENDIF
 
 	.IF N17 == 1
-        add xyPosNoWork17.x, 3
+        add xyPosNoWork17.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork17.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork17.x, ax
 		.ENDIF
 		push eax
         mov ax, xyPosBogy4.x
@@ -1200,7 +1362,13 @@ backToGame:
         .IF xyPosNoWork17.x >= ax
             mov N17, 0
             mov xyPosNoWork17.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -1228,9 +1396,11 @@ backToGame:
     .ENDIF
 
 	.IF N18 == 1
-        add xyPosNoWork18.x, 3
+        add xyPosNoWork18.x, 4
 		.IF levelNum == 3
-			inc xyPosNoWork18.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork18.x, ax
 		.ENDIF
         .IF xyPosNoWork18.x > 106
             mov N18, 0
@@ -1239,9 +1409,11 @@ backToGame:
     .ENDIF
 
 	.IF N19 == 1
-        add xyPosNoWork19.x, 3
+        add xyPosNoWork19.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork19.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork19.x, ax
 		.ENDIF
 		push eax
         mov ax, xyPosBogy5.x
@@ -1249,7 +1421,13 @@ backToGame:
         .IF xyPosNoWork19.x >= ax
             mov N19, 0
             mov xyPosNoWork19.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -1277,9 +1455,11 @@ backToGame:
     .ENDIF
 
 	.IF N20 == 1
-        add xyPosNoWork20.x, 3
+        add xyPosNoWork20.x, 4
         .IF levelNum == 3
-			inc xyPosNoWork20.x
+			mov eax, 3
+			call RandomRange
+			add xyPosNoWork20.x, ax
 		.ENDIF
 		push eax
         mov ax, xyPosBogy5.x
@@ -1287,7 +1467,13 @@ backToGame:
         .IF xyPosNoWork20.x >= ax
             mov N20, 0
             mov xyPosNoWork20.x, 15
-            add scoreNum, 10
+            add ax, 6
+			mov dx, 108
+			sub dx, ax
+			.IF dx > 50
+				mov dx, 50
+			.ENDIF
+            add scoreNum, dx
             sub bogysNum, 1
             INVOKE printScore, xyPos
             INVOKE printBogys, xyPos
@@ -1440,9 +1626,6 @@ backToGame:
 	.ENDIF
 	
 	jmp GameLoop
-
-
-
 	call WaitMsg
 
 ExitProgram:
@@ -1466,6 +1649,13 @@ printStartScene PROC
 ; 印開始畫面的標題
 ShowStartStr:
 	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR startColor,
+		108,
+		xyPos,
+		ADDR cells_Written
+
 	INVOKE WriteConsoleOutputCharacter,
 		consoleHandle,
 		ADDR [startStr + esi],
@@ -1503,7 +1693,24 @@ PrintOption:
 	mov esi, 0
 	mov xyPos.x, 20
 	mov xyPos.y, 15
+PrintStartTankColor:
+	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR [startTankColor + esi],
+		24,
+		xyPos,
+		ADDR cells_Written
 
+	add esi, 48
+	inc xyPos.y
+	pop ecx
+	loop PrintStartTankColor
+
+	mov ecx, 7
+	mov esi, 0
+	mov xyPos.x, 20
+	mov xyPos.y, 15
 PrintStartTank:
 	push ecx
 	INVOKE WriteConsoleOutputCharacter,
@@ -1517,6 +1724,25 @@ PrintStartTank:
 	inc xyPos.y
 	pop ecx
 	loop PrintStartTank
+
+	mov ecx, 5
+	mov esi, 0
+	mov xyPos.x, 85
+	mov xyPos.y, 16
+
+PrintStartBogyColor:
+	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR [startBogyColor + esi],
+		7,
+		xyPos,
+		ADDR cells_Written
+
+	add esi, 14
+	inc xyPos.y
+	pop ecx
+	loop PrintStartBogyColor
 
 	mov ecx, 5
 	mov esi, 0
@@ -1557,6 +1783,33 @@ StartOrNot:
 
 PrintIntro:
 	push ecx
+	.IF xyPos.y == 8
+		INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR gameIntroColor,
+		65,
+		xyPos,
+		ADDR cells_Written
+	.ENDIF
+
+	.IF xyPos.y == 15
+		INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR gameIntroColor,
+		65,
+		xyPos,
+		ADDR cells_Written
+	.ENDIF
+
+	.IF xyPos.y == 20
+		INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR gameIntroColor,
+		65,
+		xyPos,
+		ADDR cells_Written
+	.ENDIF
+
 	INVOKE WriteConsoleOutputCharacter,
 		consoleHandle,
 		ADDR [gameIntro + esi],
@@ -1567,7 +1820,9 @@ PrintIntro:
 	add esi, 65
 	inc xyPos.y
 	pop ecx
-	loop PrintIntro
+	dec cx
+    cmp cx, 0
+    jne PrintIntro
 
 GameOrNot:
     call ReadChar
@@ -1678,6 +1933,12 @@ printEndScene PROC
 	.IF bogysNum == 0
 printWin:
 		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR winColor,
+			36,
+			xyPos,
+			ADDR cells_Written
 		INVOKE WriteConsoleOutputCharacter,
 			consoleHandle,
 			ADDR [winStr + esi],
@@ -1688,11 +1949,20 @@ printWin:
 		add esi, 36
 		inc xyPos.y
 		loop printWin
+		mov ax, 10
+		mul livesNum
+		add scoreNum, ax
 	.ENDIF
 
 	.IF livesNum == 0
 printLose:
 		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR loseColor,
+			36,
+			xyPos,
+			ADDR cells_Written
 		INVOKE WriteConsoleOutputCharacter,
 			consoleHandle,
 			ADDR [loseStr + esi],
@@ -1703,6 +1973,8 @@ printLose:
 		add esi, 36
 		inc xyPos.y
 		loop printLose
+		
+		mov score, 0
 	.ENDIF
 
 	mov xyPos.y, 15
@@ -1792,6 +2064,12 @@ printLose:
 		.ENDIF
 		.IF levelNum == 3
 			sub xyPos.x, 15
+			INVOKE WriteConsoleOutputAttribute,
+				consoleHandle,
+				ADDR finalColor,
+				50,
+				xyPos,
+				ADDR cells_Written
 			INVOKE WriteConsoleOutputCharacter,
 				consoleHandle,
 				ADDR finalMsg,
@@ -1803,15 +2081,23 @@ printLose:
 
 restartOrLeave:
 	call ReadChar
+	; restart
 	.IF ax == 1372h
+		mov ax, livesNumInLevel
+		mov livesNum, ax
+
+		mov ax, scoreNumInLevel
+		mov scoreNum, ax
 		mov ebx, 1
 		call Clrscr
 		jmp ExitEndScene
 	.ENDIF
+	; exit
 	.IF ax == 266ch
 		mov ebx, 4
 		jmp ExitEndScene
 	.ENDIF
+	; next level
 	.IF bogysNum == 0
 		.IF ax == 316eh
 			mov ebx, 1
@@ -1964,10 +2250,62 @@ initialLevelBogyPos ENDP
 
 bogyWalking PROC,
 	xyPosInBogy:COORD
+
 	mov ecx, 3
 	mov esi, 0
 
-	;mov ebx, xyPosInBogy.y
+	.IF xyPosInBogy.x > 15 
+		.IF xyPosInBogy.x <= 58
+addBogyColor0:
+			push ecx
+			INVOKE WriteConsoleOutputAttribute,
+				consoleHandle,
+				ADDR [gameBogyColor0 + esi],
+				5,
+				xyPosInBogy,
+				ADDR cells_Written
+			add esi, 10
+			inc xyPosInBogy.y
+			pop ecx
+			loop addBogyColor0
+		.ENDIF
+	.ENDIF
+
+	.IF xyPosInBogy.x > 58 
+		.IF xyPosInBogy.x <= 83
+addBogyColor1:
+			push ecx
+			INVOKE WriteConsoleOutputAttribute,
+				consoleHandle,
+				ADDR [gameBogyColor1 + esi],
+				5,
+				xyPosInBogy,
+				ADDR cells_Written
+			add esi, 10
+			inc xyPosInBogy.y
+			pop ecx
+			loop addBogyColor1
+		.ENDIF
+	.ENDIF
+
+	.IF xyPosInBogy.x > 83
+addBogyColor2:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR [gameBogyColor2 + esi],
+			5,
+			xyPosInBogy,
+			ADDR cells_Written
+		add esi, 10
+		inc xyPosInBogy.y
+		pop ecx
+		loop addBogyColor2
+	.ENDIF
+
+	mov ecx, 3
+	mov esi, 0
+	sub xyPosInBogy.y, 3
 printBogy:
 	push ecx
 	INVOKE WriteConsoleOutputCharacter,
@@ -2007,8 +2345,22 @@ tankWalking PROC,
 	xyPosInit:COORD
 	mov ecx, 3
 	mov esi, 0
+colorTank:
+	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR [tankColor + esi],
+		8,
+		xyPosInit,
+		ADDR cells_Written
+	add esi, 8
+	inc xyPosInit.y
+	pop ecx
+	loop colorTank
 
-	;mov ebx, xyPosInit.y
+	mov ecx, 3
+	mov esi, 0
+	sub xyPosInit.y, 3
 printTank:
 	push ecx
 	INVOKE WriteConsoleOutputCharacter,
@@ -2028,6 +2380,22 @@ tankClear PROC,
 	xyPosInit:COORD
 	mov ecx, 3
 	mov esi, 0
+colorTankClear:
+	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR [tankColorClear + esi],
+		8,
+		xyPosInit,
+		ADDR cells_Written
+	add esi, 8
+	inc xyPosInit.y
+	pop ecx
+	loop colorTankClear
+
+	mov ecx, 3
+	mov esi, 0
+	sub xyPosInit.y, 3
 removeTank:
 	push ecx
 	INVOKE WriteConsoleOutputCharacter,
@@ -2047,6 +2415,14 @@ noWorkWalking PROC,
 	xyPosInit:COORD
 printNoWork:
 	push ecx
+
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR bulletColor,
+		6,
+		xyPosInit,
+		ADDR cells_Written
+
 	INVOKE WriteConsoleOutputCharacter,
 		consoleHandle,
 		ADDR bullet,
@@ -2107,7 +2483,7 @@ decStrLevel PROC,
 change:
 	push ecx
 	div dl
-	add ah, '0'					;餘數轉成字存到levelNum_inLevel
+	add ah, '0'					
 	dec ecx
 	mov [levelStr + ecx], ah
 	movzx ax, al				;商繼續除
@@ -2124,7 +2500,7 @@ decStrScore PROC,
 change:
 	push ecx
 	div dl
-	add ah, '0'					;餘數轉成字存到levelNum_inLevel
+	add ah, '0'					
 	dec ecx
 	mov [scoreStr + ecx], ah
 	movzx ax, al				;商繼續除
@@ -2141,7 +2517,7 @@ decStrLives PROC,
 change:
 	push ecx
 	div dl
-	add ah, '0'					;餘數轉成字存到levelNum_inLevel
+	add ah, '0'					
 	dec ecx
 	mov [livesStr + ecx], ah
 	movzx ax, al				;商繼續除
@@ -2158,7 +2534,7 @@ decStrBogys PROC,
 change:
 	push ecx
 	div dl
-	add ah, '0'					;餘數轉成字存到levelNum_inLevel
+	add ah, '0'					
 	dec ecx
 	mov [bogysStr + ecx], ah
 	movzx ax, al				;商繼續除

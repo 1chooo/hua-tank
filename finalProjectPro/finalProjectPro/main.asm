@@ -114,6 +114,7 @@ initialLevelBogyPos PROTO
 	;印開始畫面的提示字
 	enterMsg  BYTE "Press 'E' to enter",0
 	leaveMsg  BYTE "Press 'L' to leave",0
+	clearMsg  BYTE "                  ",0
 	restart   BYTE "Press 'R' to restart",0
 	nextLevel BYTE "Press 'N' to next level",0
 	finalMsg  BYTE "The day is saved, thanks to the Powerful Hua Tank!",0
@@ -141,12 +142,53 @@ initialLevelBogyPos PROTO
 			  BYTE "/ === \"
 			  BYTE "\| X |/"
 			  BYTE " |_|_| "
+	clearGameBogy BYTE "       ",0
+
+	deadBogy0 BYTE " ' (\_/)          "
+			  BYTE "' /X_X/           "
+			  BYTE "/ === \           "
+			  BYTE "\| X |/           "
+			  BYTE " |_|_|            " ; 12
+
+	deadBogy01 BYTE " '    (\_/)       "
+			   BYTE "' \|'/X_X/        "
+			   BYTE "/ === \           "
+			   BYTE "\| X |/           "
+			   BYTE " |_|_|            " ; 12
+
+	deadBogy02 BYTE " \ | / (\_/)      "
+			   BYTE "' \|/ '/X_X/      "
+			   BYTE "/ === \           "
+			   BYTE "\| X |/           "
+			   BYTE " |_|_|            " ; 12
+
+	deadBogy1 BYTE " ' | '  '         "
+			  BYTE "' \|/ '  '\X_X\   "
+			  BYTE "/ === \    (/ \)  "
+			  BYTE "\| X |/           "
+			  BYTE " |_|_|            " ; 16
+
+	deadBogy11 BYTE " ' ' '            "
+			   BYTE "  \|/             "
+			   BYTE "/ === \    \X_X\  "
+			   BYTE "\| X |/    (/ \)  "
+			   BYTE " |_|_|            " ; 16
+
+	deadBogy2 BYTE "                  "
+			  BYTE "  '|'             "
+			  BYTE "/ === \           "
+			  BYTE "\| X |/      \X_X\"
+			  BYTE " |_|_|       (/ \)" ; 18
 
 	startBogyColor WORD 7 DUP(0Bh)
 				   WORD 7 DUP(0Bh)
 				   WORD 7 DUP(0Bh)
 				   WORD 7 DUP(0Bh)
 				   WORD 7 DUP(0Bh)
+
+	deadBogyColor0 WORD 18 DUP(0Bh)
+	deadBogyColor1 WORD 18 DUP(0Eh)
+	deadBogyColor2 WORD 18 DUP(0Dh)
 
 	gameIntro BYTE "*****************************************************************"
               BYTE "                       Game Introduction:                        "
@@ -651,27 +693,24 @@ backToGame:
 	.ENDIF
 	.IF levelNum == 2
 		push eax
-		mov eax, 2
+		mov eax, 4
 		call RandomRange
-		inc eax
 		sub xyPosBogy0.x, ax
-		mov eax, 2
+		mov eax, 3
 		call RandomRange
 		inc eax
 		sub xyPosBogy1.x, ax
-		mov eax, 2
+		mov eax, 4
 		call RandomRange
-		inc eax
 		sub xyPosBogy2.x, ax
-		mov eax, 2
+		mov eax, 3
 		call RandomRange
 		inc eax
 		sub xyPosBogy3.x, ax
-		mov eax, 2
+		mov eax, 4
 		call RandomRange
-		inc eax
 		sub xyPosBogy4.x, ax
-		mov eax, 2
+		mov eax, 3
 		call RandomRange
 		inc eax
 		sub xyPosBogy5.x, ax
@@ -682,16 +721,18 @@ backToGame:
 		mov eax, 5
 		call RandomRange
 		sub xyPosBogy0.x, ax
-		mov eax, 7
+		mov eax, 5
 		call RandomRange
+		inc eax
 		sub xyPosBogy1.x, ax
 		mov eax, 8
 		call RandomRange
 		sub xyPosBogy2.x, ax
 		mov eax, 7
 		call RandomRange
+		inc eax
 		sub xyPosBogy3.x, ax
-		mov eax, 6
+		mov eax, 5
 		call RandomRange
 		sub xyPosBogy4.x, ax
 		mov eax, 5
@@ -1767,13 +1808,7 @@ StartOrNot:
     call ReadChar
 
 	.IF ax == 1265h     ;press e to start game
-        call Clrscr
-		mov xyPos.x, 28
-		mov xyPos.y, 7
-
-		mov ecx, 17
-		mov esi, 0
-		jmp PrintIntro
+		jmp StartGame
     .ENDIF
     .IF ax == 266ch     ;press l to leave
 		mov ebx, 4
@@ -1781,6 +1816,219 @@ StartOrNot:
     .ENDIF
 	jmp StartOrNot
 
+StartGame:
+
+    mov xyPos.y, 18
+    mov xyPos.x, 54
+
+    INVOKE WriteConsoleOutputCharacter,
+        consoleHandle,
+        ADDR clearMsg,
+        SIZEOF clearMsg,
+        xyPos,
+        ADDR cells_Written
+
+    add xyPos.y, 2
+
+    INVOKE WriteConsoleOutputCharacter,
+        consoleHandle,
+        ADDR clearMsg,
+        SIZEOF clearMsg,
+        xyPos,
+        ADDR cells_Written
+
+	mov eax, 250
+	call Delay
+
+	mov xyPos.x, 44
+	mov xyPos.y, 17
+	mov ecx, 35
+BulletShoot:
+	push ecx
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR bullet, 
+		SIZEOF bullet,
+		xyPos,
+		ADDR cells_Written
+
+	mov eax, 25
+	call Delay
+
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR clearBullet, 
+		SIZEOF clearBullet,
+		xyPos,
+		ADDR cells_Written
+	inc xyPos.x
+	pop ecx
+	dec ecx
+	cmp ecx, 0
+	jne BulletShoot
+
+	mov ecx, 5
+	mov esi, 0
+	mov xyPos.x, 85
+	mov xyPos.y, 16
+PrintDeadBogy0:
+	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR deadBogyColor0, 
+		18,
+		xyPos,
+		ADDR cells_Written
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR [deadBogy0 + esi], 
+		18,
+		xyPos,
+		ADDR cells_Written
+	inc xyPos.y
+	add esi, 18
+	pop ecx
+	loop PrintDeadBogy0
+
+	mov eax, 120
+	call Delay
+
+	mov ecx, 5
+	mov esi, 0
+	mov xyPos.x, 85
+	mov xyPos.y, 16
+PrintDeadBogy01:
+	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR deadBogyColor0, 
+		18,
+		xyPos,
+		ADDR cells_Written
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR [deadBogy01 + esi], 
+		18,
+		xyPos,
+		ADDR cells_Written
+	inc xyPos.y
+	add esi, 18
+	pop ecx
+	loop PrintDeadBogy01
+
+	mov eax, 125
+	call Delay
+
+	mov ecx, 5
+	mov esi, 0
+	mov xyPos.x, 85
+	mov xyPos.y, 16
+PrintDeadBogy02:
+	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR deadBogyColor0, 
+		18,
+		xyPos,
+		ADDR cells_Written
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR [deadBogy02 + esi], 
+		18,
+		xyPos,
+		ADDR cells_Written
+	inc xyPos.y
+	add esi, 18
+	pop ecx
+	loop PrintDeadBogy02
+
+	mov eax, 130
+	call Delay
+
+	mov ecx, 5
+	mov esi, 0
+	mov xyPos.x, 85
+	mov xyPos.y, 16
+PrintDeadBogy1:
+	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR deadBogyColor1, 
+		18,
+		xyPos,
+		ADDR cells_Written
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR [deadBogy1 + esi], 
+		18,
+		xyPos,
+		ADDR cells_Written
+	inc xyPos.y
+	add esi, 18
+	pop ecx
+	loop PrintDeadBogy1
+
+	mov eax, 165
+	call Delay
+
+	mov ecx, 5
+	mov esi, 0
+	mov xyPos.x, 85
+	mov xyPos.y, 16
+PrintDeadBogy11:
+	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR deadBogyColor1, 
+		18,
+		xyPos,
+		ADDR cells_Written
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR [deadBogy11 + esi], 
+		18,
+		xyPos,
+		ADDR cells_Written
+	inc xyPos.y
+	add esi, 18
+	pop ecx
+	loop PrintDeadBogy11
+
+	mov eax, 150
+	call Delay
+
+	mov ecx, 5
+	mov esi, 0
+	mov xyPos.x, 85
+	mov xyPos.y, 16
+PrintDeadBogy2:
+	push ecx
+	INVOKE WriteConsoleOutputAttribute,
+		consoleHandle,
+		ADDR deadBogyColor2, 
+		18,
+		xyPos,
+		ADDR cells_Written
+	INVOKE WriteConsoleOutputCharacter,
+		consoleHandle,
+		ADDR [deadBogy2 + esi], 
+		18,
+		xyPos,
+		ADDR cells_Written
+	inc xyPos.y
+	add esi, 18
+	pop ecx
+	loop PrintDeadBogy2
+
+	mov eax, 350
+	call Delay
+
+	call Clrscr
+	mov xyPos.x, 28
+	mov xyPos.y, 7
+
+	mov ecx, 17
+	mov esi, 0
 PrintIntro:
 	push ecx
 	.IF xyPos.y == 8
@@ -1973,16 +2221,14 @@ printLose:
 		add esi, 36
 		inc xyPos.y
 		loop printLose
-		
-		mov score, 0
 	.ENDIF
 
 	mov xyPos.y, 15
-	mov xyPos.x, 32
+	mov xyPos.x, 31
 	INVOKE WriteConsoleOutputCharacter,
 		consoleHandle,
 		ADDR score,
-		SIZEOF score,
+		7,
 		xyPos,
 		ADDR cells_Written
 
@@ -2035,7 +2281,7 @@ printLose:
 		xyPos,
 		ADDR cells_Written
 
-	add xyPos.y, 3
+	add xyPos.y, 5
 	mov xyPos.x, 50
 	INVOKE WriteConsoleOutputCharacter,
 		consoleHandle,
@@ -2080,7 +2326,303 @@ printLose:
 	.ENDIF
 
 restartOrLeave:
-	call ReadChar
+	.IF bogysNum == 0
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 95
+		mov xyPos.y, 20
+PrintDeadBogy0a:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor0, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy0 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy0a
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 15
+		mov xyPos.y, 20
+PrintDeadBogy0b:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor0, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy0 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy0b
+
+		mov eax, 120
+		call Delay
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 95
+		mov xyPos.y, 20
+PrintDeadBogy01a:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor0, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy01 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy01a
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 15
+		mov xyPos.y, 20
+PrintDeadBogy01b:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor0, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy01 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy01b
+
+		mov eax, 125
+		call Delay
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 95
+		mov xyPos.y, 20
+PrintDeadBogy02a:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor0, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy02 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy02a
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 15
+		mov xyPos.y, 20
+PrintDeadBogy02b:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor0, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy02 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy02b
+
+		mov eax, 130
+		call Delay
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 95
+		mov xyPos.y, 20
+PrintDeadBogy1a:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor1, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy1 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy1a
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 15
+		mov xyPos.y, 20
+PrintDeadBogy1b:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor1, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy1 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy1b
+
+		mov eax, 165
+		call Delay
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 95
+		mov xyPos.y, 20
+PrintDeadBogy11a:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor1, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy11 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy11a
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 15
+		mov xyPos.y, 20
+PrintDeadBogy11b:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor1, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy11 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy11b
+
+		mov eax, 150
+		call Delay
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 95
+		mov xyPos.y, 20
+PrintDeadBogy2a:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor2, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy2 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy2a
+
+		mov ecx, 5
+		mov esi, 0
+		mov xyPos.x, 15
+		mov xyPos.y, 20
+PrintDeadBogy2b:
+		push ecx
+		INVOKE WriteConsoleOutputAttribute,
+			consoleHandle,
+			ADDR deadBogyColor2, 
+			18,
+			xyPos,
+			ADDR cells_Written
+		INVOKE WriteConsoleOutputCharacter,
+			consoleHandle,
+			ADDR [deadBogy2 + esi], 
+			18,
+			xyPos,
+			ADDR cells_Written
+		inc xyPos.y
+		add esi, 18
+		pop ecx
+		loop PrintDeadBogy2b
+
+		mov eax, 200
+		call Delay
+	.ENDIF
+	
+	call ReadKey
 	; restart
 	.IF ax == 1372h
 		mov ax, livesNumInLevel
@@ -2099,12 +2641,12 @@ restartOrLeave:
 	.ENDIF
 	; next level
 	.IF bogysNum == 0
-		.IF ax == 316eh
-			mov ebx, 1
-			.IF levelNum < 3
+		.IF levelNum < 3
+			.IF ax == 316eh
+				mov ebx, 1
 				inc levelNum
+				jmp ExitEndScene
 			.ENDIF
-			jmp ExitEndScene
 		.ENDIF
 	.ENDIF
 	jmp restartOrLeave

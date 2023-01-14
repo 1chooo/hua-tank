@@ -102,6 +102,21 @@ This is the project from the course **CE2012 - Assembly Language and System Prog
  |_|_|   |_|_|
 ```
 
+#### Bogy Animation
+```
+ ' (\_/)  '    (\_/)  \ | / (\_/)  ' | '  '         ' ' '                             
+' /X_X/  ' \|'/X_X/  ' \|/ '/X_X/ ' \|/ '  '\X_X\    \|/              '|'             
+/ === \  / === \     / === \      / === \    (/ \) / === \    \X_X\ / === \           
+\| X |/  \| X |/     \| X |/      \| X |/          \| X |/    (/ \) \| X |/      \X_X\
+ |_|_|    |_|_|       |_|_|        |_|_|            |_|_|            |_|_|       (/ \) 
+```
+
+#### Bullets
+```
+NOWORK
+```
+
+
 #### Our Rules
 
 ```
